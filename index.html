@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Primary meta -->
+<title>The Long Way Round — A Family Grand Tour 2026</title>
+<meta name="description" content="86 nights across France, Italy, Switzerland and Spain. A family grand tour from the French Riviera to Valencia, summer 2026.">
+<meta name="author" content="Grand Tour 2026">
+<meta name="robots" content="noindex, nofollow">
+
+<!-- Open Graph — controls how the link looks when shared on iMessage, WhatsApp, etc. -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="The Long Way Round — A Family Grand Tour 2026">
+<meta property="og:description" content="86 nights. 18 destinations. 4 countries. France · Italy · Switzerland · Spain.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1200&q=80">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<!-- Twitter card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Long Way Round — Grand Tour 2026">
+<meta name="twitter:description" content="86 nights. 18 destinations. 4 countries. France · Italy · Switzerland · Spain.">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1200&q=80">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+<!-- Leaflet for embedded map -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<style>
+  :root {
+    --ink: #1a1814;
+    --ink-light: #6b6560;
+    --ink-faint: #a8a39d;
+    --paper: #faf8f4;
+    --paper-warm: #f2ede5;
+    --border: #e8e2d8;
+    --border-strong: #d4cdc2;
+    --accent: #8b5e3c;
+    --accent-light: #c9956b;
+    --booking-bg: #f0f4f8;
+    --booking-border: #b8cce0;
+    --booking-label: #2c5f8a;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'DM Sans', sans-serif; background: #ffffff; color: var(--ink); font-size: 15px; line-height: 1.7; }
+
+  /* COVER */
+  .cover { min-height: 100vh; background: #090909; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 4rem 2rem; position: relative; overflow: hidden; }
+  .cover::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 50% at 20% 80%, rgba(139,94,60,0.15) 0%, transparent 70%), radial-gradient(ellipse 50% 60% at 80% 20%, rgba(139,94,60,0.1) 0%, transparent 70%); }
+  .cover-inner { position: relative; text-align: center; max-width: 640px; }
+  .cover-eyebrow { font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent-light); margin-bottom: 2rem; }
+  .cover-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 8vw, 5.5rem); font-weight: 300; color: var(--paper); line-height: 1.05; margin-bottom: 1rem; }
+  .cover-title em { font-style: italic; color: var(--accent-light); }
+  .cover-subtitle { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 300; font-style: italic; color: rgba(250,248,244,0.55); margin-bottom: 3rem; }
+  .cover-stats { display: flex; gap: 3rem; justify-content: center; border-top: 0.5px solid rgba(255,255,255,0.15); padding-top: 2rem; flex-wrap: wrap; }
+  .cover-stat { text-align: center; }
+  .cover-stat-val { display: block; font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-weight: 300; color: var(--paper); line-height: 1; }
+  .cover-stat-lbl { display: block; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(250,248,244,0.4); margin-top: 4px; }
+  .cover-route { margin-top: 2.5rem; font-size: 12px; letter-spacing: 0.08em; color: rgba(250,248,244,0.35); }
+
+
+  /* CONTAINER */
+  .container { max-width: 860px; margin: 0 auto; padding: 0 2rem 6rem; }
+
+  /* QUICK REFERENCE TABLE */
+  .quick-ref { padding: 3rem 0; border-bottom: 0.5px solid var(--border); }
+  .quick-ref-title { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 300; margin-bottom: 1.5rem; }
+  .ref-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .ref-table th { text-align: left; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); padding: 0 12px 8px 0; border-bottom: 0.5px solid var(--border-strong); font-weight: 400; }
+  .ref-table td { padding: 8px 12px 8px 0; border-bottom: 0.5px solid var(--border); color: var(--ink-light); vertical-align: top; }
+  .ref-table td:first-child { color: var(--ink); font-weight: 500; }
+  .ref-table td.conf { font-family: monospace; font-size: 12px; color: var(--ink-faint); letter-spacing: 0.05em; }
+  .ref-table tr.booked td { }
+  .ref-table tr.tbd td { color: var(--ink-faint); }
+  .booked-pill { display: inline-block; font-size: 9px; letter-spacing: 0.06em; text-transform: uppercase; padding: 2px 6px; border-radius: 2px; background: #e8f5ec; color: #2d7a47; border: 0.5px solid #b8ddc4; margin-left: 6px; vertical-align: middle; }
+  .tbd-pill { display: inline-block; font-size: 9px; letter-spacing: 0.06em; text-transform: uppercase; padding: 2px 6px; border-radius: 2px; background: var(--paper-warm); color: var(--ink-faint); border: 0.5px solid var(--border); margin-left: 6px; vertical-align: middle; }
+
+  /* COUNTRY HEADERS */
+  .country-header { display: flex; align-items: center; gap: 1rem; padding: 3.5rem 0 1.5rem; }
+  .country-flag { font-size: 1.8rem; line-height: 1; }
+  .country-name { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 300; letter-spacing: 0.02em; }
+  .country-line { flex: 1; height: 0.5px; background: var(--border-strong); }
+
+  /* DESTINATION */
+  .destination { border-bottom: 0.5px solid var(--border); padding: 2.5rem 0; }
+  .dest-header { display: grid; grid-template-columns: 200px 1fr; gap: 0; margin-bottom: 0; }
+  .dest-meta { padding-right: 2.5rem; border-right: 0.5px solid var(--border); }
+  .dest-number { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 300; color: var(--border-strong); line-height: 1; margin-bottom: 0.75rem; }
+  .dest-name { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 400; color: var(--ink); line-height: 1.2; margin-bottom: 0.25rem; }
+  .dest-region { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 1.25rem; }
+  .dest-dates { font-size: 13px; color: var(--ink-light); margin-bottom: 0.3rem; }
+  .dest-nights { font-size: 12px; color: var(--ink-faint); margin-bottom: 1.5rem; }
+  .dest-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+  .tag { font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; padding: 3px 8px; border-radius: 2px; background: var(--paper-warm); color: var(--ink-light); border: 0.5px solid var(--border); }
+
+  .dest-body { padding-left: 2.5rem; }
+  .dest-description { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 300; line-height: 1.85; color: var(--ink); margin-bottom: 1.25rem; }
+  .dest-highlights { display: flex; flex-direction: column; gap: 6px; margin-bottom: 1.25rem; }
+  .highlight { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: var(--ink-light); line-height: 1.5; }
+  .highlight-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--accent-light); margin-top: 7px; flex-shrink: 0; }
+
+  /* BOOKING CARD */
+  .booking-card { background: var(--booking-bg); border: 0.5px solid var(--booking-border); border-radius: 6px; padding: 1.25rem 1.5rem; margin-top: 1.5rem; }
+  .booking-card-title { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--booking-label); font-weight: 500; margin-bottom: 1rem; padding-bottom: 0.6rem; border-bottom: 0.5px solid var(--booking-border); }
+  .booking-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem 2rem; }
+  .booking-grid.wide { grid-template-columns: 1fr; }
+  .booking-row { display: flex; flex-direction: column; gap: 1px; }
+  .booking-label { font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-faint); }
+  .booking-value { font-size: 13px; color: var(--ink); }
+  .booking-value.mono { font-family: monospace; font-size: 12.5px; letter-spacing: 0.04em; color: var(--booking-label); font-weight: 500; }
+  .booking-value a { color: var(--booking-label); text-decoration: none; }
+  .booking-value a:hover { text-decoration: underline; }
+  .booking-address { font-size: 13px; color: var(--ink); line-height: 1.5; }
+
+  /* TRANSPORT NOTE */
+  .transport-note { display: flex; align-items: flex-start; gap: 10px; padding: 10px 14px; background: var(--paper-warm); border-left: 2px solid var(--accent-light); border-radius: 0 2px 2px 0; font-size: 12.5px; color: var(--ink-light); line-height: 1.6; margin-top: 1.25rem; }
+  .transport-label { font-weight: 500; color: var(--ink); white-space: nowrap; font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; margin-top: 1px; }
+
+  /* FOOTER */
+  .footer { border-top: 0.5px solid var(--border); padding: 3rem 0; text-align: center; }
+  .footer p { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-style: italic; color: var(--ink-faint); }
+
+  /* DEST BODY FULL WIDTH — when no split needed */
+  .dest-full { margin-top: 1.5rem; }
+
+  /* MAP SECTION */
+  .map-section { width: 100%; height: 100vh; position: relative; border-bottom: 0.5px solid var(--border); }
+  .map-section-inner { width: 100%; height: 100%; }
+  .map-label { position: absolute; top: 16px; left: 50%; transform: translateX(-50%); z-index: 1000; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(250,248,244,0.4); background: rgba(26,24,20,0.7); padding: 5px 14px; border-radius: 20px; pointer-events: none; }
+  .map-legend { position: absolute; bottom: 20px; left: 20px; z-index: 1000; background: rgba(26,24,20,0.88); border: 0.5px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 10px 14px; }
+  .map-legend-item { display: flex; align-items: center; gap: 7px; font-size: 11px; color: rgba(250,248,244,0.65); margin-bottom: 5px; font-family: 'DM Sans', sans-serif; }
+  .map-legend-item:last-child { margin-bottom: 0; }
+  .ml-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+  .ml-dash { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; border: 1.5px dashed rgba(201,149,107,0.8); background: transparent; }
+
+  /* Leaflet popup overrides for embedded map */
+  .leaflet-popup-content-wrapper { background: #1a1814 !important; border: 0.5px solid rgba(255,255,255,0.15) !important; border-radius: 4px !important; box-shadow: 0 8px 24px rgba(0,0,0,0.5) !important; padding: 0 !important; }
+  .leaflet-popup-content { margin: 0 !important; width: 220px !important; }
+  .leaflet-popup-tip { background: #1a1814 !important; }
+  .leaflet-popup-close-button { color: rgba(250,248,244,0.4) !important; }
+  .mp-inner { padding: 12px 14px; }
+  .mp-num { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 300; color: rgba(250,248,244,0.2); line-height: 1; }
+  .mp-name { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-weight: 400; color: #faf8f4; line-height: 1.2; margin-bottom: 2px; }
+  .mp-dates { font-size: 11px; color: rgba(250,248,244,0.45); margin-bottom: 6px; }
+  .mp-badge { display: inline-block; font-size: 8px; letter-spacing: 0.08em; text-transform: uppercase; padding: 2px 6px; border-radius: 2px; background: rgba(45,122,71,0.25); color: #7dd4a0; border: 0.5px solid rgba(45,122,71,0.4); }
+  .mp-tbd { display: inline-block; font-size: 8px; letter-spacing: 0.08em; text-transform: uppercase; padding: 2px 6px; border-radius: 2px; background: rgba(255,255,255,0.05); color: rgba(250,248,244,0.35); border: 0.5px solid rgba(255,255,255,0.1); }
+
+  @media (max-width: 640px) {
+    .dest-header { grid-template-columns: 1fr; }
+    .dest-meta { border-right: none; border-bottom: 0.5px solid var(--border); padding-right: 0; padding-bottom: 1.5rem; margin-bottom: 1.5rem; }
+    .dest-body { padding-left: 0; }
+    .dest-full { padding-left: 0 !important; }
+    .booking-grid { grid-template-columns: 1fr; }
+    .ref-table th:nth-child(6), .ref-table td:nth-child(6),
+    .ref-table th:nth-child(7), .ref-table td:nth-child(7) { display: none; }
+    .map-section { height: 100vh; }
+    .cover-stats { gap: 1.5rem; }
+    .container { padding: 0 1rem 4rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-inner">
+    <div class="cover-eyebrow">A Family Grand Tour · Summer 2026</div>
+    <h1 class="cover-title">The <em>Long</em><br>Way Round</h1>
+    <p class="cover-subtitle">France · Italy · Switzerland · Spain</p>
+    <div class="cover-stats">
+      <div class="cover-stat"><span class="cover-stat-val">86</span><span class="cover-stat-lbl">Nights</span></div>
+      <div class="cover-stat"><span class="cover-stat-val">18</span><span class="cover-stat-lbl">Destinations</span></div>
+      <div class="cover-stat"><span class="cover-stat-val">4</span><span class="cover-stat-lbl">Countries</span></div>
+      <div class="cover-stat"><span class="cover-stat-val">Jun – Sep</span><span class="cover-stat-lbl">2026</span></div>
+    </div>
+    <div class="cover-route">New York → Melbourne · via the Riviera, the Dolomites, the Alps &amp; the Mediterranean</div>
+  </div>
+</div>
+
+<!-- EMBEDDED MAP -->
+<div class="map-section">
+  <div class="map-label">29 June – 23 September 2026</div>
+  <div id="embedded-map" class="map-section-inner"></div>
+  <div class="map-legend">
+    <div class="map-legend-item"><div class="ml-dot" style="background:#3a6fa8;"></div>France</div>
+    <div class="map-legend-item"><div class="ml-dot" style="background:#c85a3a;"></div>Italy</div>
+    <div class="map-legend-item"><div class="ml-dot" style="background:#999;"></div>Switzerland</div>
+    <div class="map-legend-item"><div class="ml-dot" style="background:#c9a227;"></div>Spain</div>
+    <div style="height:6px;"></div>
+    <div class="map-legend-item"><div class="ml-dot" style="background:#c9956b;border:2px solid rgba(255,255,255,0.4);"></div>Booked</div>
+    <div class="map-legend-item"><div class="ml-dash"></div>TBD</div>
+  </div>
+</div>
+
+<script>
+(function() {
+  const map = L.map('embedded-map', { center:[44.5,8.0], zoom:5, zoomControl:true, scrollWheelZoom:false });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+    attribution:'&copy; OpenStreetMap &copy; CARTO', subdomains:'abcd', maxZoom:19
+  }).addTo(map);
+
+  const dests = [
+    { num:"01", name:"Villefranche-sur-Mer", dates:"29 Jun – 5 Jul", lat:43.7042, lng:7.3089, color:"#3a6fa8", booked:true },
+    { num:"02", name:"Menton", dates:"5 – 8 Jul", lat:43.7756, lng:7.5028, color:"#3a6fa8", booked:true },
+    { num:"03", name:"Nervi, Genoa", dates:"8 – 13 Jul", lat:44.3878, lng:9.0682, color:"#c85a3a", booked:true },
+    { num:"04", name:"Santa Margherita Ligure", dates:"13 – 18 Jul", lat:44.3358, lng:9.2108, color:"#c85a3a", booked:true },
+    { num:"05", name:"Lago d'Iseo", dates:"18 – 23 Jul", lat:45.7089, lng:10.0312, color:"#c85a3a", booked:true },
+    { num:"06", name:"Cortina d'Ampezzo", dates:"23 – 28 Jul", lat:46.5378, lng:12.1198, color:"#c85a3a", booked:true },
+    { num:"07", name:"Bormio", dates:"28 Jul – 2 Aug", lat:46.4678, lng:10.3731, color:"#c85a3a", booked:true },
+    { num:"08", name:"Carate Urio", dates:"2 – 8 Aug", lat:45.9467, lng:9.1361, color:"#c85a3a", booked:true },
+    { num:"09", name:"Zermatt", dates:"8 – 11 Aug", lat:46.0207, lng:7.7491, color:"#999", booked:false },
+    { num:"10", name:"Geneva", dates:"11 – 16 Aug", lat:46.2044, lng:6.1432, color:"#999", booked:false },
+    { num:"11", name:"Annecy", dates:"16 – 21 Aug", lat:45.8992, lng:6.1294, color:"#3a6fa8", booked:false },
+    { num:"12", name:"Grenoble", dates:"21 – 25 Aug", lat:45.1885, lng:5.7245, color:"#3a6fa8", booked:false },
+    { num:"13", name:"Collioure", dates:"25 – 29 Aug", lat:42.5268, lng:3.0846, color:"#3a6fa8", booked:false },
+    { num:"14", name:"Girona", dates:"29 Aug – 4 Sep", lat:41.9794, lng:2.8214, color:"#c9a227", booked:false },
+    { num:"15", name:"Barcelona", dates:"4 – 8 Sep", lat:41.3851, lng:2.1734, color:"#c9a227", booked:false },
+    { num:"16", name:"Majorca", dates:"8 – 14 Sep", lat:39.7000, lng:2.9002, color:"#c9a227", booked:false },
+    { num:"17", name:"Altea", dates:"14 – 19 Sep", lat:38.6029, lng:-0.0451, color:"#c9a227", booked:false },
+    { num:"18", name:"Valencia", dates:"19 – 23 Sep", lat:39.4699, lng:-0.3763, color:"#c9a227", booked:false },
+  ];
+
+  // Route line
+  L.polyline(dests.map(d=>[d.lat,d.lng]), { color:'rgba(201,149,107,0.2)', weight:1.5, dashArray:'3,8' }).addTo(map);
+  [
+    { coords:dests.slice(0,2).map(d=>[d.lat,d.lng]), color:'#3a6fa8' },
+    { coords:dests.slice(1,8).map(d=>[d.lat,d.lng]), color:'#c85a3a' },
+    { coords:dests.slice(7,10).map(d=>[d.lat,d.lng]), color:'#888' },
+    { coords:dests.slice(9,13).map(d=>[d.lat,d.lng]), color:'#3a6fa8' },
+    { coords:dests.slice(12).map(d=>[d.lat,d.lng]), color:'#c9a227' },
+  ].forEach(({coords,color}) => L.polyline(coords,{color,weight:2,opacity:0.55}).addTo(map));
+
+  // Markers
+  dests.forEach(d => {
+    const html = d.booked
+      ? `<div style="position:relative;width:32px;height:38px;">
+           <div style="width:32px;height:32px;background:${d.color};border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:sans-serif;font-size:9px;font-weight:600;color:#fff;border:2px solid rgba(255,255,255,0.45);box-shadow:0 0 0 2px ${d.color}55,0 2px 8px rgba(0,0,0,0.5);">${d.num}</div>
+           <div style="position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-top:6px solid ${d.color};"></div>
+         </div>`
+      : `<div style="width:26px;height:26px;background:${d.color}44;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:sans-serif;font-size:9px;font-weight:500;color:rgba(255,255,255,0.65);border:1.5px dashed ${d.color};box-shadow:0 1px 6px rgba(0,0,0,0.4);">${d.num}</div>`;
+    const sz = d.booked ? [32,38] : [26,26];
+    const an = d.booked ? [16,38] : [13,13];
+    const icon = L.divIcon({ html, className:'', iconSize:sz, iconAnchor:an, popupAnchor:[0, d.booked?-40:-14] });
+    const badge = d.booked
+      ? `<span class="mp-badge">&#10003; Booked</span>`
+      : `<span class="mp-tbd">TBD</span>`;
+    const popup = `<div class="mp-inner"><div class="mp-num">${d.num}</div><div class="mp-name">${d.name}</div><div class="mp-dates">${d.dates}</div>${badge}</div>`;
+    L.marker([d.lat,d.lng],{icon}).addTo(map).bindPopup(popup,{maxWidth:230,closeButton:false});
+  });
+
+  map.fitBounds(L.latLngBounds(dests.map(d=>[d.lat,d.lng])),{padding:[40,40]});
+})();
+</script>
+
+<div class="container">
+
+  <!-- ITINERARY TABLE -->
+  <div class="quick-ref">
+    <div class="quick-ref-title">Itinerary</div>
+    <table class="ref-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Destination</th>
+          <th>Arrive</th>
+          <th>Depart</th>
+          <th>Nts</th>
+          <th>Confirmation</th>
+          <th>Contact</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="booked">
+          <td>—</td>
+          <td>Flight New York City → Nice <span class="booked-pill">Booked</span></td>
+          <td>Sun 28 Jun</td>
+          <td>Mon 29 Jun</td>
+          <td>1</td>
+          <td class="conf">G0LD88</td>
+          <td>—</td>
+        </tr>
+        <tr class="booked">
+          <td>01</td>
+          <td>Villefranche-sur-Mer <span class="booked-pill">Booked</span></td>
+          <td>Mon 29 Jun</td>
+          <td>Sun 5 Jul</td>
+          <td>6</td>
+          <td class="conf">HMTTFSFJCD</td>
+          <td>+33 6 50 34 99 01</td>
+        </tr>
+        <tr class="booked">
+          <td>02</td>
+          <td>Menton <span class="booked-pill">Booked</span></td>
+          <td>Sun 5 Jul</td>
+          <td>Wed 8 Jul</td>
+          <td>3</td>
+          <td class="conf">HMEFRTXDKJ</td>
+          <td>+33 6 68 65 86 86</td>
+        </tr>
+        <tr class="booked">
+          <td>03</td>
+          <td>Nervi, Genoa <span class="booked-pill">Booked</span></td>
+          <td>Wed 8 Jul</td>
+          <td>Mon 13 Jul</td>
+          <td>5</td>
+          <td class="conf">HMP3M8R5RE</td>
+          <td>+39 370 131 6006</td>
+        </tr>
+        <tr class="booked">
+          <td>04</td>
+          <td>Santa Margherita Ligure <span class="booked-pill">Booked</span></td>
+          <td>Mon 13 Jul</td>
+          <td>Sat 18 Jul</td>
+          <td>5</td>
+          <td class="conf">5404905388</td>
+          <td>+39 347 716 5338</td>
+        </tr>
+        <tr class="booked"><td>05</td><td>Lago d'Iseo <span class="booked-pill">Booked</span></td><td>Sat 18 Jul</td><td>Thu 23 Jul</td><td>5</td><td class="conf">HA-2G5TZ7</td><td>+39 391 491 4984</td></tr>
+        <tr class="booked"><td>06</td><td>Cortina d'Ampezzo <span class="booked-pill">Booked</span></td><td>Thu 23 Jul</td><td>Tue 28 Jul</td><td>5</td><td class="conf">HA-VH1J3B</td><td>+39 349 595 6288</td></tr>
+        <tr class="booked"><td>07</td><td>Bormio <span class="booked-pill">Booked</span></td><td>Tue 28 Jul</td><td>Sun 2 Aug</td><td>5</td><td class="conf">6724395695</td><td>+39 375 674 7094</td></tr>
+        <tr class="booked"><td>08</td><td>Carate Urio, Lake Como <span class="booked-pill">Booked</span></td><td>Sun 2 Aug</td><td>Sat 8 Aug</td><td>6</td><td class="conf">146141567</td><td>+39 320 223 4202</td></tr>
+        <tr class="tbd"><td>09</td><td>Zermatt <span class="tbd-pill">TBD</span></td><td>Sat 8 Aug</td><td>Tue 11 Aug</td><td>3</td><td class="conf">—</td><td>—</td></tr>
+        <tr class="tbd"><td>10</td><td>Geneva <span class="tbd-pill">TBD</span></td><td>Tue 11 Aug</td><td>Sun 16 Aug</td><td>5</td><td class="conf">—</td><td>—</td></tr>
+        <tr class="tbd"><td>11</td><td>Annecy <span class="tbd-pill">TBD</span></td><td>Sun 16 Aug</td><td>Fri 21 Aug</td><td>5</td><td class="conf">—</td><td>—</td></tr>
+        <tr class="tbd"><td>12</td><td>Grenoble <span class="tbd-pill">TBD</span></td><td>Fri 21 Aug</td><td>Tue 25 Aug</td><td>4</td><td class="conf">—</td><td>—</td></tr>
+        <tr class="tbd"><td>13</td><td>Collioure <span class="tbd-pill">TBD</span></td><td>Tue 25 Aug</td><td>Sat 29 Aug</td><td>4</td><td class="conf">—</td><td>—</td></tr>
+        <tr class="tbd"><td>14</td><td>Girona <span class="tbd-pill">TBD</span></td><td>Sat 29 Aug</td><td>Fri 4 Sep</td><td>6</td><td class="conf">—</td><td>—</td></tr>
+        <tr class="tbd"><td>15</td><td>Barcelona <span class="tbd-pill">TBD</span></td><td>Fri 4 Sep</td><td>Tue 8 Sep</td><td>4</td><td class="conf">—</td><td>—</td></tr>
+        <tr class="tbd"><td>16</td><td>Majorca <span class="tbd-pill">TBD</span></td><td>Tue 8 Sep</td><td>Mon 14 Sep</td><td>6</td><td class="conf">—</td><td>—</td></tr>
+        <tr class="tbd"><td>17</td><td>Altea <span class="tbd-pill">TBD</span></td><td>Mon 14 Sep</td><td>Sat 19 Sep</td><td>5</td><td class="conf">—</td><td>—</td></tr>
+        <tr class="tbd"><td>18</td><td>Valencia <span class="tbd-pill">TBD</span></td><td>Sat 19 Sep</td><td>Wed 23 Sep</td><td>4</td><td class="conf">—</td><td>—</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- FRANCE: RIVIERA -->
+  <div class="country-header">
+    <div class="country-flag">🇫🇷</div>
+    <div class="country-name">France · The Riviera</div>
+    <div class="country-line"></div>
+  </div>
+
+  <!-- 01 VILLEFRANCHE -->
+  <div class="destination">
+    <div class="dest-header">
+      <div class="dest-meta">
+        <div class="dest-number">01</div>
+        <div class="dest-name">Villefranche-sur-Mer</div>
+        <div class="dest-region">Côte d'Azur · French Riviera</div>
+        <div class="dest-dates">Mon 29 Jun – Sun 5 Jul</div>
+        <div class="dest-nights">6 nights</div>
+        <div class="dest-tags"><span class="tag">Riviera</span><span class="tag">Swimming</span><span class="tag">Harbour</span><span class="tag">Cap Ferrat</span><span class="tag">Markets</span></div>
+      </div>
+      <div class="dest-body">
+        <p class="dest-description">We land in Nice and drive fifteen minutes east to Villefranche-sur-Mer — a deep natural harbour town that is one of the most beautiful and least pretentious places on the entire Riviera. A working harbour at dawn, the old citadel above the water, ochre and terracotta buildings stacked up the hillside, and one of the better sandy beaches on this stretch of coast directly in the town. Nice is fifteen minutes west, Menton is forty minutes east, and Cap Ferrat — one of the most beautiful peninsulas in Europe — is a thirty-minute walk around the headland.</p>
+        <div class="dest-highlights">
+          <div class="highlight"><div class="highlight-dot"></div><span>Villefranche beach — a sandy arc in the town, calm water protected by the deep harbour, excellent for the kids.</span></div>
+          <div class="highlight"><div class="highlight-dot"></div><span>Cap Ferrat day trip — walk the coastal path around the cape (45 mins each way), swim at Plage de Passable, lunch in Saint-Jean village.</span></div>
+          <div class="highlight"><div class="highlight-dot"></div><span>Nice day trip — Cours Saleya flower and food market in the morning, old town for lunch, Promenade des Anglais in the evening.</span></div>
+          <div class="highlight"><div class="highlight-dot"></div><span>Chapelle Saint-Pierre — Jean Cocteau decorated this tiny fishermen's chapel on the harbour front in 1957. Extraordinary and free to enter.</span></div>
+          <div class="highlight"><div class="highlight-dot"></div><span>Èze village — medieval perched village 10 minutes east, one of the great coastal views in France from the ruined castle at the top.</span></div>
+        </div>
+        <div class="transport-note"><span class="transport-label">Onward →</span><span>Drive east along the Corniche Inférieure to Menton (~40 mins). Take the middle or upper corniche rather than the motorway — the views make the extra fifteen minutes worthwhile.</span></div>
+      </div>
+    </div>
+
+    <div class="dest-full" style="padding-left: 200px;">
+      <div class="booking-card">
+        <div class="booking-card-title">Accommodation · Booked</div>
+        <div class="booking-grid">
+          <div class="booking-row">
+            <span class="booking-label">Address</span>
+            <span class="booking-address">36 Rue Victor Contesso<br>06230 Villefranche-sur-Mer, France</span>
+          </div>
+          <div class="booking-row">
+            <span class="booking-label">Confirmation</span>
+            <span class="booking-value mono">HMTTFSFJCD</span>
+          </div>
+          <div class="booking-row">
+            <span class="booking-label">Check-in</span>
+            <span class="booking-value">Monday 29 June 2026 · 3:00 pm</span>
+          </div>
+          <div class="booking-row">
+            <span class="booking-label">Check-out</span>
+            <span class="booking-value">Sunday 5 July 2026 · 10:00 am</span>
+          </div>
+          <div class="booking-row">
+            <span class="booking-label">Contact</span>
+            <span class="booking-value"><a href="tel:+33650349901">+33 6 50 34 99 01</a></span>
+          </div>
+          <div class="booking-row">
+            <span class="booking-label">Platform</span>
+            <span class="booking-value"><a href="https://www.airbnb.com/rooms/1653533470427376854" target="_blank" rel="noopener">Airbnb</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 02 MENTON -->
+  <div class="destination">
+    <div class="dest-header">
+      <div class="dest-meta">
+        <div class="dest-number">02</div>
+        <div class="dest-name">Menton</div>
+        <div class="dest-region">Côte d'Azur · French Riviera</div>
+        <div class="dest-dates">Sun 5 Jul – Wed 8 Jul</div>
+        <div class="dest-nights">3 nights</div>
+        <div class="dest-tags"><span class="tag">Old town</span><span class="tag">Markets</span><span class="tag">Italy border</span><span class="tag">Swimming</span><span class="tag">Gardens</span></div>
+      </div>
+      <div class="dest-body">
+        <p class="dest-description">Menton sits at the very eastern edge of France, pressed against the Italian border, and it shows — in the food, the architecture, the colour of the buildings stacked in amber and ochre above the sea. The warmest town in France, the least visited of the major Riviera stops, and arguably the most beautiful. Three nights is a concentrated dose: enough for the market, the old town, a day trip into Italy, and the extraordinary gardens before moving on to Nervi.</p>
+        <div class="dest-highlights">
+          <div class="highlight"><div class="highlight-dot"></div><span>Marché du Bastion — every morning except Monday. The lemon products alone are worth the visit; the local cheese, charcuterie, and socca are extraordinary.</span></div>
+          <div class="highlight"><div class="highlight-dot"></div><span>Old town and Rue Longue — climbing through the medieval quarter to the Basilica of Saint-Michel. The view from the cemetery above is one of the great Riviera panoramas.</span></div>
+          <div class="highlight"><div class="highlight-dot"></div><span>Ventimiglia day trip — cross into Italy by train (~15 mins) for the Italian Riviera coast, excellent restaurants, and a taste of things to come.</span></div>
+          <div class="highlight"><div class="highlight-dot"></div><span>Jardins de la Serre de la Madone — one of the great hidden gardens of the Riviera. Extraordinary plant collection, almost never crowded.</span></div>
+        </div>
+        <div class="transport-note"><span class="transport-label">Onward →</span><span>Drive west then north-west into Italy (~2hrs to Nervi/Genoa). The Via Aurelia coastal road through San Remo and Savona adds time but transforms the journey — consider it if the kids are settled.</span></div>
+      </div>
+    </div>
+
+    <div class="dest-full" style="padding-left: 200px;">
+      <div class="booking-card">
+        <div class="booking-card-title">Accommodation · Booked</div>
+        <div class="booking-grid">
+          <div class="booking-row">
+            <span class="booking-label">Address</span>
+            <span class="booking-address">29 Porte de France<br>06500 Menton, France</span>
+          </div>
+          <div class="booking-row">
+            <span class="booking-label">Confirmation</span>
+            <span class="booking-value mono">HMEFRTXDKJ</span>
+          </div>
+          <div class="booking-row">
+            <span class="booking-label">Check-in</span>
+            <span class="booking-value">Sunday 5 July 2026 · 4:00 pm</span>
+          </div>
+          <div class="booking-row">
+            <span class="booking-label">Check-out</span>
+            <span class="booking-value">Wednesday 8 July 2026 · 10:00 am</span>
+          </div>
+          <div class="booking-row">
+            <span class="booking-label">Contact</span>
+            <span class="booking-value"><a href="tel:+33668658686">+33 6 68 65 86 86</a></span>
+          </div>
+          <div class="booking-row">
+            <span class="booking-label">Platform</span>
+            <span class="booking-value"><a href="https://www.airbnb.com/rooms/49500840" target="_blank" rel="noopener">Airbnb</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ITALY -->
+  <div class="country-header">
+    <div class="country-flag">🇮🇹</div>
+    <div class="country-name">Italy</div>
+    <div class="country-line"></div>
+  </div>
+
+  <!-- 03 NERVI -->
+  <div class="destination">
+    <div class="dest-header">
+      <div class="dest-meta">
+        <div class="dest-number">03</div>
+        <div class="dest-name">Nervi, Genoa</div>
+        <div class="dest-region">Ligurian Riviera · Liguria</div>
+        <div class="dest-dates">Wed 8 Jul – Mon 13 Jul</div>
+        <div class="dest-nights">5 nights</div>
+        <div class="dest-tags"><span class="tag">Passeggiata</span><span class="tag">Harbour</span><span class="tag">Cycling</span><span class="tag">Genoa day trips</span><span class="tag">Parks</span></div>
+      </div>
+      <div class="dest-body">
+        <p class="dest-description">Nervi is a former fishing village absorbed into Genoa's eastern edge that has never felt like part of the city. It functions as a self-contained, elegant seaside neighbourhood — Liberty-era villas, a clifftop promenade above dramatic rocky coastline, a small harbour, and an extraordinary park system. The Passeggiata Anita Garibaldi is the centrepiece: 2km of clifftop walking path above the sea, considered one of the finest coastal promenades in Italy. The family will walk it every evening. Central Genoa — one of the great medieval cities in Europe — is twenty minutes by train, making it a day trip rather than your daily environment: a much better way to experience a dense, demanding city with two young children.</p>
+        <div class="dest-highlights">
+          <div class="highlight"><div class="highlight-dot"></div><span>Passeggiata Anita Garibaldi — the clifftop promenade above the sea. Walk it every evening. The light at 8pm is extraordinary.</span></div>
+          <div class="highlight"><div class="highlight-dot"></div><span>Genoa old city day trip — the UNESCO-listed caruggi (medieval alleyways), Mercato Orientale for lunch, the Palazzi dei Rolli. Take the train in (~20 mins) and back.</span></div>
+          <div class="highlight"><div class="highlight-dot"></div><span>Parco di Nervi — three connected park villas with rose gardens, museums, and space for the kids to run freely. The modern art collection in Villa Grimaldi is excellent.</span></div>
+          <div class="highlight"><div class="highlight-dot"></div><span>Boccadasse — a beautiful small fishing hamlet 15 minutes west along the coast by bike or bus. Coloured houses, good gelato, swimming off the pebble beach.</span></div>
+          <div class="highlight"><div class="highlight-dot"></div><span>Cycling east from Nervi — the coastal road toward Camogli and Recco, and the inland climbs above Nervi toward Uscio, are excellent and traffic-free by early morning.</span></div>
+        </div>
+        <div class="transport-note"><span class="transport-label">Onward →</span><span>Drive or train west to Santa Margherita Ligure (~45 mins by car, ~30 mins by train). Camogli is directly on the route — worth a lunch stop if driving.</span></div>
+      </div>
+    </div>
+
+    <div class="dest-full" style="padding-left: 200px;">
+      <div class="booking-card">
+        <div class="booking-card-title">Accommodation · Booked</div>
+        <div class="booking-grid">
+          <div class="booking-row">
+            <span class="booking-label">Address</span>
+            <span class="booking-address">Via Giovanni Caboto, 4<br>16167 Nervi, Genoa, Italy</span>
+          </div>
+          <div class="booking-row">
+            <span class="booking-label">Confirmation</span>
+            <span class="booking-value mono">HMP3M8R5RE</span>
+          </div>
+          <div class="booking-row">
+            <span class="booking-label">Check-in</span>
+            <span class="booking-value">Wednesday 8 July 2026 · 4:00 pm</span>
+          </div>
+          <div class="booking-row">
+            <span class="booking-label">Check-out</span>
+            <span class="booking-value">Monday 13 July 2026 · 10:00 am</span>
+          </div>
+          <div class="booking-row">
+            <span class="booking-label">Contact</span>
+            <span class="booking-value"><a href="tel:+393701316006">+39 370 131 6006</a></span>
+          </div>
+          <div class="booking-row">
+            <span class="booking-label">Platform</span>
+            <span class="booking-value"><a href="https://www.airbnb.com/rooms/7484097" target="_blank" rel="noopener">Airbnb</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 04 SANTA MARGHERITA -->
+  <div class="destination">
+    <div class="dest-header">
+      <div class="dest-meta">
+        <div class="dest-number">04</div>
+        <div class="dest-name">Santa Margherita Ligure</div>
+        <div class="dest-region">Ligurian Riviera · Liguria</div>
+        <div class="dest-dates">Mon 13 Jul – Sat 18 Jul</div>
+        <div class="dest-nights">5 nights</div>
+        <div class="dest-tags"><span class="tag">Harbour</span><span class="tag">Swimming</span><span class="tag">Portofino</span><span class="tag">Hiking</span><span class="tag">Restaurants</span></div>
+      </div>
+      <div class="dest-body">
+        <p class="dest-description">Santa Margherita is the rare thing on the Italian Riviera: a genuinely beautiful town with real local life that hasn't been entirely consumed by tourism. The harbour is picture-perfect, the restaurants are excellent, and Portofino — one of the most beautiful villages in Italy — is a 20-minute boat ride away. From here the family operates on two speeds: boat trips and harbour swims on the easy days, and serious hiking on the trails between Portofino and Camogli when the energy is high.</p>
+        <div class="dest-highlights">
+          <div class="highlight"><div class="highlight-dot"></div><span>Portofino by boat — the correct way to arrive. Walk the village, swim off the rocks at Paraggi on the way back.</span></div>
+          <div class="highlight"><div class="highlight-dot"></div><span>Portofino headland hike — through to San Fruttuoso abbey, reachable only on foot or by sea. One of the great Ligurian walks.</span></div>
+          <div class="highlight"><div class="highlight-dot"></div><span>Camogli by train — 15 minutes west, a proper fishing village painted in trompe-l'œil, excellent Friday market.</span></div>
+          <div class="highlight"><div class="highlight-dot"></div><span>Trofie al pesto — the Ligurian original. Order it at every opportunity this week.</span></div>
+        </div>
+        <div class="transport-note"><span class="transport-label">Onward →</span><span>Drive direct to Lago d'Iseo (~3hrs via A7 and A35). A straightforward motorway run — save the energy for the lake. If time allows, exit at Brescia for a quick espresso in one of Italy's great underrated piazzas.</span></div>
+      </div>
+    </div>
+
+    <div class="dest-full" style="padding-left: 200px;">
+      <div class="booking-card">
+        <div class="booking-card-title">Accommodation · Booked</div>
+        <div class="booking-grid">
+          <div class="booking-row">
+            <span class="booking-label">Address</span>
+            <span class="booking-address">Via Dogali, 28/9<br>16038 Santa Margherita Ligure, Italy</span>
+          </div>
+          <div class="booking-row">
+            <span class="booking-label">Confirmation</span>
+            <span class="booking-value mono">5404905388</span>
+          </div>
+          <div class="booking-row">
+            <span class="booking-label">Check-in</span>
+            <span class="booking-value">Monday 13 July 2026 · 3:30 pm</span>
+          </div>
+          <div class="booking-row">
+            <span class="booking-label">Check-out</span>
+            <span class="booking-value">Saturday 18 July 2026 · 10:30 am</span>
+          </div>
+          <div class="booking-row">
+            <span class="booking-label">Contact</span>
+            <span class="booking-value"><a href="tel:+393477165338">+39 347 716 5338</a></span>
+          </div>
+          <div class="booking-row">
+            <span class="booking-label">Platform</span>
+            <span class="booking-value"><a href="https://www.booking.com/hotel/it/gaia-apartment-santa-margherita-ligure.html?aid=356980&label=gog235jc-10CAsocUImZ2FpYS1hcGFydG1lbnQtc2FudGEtbWFyZ2hlcml0YS1saWd1cmVIM1gDaKcCiAEBmAEzuAEXyAEM2AED6AEB-AEBiAIBqAIBuALphN_PBsACAdICJGYwY2RiY2RmLWRhOGMtNDlmYS04ZGI5LTY1MGIwNDAyZTI0NNgCAeACAQ&sid=5d5f6b7727f02ec2f6c4827a146c48b4&age=6&age=9&checkin=2026-08-02&checkout=2026-08-08&dest_id=-128439&dest_type=city&dist=0&group_adults=2&group_children=2&hapos=1&hpos=1&no_rooms=2&req_adults=2&req_age=6&req_age=9&req_children=2&room1=A%2C6&room2=A%2C9&sb_price_type=total&soh=1" target="_blank" rel="noopener">Booking.com</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 05 LAGO D'ISEO -->
+  <div class="destination">
+    <div class="dest-header">
+      <div class="dest-meta">
+        <div class="dest-number">05</div>
+        <div class="dest-name">Lago d'Iseo</div>
+        <div class="dest-region">Tavernola Bergamasca · Lombardy</div>
+        <div class="dest-dates">Sat 18 Jul – Thu 23 Jul</div>
+        <div class="dest-nights">5 nights</div>
+        <div class="dest-tags"><span class="tag">Lake swimming</span><span class="tag">Cycling</span><span class="tag">Hiking</span><span class="tag">Franciacorta</span><span class="tag">Monte Isola</span></div>
+      </div>
+      <div class="dest-body">
+        <p class="dest-description">Lake Iseo is the least visited of the major Italian lakes and, in many ways, the most authentically itself. Tavernola Bergamasca sits on the western shore — a small village of working lakeside character, with a cement works that has operated since the 19th century and a local life completely untouched by the tourism that has transformed Como and Garda. The lake is dominated by Monte Isola, the largest lake island in southern Europe, rising 600m from the water and inhabited by a few hundred fishermen and their families. The swimming is excellent, the cycling into the hills behind the shore and into the Franciacorta wine country to the south is outstanding, and the whole area has a quiet, genuine quality that rewards slow attention.</p>
+        <div class="dest-highlights">
+          <div class="highlight"><div class="highlight-dot"></div><span>Monte Isola by ferry — take the boat from Tavernola or Sulzano to the island, hire a bike, and circle the entire perimeter. No cars permitted. Extraordinary views in every direction.</span></div>
+          <div class="highlight"><div class="highlight-dot"></div><span>Lake swimming off the rocks — the western shore below Tavernola has clear, calm water directly accessible from the village. The kids will be in within minutes of arrival.</span></div>
+          <div class="highlight"><div class="highlight-dot"></div><span>Franciacorta wine country — the hills south of the lake produce one of Italy's finest sparkling wines. The cycling roads through the vineyards are exceptional and almost traffic-free.</span></div>
+          <div class="highlight"><div class="highlight-dot"></div><span>Pisogne and the northern shore — the road around the northern tip of the lake passes through some of the most dramatic scenery, with cliffs dropping directly to the water.</span></div>
+          <div class="highlight"><div class="highlight-dot"></div><span>Valle Camonica day trip — the valley above the northern lake contains the largest concentration of prehistoric rock art in the world, a UNESCO World Heritage site that the kids will find genuinely impressive.</span></div>
+        </div>
+        <div class="transport-note"><span class="transport-label">Onward →</span><span>Drive to Cortina d'Ampezzo (~3hrs via Brescia and the A4 east). A straightforward motorway run — consider a brief stop in Verona for lunch before turning north into the Dolomites.</span></div>
+      </div>
+    </div>
+    <div class="dest-full" style="padding-left: 200px;">
+      <div class="booking-card">
+        <div class="booking-card-title">Accommodation · Booked</div>
+        <div class="booking-grid">
+          <div class="booking-row">
+            <span class="booking-label">Address</span>
+            <span class="booking-address">Via Nuova 64<br>Tavernola Bergamasca<br>24060 Provincia di Bergamo, Italy</span>
+          </div>
+          <div class="booking-row">
+            <span class="booking-label">Confirmation</span>
+            <span class="booking-value mono">HA-2G5TZ7</span>
+          </div>
+          <div class="booking-row">
+            <span class="booking-label">Check-in</span>
+            <span class="booking-value">Saturday 18 July 2026 · 2:00 pm</span>
+          </div>
+          <div class="booking-row">
+            <span class="booking-label">Check-out</span>
+            <span class="booking-value">Thursday 23 July 2026 · 10:00 am</span>
+          </div>
+          <div class="booking-row">
+            <span class="booking-label">Contact</span>
+            <span class="booking-value"><a href="tel:+393914914984">+39 391 491 4984</a></span>
+          </div>
+          <div class="booking-row">
+            <span class="booking-label">Platform</span>
+            <span class="booking-value"><a href="https://www.vrbo.com/11887209ha?dateless=true" target="_blank" rel="noopener">VRBO</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 06 CORTINA -->
+  <div class="destination">
+    <div class="dest-header">
+      <div class="dest-meta">
+        <div class="dest-number">06</div>
+        <div class="dest-name">Cortina d'Ampezzo</div>
+        <div class="dest-region">Dolomites · Veneto</div>
+        <div class="dest-dates">Thu 23 Jul – Tue 28 Jul</div>
+        <div class="dest-nights">5 nights</div>
+        <div class="dest-tags"><span class="tag">Dolomites</span><span class="tag">Hiking</span><span class="tag">Cycling</span><span class="tag">Alpine</span><span class="tag">Swimming</span></div>
+      </div>
+      <div class="dest-body">
+        <p class="dest-description">The Dolomites are unlike anywhere else on earth — rose-gold rock towers rising from dark pine forests, a landscape so improbable it feels invented. Cortina sits at the centre of it all, a beautiful valley town ringed by the most famous peaks in the range. Five nights gives the family time to go deep: a full day on the Tre Cime circuit, a long lake day at Misurina, a rest day in town, and still time for the legendary passes.</p>
+        <div class="dest-highlights">
+          <div class="highlight"><div class="highlight-dot"></div><span>Tre Cime di Lavaredo circuit — the most iconic hike in the Dolomites. Manageable for both kids with an early start. Allow 4–5 hours.</span></div>
+          <div class="highlight"><div class="highlight-dot"></div><span>Lago di Misurina — swimming at 1,756m. Extraordinary colour, easy to reach by car.</span></div>
+          <div class="highlight"><div class="highlight-dot"></div><span>Passo Falzarego and Passo Giau — back-to-back legendary climbs. Some of the most famous roads in cycling.</span></div>
+          <div class="highlight"><div class="highlight-dot"></div><span>Cortina corso at 6pm — join the passeggiata with an ice cream and nowhere to be.</span></div>
+        </div>
+        <div class="transport-note"><span class="transport-label">Onward →</span><span>Drive to Bormio via the Stelvio Pass — allow a full day. 2,757m, 48 hairpins. Stop at the summit. The descent into the Valtellina is spectacular.</span></div>
+      </div>
+    </div>
+    <div class="dest-full" style="padding-left: 200px;">
+      <div class="booking-card">
+        <div class="booking-card-title">Accommodation · Booked</div>
+        <div class="booking-grid">
+          <div class="booking-row">
+            <span class="booking-label">Address</span>
+            <span class="booking-address">Via Pecol 42<br>32043 Cortina d'Ampezzo<br>Provincia di Belluno, Italy</span>
+          </div>
+          <div class="booking-row">
+            <span class="booking-label">Confirmation</span>
+            <span class="booking-value mono">HA-VH1J3B</span>
+          </div>
+          <div class="booking-row">
+            <span class="booking-label">Check-in</span>
+            <span class="booking-value">Thursday 23 July 2026 · 4:00 pm</span>
+          </div>
+          <div class="booking-row">
+            <span class="booking-label">Check-out</span>
+            <span class="booking-value">Tuesday 28 July 2026 · 10:00 am</span>
+          </div>
+          <div class="booking-row">
+            <span class="booking-label">Contact</span>
+            <span class="booking-value"><a href="tel:+393495956288">+39 349 595 6288</a></span>
+          </div>
+          <div class="booking-row">
+            <span class="booking-label">Platform</span>
+            <span class="booking-value"><a href="https://www.vrbo.com/11467631ha?dateless=true" target="_blank" rel="noopener">VRBO</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="destination">
+    <div class="dest-header">
+      <div class="dest-meta">
+        <div class="dest-number">07</div>
+        <div class="dest-name">Bormio</div>
+        <div class="dest-region">Valtellina · Lombardy</div>
+        <div class="dest-dates">Tue 28 Jul – Sun 2 Aug</div>
+        <div class="dest-nights">5 nights</div>
+        <div class="dest-tags"><span class="tag">Stelvio</span><span class="tag">Thermal baths</span><span class="tag">Alpine town</span><span class="tag">Hiking</span><span class="tag">Food</span></div>
+      </div>
+      <div class="dest-body">
+        <p class="dest-description">Bormio is a small alpine town that knows exactly what it is and does it brilliantly. Roman thermal baths, extraordinary mountain food, and roads radiating in every direction that make this one of the great cycling bases in the Alps. More genuinely local than Cortina, slower in pace, easier on everyone after the intensity of the Dolomites.</p>
+        <div class="dest-highlights">
+          <div class="highlight"><div class="highlight-dot"></div><span>Bagni Nuovi or Bagni Vecchi — ancient Roman springs set into the mountainside. A non-negotiable afternoon for the whole family.</span></div>
+          <div class="highlight"><div class="highlight-dot"></div><span>Passo dello Stelvio from the Bormio side — 21km at 7.5% average. One of the great climbs in world cycling.</span></div>
+          <div class="highlight"><div class="highlight-dot"></div><span>Parco Nazionale dello Stelvio — excellent trails, wildflowers in late July, marmots everywhere.</span></div>
+          <div class="highlight"><div class="highlight-dot"></div><span>Pizzoccheri della Valtellina — buckwheat pasta with cabbage, potato, and Casera cheese. Order it at least once.</span></div>
+        </div>
+        <div class="transport-note"><span class="transport-label">Onward →</span><span>Drive to Menaggio via the Valtellina valley and Como lakeside road (~2hrs). Stop in Lugano for lunch — Swiss-Italian city on the lake, excellent espresso.</span></div>
+      </div>
+    </div>
+    <div class="dest-full" style="padding-left: 200px;">
+      <div class="booking-card">
+        <div class="booking-card-title">Accommodation · Booked</div>
+        <div class="booking-grid">
+          <div class="booking-row">
+            <span class="booking-label">Address</span>
+            <span class="booking-address">Via Virginia Castellazzi 11<br>23032 Bormio, Italy</span>
+          </div>
+          <div class="booking-row">
+            <span class="booking-label">Confirmation</span>
+            <span class="booking-value mono">6724395695</span>
+          </div>
+          <div class="booking-row">
+            <span class="booking-label">Check-in</span>
+            <span class="booking-value">Tuesday 28 July 2026 · 2:00 pm</span>
+          </div>
+          <div class="booking-row">
+            <span class="booking-label">Check-out</span>
+            <span class="booking-value">Sunday 2 August 2026 · 10:00 am</span>
+          </div>
+          <div class="booking-row">
+            <span class="booking-label">Contact</span>
+            <span class="booking-value"><a href="tel:+393756747094">+39 375 674 7094</a></span>
+          </div>
+          <div class="booking-row">
+            <span class="booking-label">Platform</span>
+            <span class="booking-value"><a href="https://www.booking.com/hotel/it/castellazzi-11-gipeto.html?aid=304142&label=gen173nr-10CCsoggI46AdIMVgEaKcCiAEBmAEzuAEXyAEM2AED6AEB-AEBiAIBqAIBuAKLh9_PBsACAdICJDg3NWNkMDgwLTcxMmYtNGM5Mi1hNjVlLTNlMzA0YmRhYTk1N9gCAeACAQ" target="_blank" rel="noopener">Booking.com</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 08 CARATE URIO -->
+  <div class="destination">
+    <div class="dest-header">
+      <div class="dest-meta">
+        <div class="dest-number">08</div>
+        <div class="dest-name">Carate Urio</div>
+        <div class="dest-region">Lake Como · Lombardy</div>
+        <div class="dest-dates">Sun 2 Aug – Sat 8 Aug</div>
+        <div class="dest-nights">6 nights</div>
+        <div class="dest-tags"><span class="tag">Lake Como</span><span class="tag">Ferries</span><span class="tag">Swimming</span><span class="tag">Villages</span><span class="tag">Cycling</span></div>
+      </div>
+      <div class="dest-body">
+        <p class="dest-description">Carate Urio is a small lakeside village on the western shore of Lake Como, 8km south of Menaggio — quieter, more genuinely local, and with direct lake access from the village itself. The same ferry network connects to Varenna, Bellagio, and the rest of the lake, and the western shore road running north toward Menaggio and south toward Como is one of the most beautiful cycling roads in Italy. Six nights is the right measure here: this is a deliberate exhale between the intensity of Bormio and the drama of Zermatt. The pace is slow by design — a different village by ferry each day, lake swimming in the afternoon, long dinners by the water.</p>
+        <div class="dest-highlights">
+          <div class="highlight"><div class="highlight-dot"></div><span>Ferry to Varenna — the most beautiful village on the lake. Walk the Via dell'Amore, swim off the rocks below the castle. 40 minutes from Carate Urio.</span></div>
+          <div class="highlight"><div class="highlight-dot"></div><span>Bellagio at dusk — arrive by ferry in the evening after day-trippers have gone. The light on the lake at 8pm is extraordinary.</span></div>
+          <div class="highlight"><div class="highlight-dot"></div><span>Cycling north to Menaggio and beyond — the western shore road is one of the great lakeside rides in Europe, with the option of crossing into Switzerland via Lugano.</span></div>
+          <div class="highlight"><div class="highlight-dot"></div><span>Lake swimming from the village — Carate Urio has direct lakefront access, calm water, and far fewer people than the more famous Como villages.</span></div>
+          <div class="highlight"><div class="highlight-dot"></div><span>Villa del Balbianello day trip — one of the great gardens of Lake Como, 20 minutes south by ferry. Recognisable from Casino Royale and Star Wars. Book ahead in August.</span></div>
+        </div>
+        <div class="transport-note"><span class="transport-label">Onward →</span><span>Drive to Täsch (~2.5hrs via Lugano and the Simplon Pass or Gotthard tunnel). Park at Täsch — cars are banned in Zermatt. Train into the village (~12 mins). Bike travels on the train easily.</span></div>
+      </div>
+    </div>
+    <div class="dest-full" style="padding-left: 200px;">
+      <div class="booking-card">
+        <div class="booking-card-title">Accommodation · Booked</div>
+        <div class="booking-grid">
+          <div class="booking-row">
+            <span class="booking-label">Address</span>
+            <span class="booking-address">Via Alemanni 2<br>22010 Carate Urio (CO), Italy</span>
+          </div>
+          <div class="booking-row">
+            <span class="booking-label">Confirmation</span>
+            <span class="booking-value mono">146141567</span>
+          </div>
+          <div class="booking-row">
+            <span class="booking-label">Check-in</span>
+            <span class="booking-value">Sunday 2 August 2026 · 3:00 pm</span>
+          </div>
+          <div class="booking-row">
+            <span class="booking-label">Check-out</span>
+            <span class="booking-value">Saturday 8 August 2026 · 10:00 am</span>
+          </div>
+          <div class="booking-row">
+            <span class="booking-label">Contact</span>
+            <span class="booking-value"><a href="tel:+393202234202">+39 320 223 4202</a></span>
+          </div>
+          <div class="booking-row">
+            <span class="booking-label">Platform</span>
+            <span class="booking-value"><a href="https://www.vrbo.com/8803398ha?dateless=true" target="_blank" rel="noopener">VRBO</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SWITZERLAND -->
+  <div class="country-header">
+    <div class="country-flag">🇨🇭</div>
+    <div class="country-name">Switzerland</div>
+    <div class="country-line"></div>
+  </div>
+
+  <!-- 09 ZERMATT -->
+  <div class="destination">
+    <div class="dest-header">
+      <div class="dest-meta">
+        <div class="dest-number">09</div>
+        <div class="dest-name">Zermatt</div>
+        <div class="dest-region">Valais · Switzerland</div>
+        <div class="dest-dates">Sat 8 Aug – Tue 11 Aug</div>
+        <div class="dest-nights">3 nights</div>
+        <div class="dest-tags"><span class="tag">Matterhorn</span><span class="tag">Car-free</span><span class="tag">Hiking</span><span class="tag">Alpine railways</span></div>
+      </div>
+      <div class="dest-body">
+        <p class="dest-description">Zermatt exists for one reason: the Matterhorn. The village is car-free, beautiful, and unlike anywhere else — a working mountain town at 1,600m where the 4,478m pyramid that defines the Swiss Alps sits at the end of every street. Three nights: Gornergrat on day one, Five Lakes Walk on day two, a slower final day before Geneva.</p>
+        <div class="dest-highlights">
+          <div class="highlight"><div class="highlight-dot"></div><span>Gornergrat Railway — 33 minutes to 3,089m, the Matterhorn filling the window the entire way. Book the first train for the clearest views.</span></div>
+          <div class="highlight"><div class="highlight-dot"></div><span>Five Lakes Walk — a classic half-day hike passing five mountain lakes, each reflecting the Matterhorn. Both kids can do it with the right footwear.</span></div>
+          <div class="highlight"><div class="highlight-dot"></div><span>Zermatt village at dusk — the main street clears of day-trippers and the Matterhorn turns gold.</span></div>
+        </div>
+        <div class="transport-note"><span class="transport-label">Onward →</span><span>Train back to Täsch, collect car, drive to Geneva (~2.5hrs via the Rhône valley). Arrive at your brother's for dinner.</span></div>
+      </div>
+    </div>
+    <div class="dest-full" style="padding-left: 200px;">
+      <div class="booking-card">
+        <div class="booking-card-title">Accommodation · Not yet booked</div>
+        <div class="booking-grid wide"><div class="booking-row"><span class="booking-label">Note</span><span class="booking-value" style="color:var(--ink-faint);">Cars are banned in Zermatt. Park at Täsch station and take the cogwheel train in. Book early — July/August availability is limited.</span></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 10 GENEVA -->
+  <div class="destination">
+    <div class="dest-header">
+      <div class="dest-meta">
+        <div class="dest-number">10</div>
+        <div class="dest-name">Geneva</div>
+        <div class="dest-region">Lac Léman · Switzerland</div>
+        <div class="dest-dates">Tue 11 Aug – Sun 16 Aug</div>
+        <div class="dest-nights">5 nights</div>
+        <div class="dest-tags"><span class="tag">Family stay</span><span class="tag">Lake swimming</span><span class="tag">Chamonix</span><span class="tag">Local life</span><span class="tag">Rest</span></div>
+      </div>
+      <div class="dest-body">
+        <p class="dest-description">Five nights with family. A real kitchen, kids with cousins, a local's view of the region, and the freedom to simply be somewhere without logistics. Lake Geneva is swimmable and beautiful. Chamonix is one hour away. Your brother's knowledge will unlock things no guidebook reaches. This is the trip's exhale.</p>
+        <div class="dest-highlights">
+          <div class="highlight"><div class="highlight-dot"></div><span>Chamonix day trip — the Aiguille du Midi cable car to 3,842m. Mont Blanc fills the entire sky. A full day minimum.</span></div>
+          <div class="highlight"><div class="highlight-dot"></div><span>Lake Geneva swimming at Genève-Plage or Bains des Pâquis — proper public swimming, local crowds, excellent.</span></div>
+          <div class="highlight"><div class="highlight-dot"></div><span>Carouge neighbourhood — Geneva's bohemian quarter, excellent coffee, Saturday market.</span></div>
+          <div class="highlight"><div class="highlight-dot"></div><span>One day led entirely by the kids — after seven weeks of adult-directed travel, this does more for family morale than almost anything else.</span></div>
+        </div>
+        <div class="transport-note"><span class="transport-label">Onward →</span><span>Drive to Annecy (~45 mins). One of the easiest transfers on the trip. Arrive in time for a swim before dinner.</span></div>
+      </div>
+    </div>
+    <div class="dest-full" style="padding-left: 200px;">
+      <div class="booking-card">
+        <div class="booking-card-title">Accommodation · Staying with family</div>
+        <div class="booking-grid wide"><div class="booking-row"><span class="booking-label">Note</span><span class="booking-value" style="color:var(--ink-faint);">Private stay with brother's family. No booking required.</span></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FRANCE: ALPS & SOUTH -->
+  <div class="country-header">
+    <div class="country-flag">🇫🇷</div>
+    <div class="country-name">France · The Alps &amp; South</div>
+    <div class="country-line"></div>
+  </div>
+
+  <!-- 11 ANNECY -->
+  <div class="destination">
+    <div class="dest-header">
+      <div class="dest-meta">
+        <div class="dest-number">11</div>
+        <div class="dest-name">Annecy</div>
+        <div class="dest-region">Haute-Savoie · France</div>
+        <div class="dest-dates">Sun 16 Aug – Fri 21 Aug</div>
+        <div class="dest-nights">5 nights</div>
+        <div class="dest-tags"><span class="tag">Lake swimming</span><span class="tag">Market</span><span class="tag">Old town</span><span class="tag">Cycling</span><span class="tag">Cafés</span></div>
+      </div>
+      <div class="dest-body">
+        <p class="dest-description">Annecy is, by almost any measure, the most beautiful small city in France. The old town — canals, geranium-hung bridges, medieval arcades — sits at the edge of the cleanest lake in Europe. The Tuesday and Friday markets are among the finest in the country. Five nights allows the family to settle properly into Annecy's rhythm — and it tends to become everyone's favourite stop of the trip. Arrives on a Friday, which means the market on Saturday morning is the very first thing.</p>
+        <div class="dest-highlights">
+          <div class="highlight"><div class="highlight-dot"></div><span>Lac d'Annecy swimming — Plage d'Albigny for the full family; Plage de Talloires by boat for a quieter cove on the far shore.</span></div>
+          <div class="highlight"><div class="highlight-dot"></div><span>Saturday and Tuesday markets on the Canal du Thiou — arrive at 8am, buy breakfast, eat on the canal wall.</span></div>
+          <div class="highlight"><div class="highlight-dot"></div><span>Col de la Forclaz — a beautiful climb above the lake with a paragliding launch at the top.</span></div>
+          <div class="highlight"><div class="highlight-dot"></div><span>Old town at dusk — the crowds thin after 7pm and the light on the canals turns extraordinary.</span></div>
+        </div>
+        <div class="transport-note"><span class="transport-label">Onward →</span><span>Drive to Grenoble (~1.5hrs) via Chambéry — worth a 45-minute coffee stop before dropping into the city.</span></div>
+      </div>
+    </div>
+    <div class="dest-full" style="padding-left: 200px;">
+      <div class="booking-card">
+        <div class="booking-card-title">Accommodation · Not yet booked</div>
+        <div class="booking-grid wide"><div class="booking-row"><span class="booking-label">Status</span><span class="booking-value" style="color:var(--ink-faint);">To be confirmed</span></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 12 GRENOBLE -->
+  <div class="destination">
+    <div class="dest-header">
+      <div class="dest-meta">
+        <div class="dest-number">12</div>
+        <div class="dest-name">Grenoble</div>
+        <div class="dest-region">Isère · French Alps</div>
+        <div class="dest-dates">Fri 21 Aug – Tue 25 Aug</div>
+        <div class="dest-nights">4 nights</div>
+        <div class="dest-tags"><span class="tag">Cycling</span><span class="tag">Alpe d'Huez</span><span class="tag">Market</span><span class="tag">Hiking</span><span class="tag">University city</span></div>
+      </div>
+      <div class="dest-body">
+        <p class="dest-description">A university city ringed by three mountain ranges with real energy, an excellent food market, and some of the most extraordinary cycling and hiking in France immediately accessible. Alpe d'Huez is 45 minutes away — the most mythologised climb in Tour de France history. Arrives on a Wednesday; the Les Halles Sainte-Claire market runs every morning except Monday, so the family hits it Thursday through Saturday.</p>
+        <div class="dest-highlights">
+          <div class="highlight"><div class="highlight-dot"></div><span>Alpe d'Huez — 13.8km, 21 hairpins, each named after a Tour stage winner. The family drives up; the climb happens on the bike.</span></div>
+          <div class="highlight"><div class="highlight-dot"></div><span>Les Halles Sainte-Claire — one of the finest covered markets in France. Every morning except Monday.</span></div>
+          <div class="highlight"><div class="highlight-dot"></div><span>Bastille télécabine — oldest urban cable car in the world, rising from a city street to panoramic views of three mountain ranges.</span></div>
+          <div class="highlight"><div class="highlight-dot"></div><span>Vercors plateau — spectacular limestone landscape 30 minutes west. The Gorges de la Bourne trail is excellent for families.</span></div>
+        </div>
+        <div class="transport-note"><span class="transport-label">Onward →</span><span>Drive south (~4.5hrs) via Montélimar for lunch, then through the Drôme Provençale before dropping down to Collioure. Allow a full day for this drive.</span></div>
+      </div>
+    </div>
+    <div class="dest-full" style="padding-left: 200px;">
+      <div class="booking-card">
+        <div class="booking-card-title">Accommodation · Not yet booked</div>
+        <div class="booking-grid wide"><div class="booking-row"><span class="booking-label">Status</span><span class="booking-value" style="color:var(--ink-faint);">To be confirmed</span></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 13 COLLIOURE -->
+  <div class="destination">
+    <div class="dest-header">
+      <div class="dest-meta">
+        <div class="dest-number">13</div>
+        <div class="dest-name">Collioure</div>
+        <div class="dest-region">Roussillon · Occitanie</div>
+        <div class="dest-dates">Tue 25 Aug – Sat 29 Aug</div>
+        <div class="dest-nights">4 nights</div>
+        <div class="dest-tags"><span class="tag">Catalan culture</span><span class="tag">Market</span><span class="tag">Swimming</span><span class="tag">Art history</span><span class="tag">Wine</span></div>
+      </div>
+      <div class="dest-body">
+        <p class="dest-description">Collioure is where France becomes Catalonia — culturally, linguistically, and gastronomically. A fishing village where Matisse and Derain invented Fauvism in 1905. World-famous anchovies, excellent Collioure AOC wine, swimming off the castle rocks, and the Albères mountains behind for serious cycling into Spain. Arrives on a Sunday — the weekly market on Place du 18-Juin is the very first morning.</p>
+        <div class="dest-highlights">
+          <div class="highlight"><div class="highlight-dot"></div><span>Anchovy tasting at Roque or Desclaux — family-run salting houses open to visitors. Buy a jar to carry into Spain.</span></div>
+          <div class="highlight"><div class="highlight-dot"></div><span>Matisse and Derain walking trail — the town has marked the exact spots where each painting was made.</span></div>
+          <div class="highlight"><div class="highlight-dot"></div><span>Sunday market on Place du 18-Juin — local producers, Catalan food, the best weekly market in the Roussillon.</span></div>
+          <div class="highlight"><div class="highlight-dot"></div><span>Cycling over the Albères into Spain — beautiful, quiet roads crossing the border almost imperceptibly.</span></div>
+        </div>
+        <div class="transport-note"><span class="transport-label">Onward →</span><span>Drive into Spain via Le Perthus (~1hr to Girona). Consider a Cadaqués detour — 45 minutes off the direct route and one of the most beautiful villages on the Spanish coast.</span></div>
+      </div>
+    </div>
+    <div class="dest-full" style="padding-left: 200px;">
+      <div class="booking-card">
+        <div class="booking-card-title">Accommodation · Not yet booked</div>
+        <div class="booking-grid wide"><div class="booking-row"><span class="booking-label">Status</span><span class="booking-value" style="color:var(--ink-faint);">To be confirmed</span></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SPAIN -->
+  <div class="country-header">
+    <div class="country-flag">🇪🇸</div>
+    <div class="country-name">Spain</div>
+    <div class="country-line"></div>
+  </div>
+
+  <!-- 14 GIRONA -->
+  <div class="destination">
+    <div class="dest-header">
+      <div class="dest-meta">
+        <div class="dest-number">14</div>
+        <div class="dest-name">Girona</div>
+        <div class="dest-region">Catalonia · Spain</div>
+        <div class="dest-dates">Sat 29 Aug – Fri 4 Sep</div>
+        <div class="dest-nights">6 nights</div>
+        <div class="dest-tags"><span class="tag">Old city</span><span class="tag">Food scene</span><span class="tag">Cycling</span><span class="tag">Markets</span><span class="tag">Costa Brava</span></div>
+      </div>
+      <div class="dest-body">
+        <p class="dest-description">Girona is what happens when a city has everything Barcelona promises but hasn't been overwhelmed by its own success. Roman walls, an immense cathedral, a Jewish quarter among the best-preserved in Europe, a world-class food scene, and the spiritual home of professional road cycling. Six nights allows the family to use it as a proper base: day trips to the Costa Brava calas, to the volcanic Garrotxa, and into the city at an unhurried pace.</p>
+        <div class="dest-highlights">
+          <div class="highlight"><div class="highlight-dot"></div><span>Mercat del Lleó — Girona's covered market. Saturday is the best day. The Catalan charcuterie counter is outstanding.</span></div>
+          <div class="highlight"><div class="highlight-dot"></div><span>Old city walls walk — free, complete circuit, 360-degree views over the city and countryside.</span></div>
+          <div class="highlight"><div class="highlight-dot"></div><span>Costa Brava day trip — Begur and the calas around Tamariu and Aiguablava. Some of the finest cove swimming in the Mediterranean.</span></div>
+          <div class="highlight"><div class="highlight-dot"></div><span>La Garrotxa — ancient volcanoes and Romanesque villages 45 minutes inland. Extraordinary beech forest hiking.</span></div>
+        </div>
+        <div class="transport-note"><span class="transport-label">Onward →</span><span>Train to Barcelona (~40 mins) — fast, frequent, effortless. Leave the car in Girona. Barcelona's traffic and parking are not worth the effort.</span></div>
+      </div>
+    </div>
+    <div class="dest-full" style="padding-left: 200px;">
+      <div class="booking-card">
+        <div class="booking-card-title">Accommodation · Not yet booked</div>
+        <div class="booking-grid wide"><div class="booking-row"><span class="booking-label">Status</span><span class="booking-value" style="color:var(--ink-faint);">To be confirmed</span></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 15 BARCELONA -->
+  <div class="destination">
+    <div class="dest-header">
+      <div class="dest-meta">
+        <div class="dest-number">15</div>
+        <div class="dest-name">Barcelona</div>
+        <div class="dest-region">Catalonia · Spain</div>
+        <div class="dest-dates">Fri 4 Sep – Tue 8 Sep</div>
+        <div class="dest-nights">4 nights</div>
+        <div class="dest-tags"><span class="tag">Gaudí</span><span class="tag">Food</span><span class="tag">Architecture</span><span class="tag">Neighbourhoods</span><span class="tag">Beaches</span></div>
+      </div>
+      <div class="dest-body">
+        <p class="dest-description">Four nights is the correct dose of Barcelona — enough to feel the city properly without the urban density exhausting the kids. By early September the worst summer crowds have thinned. The Sagrada Família is genuinely unlike anything else in the world. But the best of Barcelona is found at neighbourhood level: dinner in Gràcia, morning coffee in El Born, an afternoon on Barceloneta.</p>
+        <div class="dest-highlights">
+          <div class="highlight"><div class="highlight-dot"></div><span>Sagrada Família — book tower access well in advance. The interior in morning light is one of the great architectural experiences in Europe.</span></div>
+          <div class="highlight"><div class="highlight-dot"></div><span>Boqueria at 8am — before the crowds, when it's still a working market. Buy breakfast, eat standing at a counter stool.</span></div>
+          <div class="highlight"><div class="highlight-dot"></div><span>Gràcia for dinner — the most local-feeling of Barcelona's central neighbourhoods. The plaças fill with residents every evening from 8pm.</span></div>
+          <div class="highlight"><div class="highlight-dot"></div><span>Park Güell at opening — arrive when the gates open to get the mosaics and city view before the day-trippers arrive.</span></div>
+        </div>
+        <div class="transport-note"><span class="transport-label">Onward →</span><span>Flight Barcelona → Palma de Mallorca (~50 mins). Very cheap booked ahead. Collect hire car in Palma and head north toward Sóller or Pollença.</span></div>
+      </div>
+    </div>
+    <div class="dest-full" style="padding-left: 200px;">
+      <div class="booking-card">
+        <div class="booking-card-title">Accommodation · Not yet booked</div>
+        <div class="booking-grid wide"><div class="booking-row"><span class="booking-label">Status</span><span class="booking-value" style="color:var(--ink-faint);">To be confirmed</span></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 16 MAJORCA -->
+  <div class="destination">
+    <div class="dest-header">
+      <div class="dest-meta">
+        <div class="dest-number">16</div>
+        <div class="dest-name">Majorca</div>
+        <div class="dest-region">Balearic Islands · Spain</div>
+        <div class="dest-dates">Tue 8 Sep – Mon 14 Sep</div>
+        <div class="dest-nights">6 nights</div>
+        <div class="dest-tags"><span class="tag">Serra Tramuntana</span><span class="tag">Cala swimming</span><span class="tag">Cycling</span><span class="tag">Villages</span><span class="tag">Markets</span></div>
+      </div>
+      <div class="dest-body">
+        <p class="dest-description">September Majorca is the trip's reward — crowds thinning, sea at its warmest (28°C), the golden late-summer light transforming everything. We stay in the north, in the Serra de Tramuntana UNESCO World Heritage mountain range that drops directly into the sea. Medieval villages, olive groves, dry-stone walls, and turquoise calas reached by steep paths through pine forests. Arrives Sunday — Pollença market is the following Sunday on departure day, so plan the morning accordingly.</p>
+        <div class="dest-highlights">
+          <div class="highlight"><div class="highlight-dot"></div><span>Cala Tuent — one of the most beautiful and least accessible calas on the island. The drive in is half the experience.</span></div>
+          <div class="highlight"><div class="highlight-dot"></div><span>Deià village — Robert Graves lived here. Exceptional village, excellent restaurants, unmissable swim at Cala Deià.</span></div>
+          <div class="highlight"><div class="highlight-dot"></div><span>Puig Major — the highest point in Majorca. One of the great Balearic climbs.</span></div>
+          <div class="highlight"><div class="highlight-dot"></div><span>Pollença Sunday market — one of the finest weekly markets in Spain. Arrive early for local olive oil, sobrasada, and almonds.</span></div>
+        </div>
+        <div class="transport-note"><span class="transport-label">Onward →</span><span>Baleària Lines ferry Palma → Dénia (~3.5hrs). Stop in Dénia for lunch — excellent arròs a banda — before driving south to Altea (~45 mins).</span></div>
+      </div>
+    </div>
+    <div class="dest-full" style="padding-left: 200px;">
+      <div class="booking-card">
+        <div class="booking-card-title">Accommodation · Not yet booked</div>
+        <div class="booking-grid wide"><div class="booking-row"><span class="booking-label">Note</span><span class="booking-value" style="color:var(--ink-faint);">Base in the north — Sóller, Deià, or Pollença area. Avoid the south and east.</span></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 17 ALTEA -->
+  <div class="destination">
+    <div class="dest-header">
+      <div class="dest-meta">
+        <div class="dest-number">17</div>
+        <div class="dest-name">Altea</div>
+        <div class="dest-region">Costa Blanca · Alicante</div>
+        <div class="dest-dates">Mon 14 Sep – Sat 19 Sep</div>
+        <div class="dest-nights">5 nights</div>
+        <div class="dest-tags"><span class="tag">Old town</span><span class="tag">Beaches</span><span class="tag">Art colony</span><span class="tag">Restaurants</span><span class="tag">Cycling</span></div>
+      </div>
+      <div class="dest-body">
+        <p class="dest-description">Altea is a small, genuinely beautiful town on a hill above the Costa Blanca — a white-domed church, cobbled lanes, bougainvillea, and a view over the sea that justifies the climb. An artists' colony for decades, which means a restaurant scene far more interesting than anything else on this stretch of coast. September here is warm, calm, and very lightly touristed.</p>
+        <div class="dest-highlights">
+          <div class="highlight"><div class="highlight-dot"></div><span>Altea old town at golden hour — the blue-domed church against the evening sky. Walk up every evening without fail.</span></div>
+          <div class="highlight"><div class="highlight-dot"></div><span>Peñón de Ifach day trip — the giant limestone rock at Calp (20 mins south). The hike passes through a tunnel blasted through the rock.</span></div>
+          <div class="highlight"><div class="highlight-dot"></div><span>Jávea day trip — 30 minutes north. The best cala swimming on the Costa Blanca at Granadella beach. Arrive early, stay all day.</span></div>
+          <div class="highlight"><div class="highlight-dot"></div><span>Local rice dishes — arròs amb fesols i naps is the regional speciality. Order it at lunch.</span></div>
+        </div>
+        <div class="transport-note"><span class="transport-label">Onward →</span><span>Drive or train to Valencia (~1.5hrs). The coast road north through Benidorm is worth one look, then on into the city.</span></div>
+      </div>
+    </div>
+    <div class="dest-full" style="padding-left: 200px;">
+      <div class="booking-card">
+        <div class="booking-card-title">Accommodation · Not yet booked</div>
+        <div class="booking-grid wide"><div class="booking-row"><span class="booking-label">Status</span><span class="booking-value" style="color:var(--ink-faint);">To be confirmed</span></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 18 VALENCIA -->
+  <div class="destination">
+    <div class="dest-header">
+      <div class="dest-meta">
+        <div class="dest-number">18</div>
+        <div class="dest-name">Valencia</div>
+        <div class="dest-region">Comunitat Valenciana · Spain</div>
+        <div class="dest-dates">Sat 19 Sep – Wed 23 Sep</div>
+        <div class="dest-nights">4 nights</div>
+        <div class="dest-tags"><span class="tag">Paella</span><span class="tag">Mercado Central</span><span class="tag">Architecture</span><span class="tag">Beaches</span><span class="tag">Ruzafa</span></div>
+      </div>
+      <div class="dest-body">
+        <p class="dest-description">Valencia is the perfect final chapter — a beautiful, walkable city still largely experienced on its own terms. In mid-September the heat has softened, the city is in full local swing, and the light is extraordinary. This is where paella was invented, and the Valencian version — cooked over orange wood, eaten at lunch — is an entirely different dish from anything encountered elsewhere. And then, after twelve weeks, a flight home.</p>
+        <div class="dest-highlights">
+          <div class="highlight"><div class="highlight-dot"></div><span>Mercado Central — the finest covered market in Spain. Go every morning. The seafood counter is extraordinary.</span></div>
+          <div class="highlight"><div class="highlight-dot"></div><span>Paella at La Pepica or Casa Roberto — cooked correctly, eaten near the beach at lunch. A ritual worth observing.</span></div>
+          <div class="highlight"><div class="highlight-dot"></div><span>City of Arts and Sciences — Calatrava's complex is genuinely spectacular. The Oceanogràfic is a full half-day for the kids.</span></div>
+          <div class="highlight"><div class="highlight-dot"></div><span>Ruzafa neighbourhood — the most interesting part of Valencia for cafés, restaurants, shops, and evening street life.</span></div>
+        </div>
+        <div class="transport-note"><span class="transport-label">Onward →</span><span>Flight Valencia → Melbourne. Home from one of the best possible places to end twelve weeks in Europe.</span></div>
+      </div>
+    </div>
+    <div class="dest-full" style="padding-left: 200px;">
+      <div class="booking-card">
+        <div class="booking-card-title">Accommodation · Not yet booked</div>
+        <div class="booking-grid wide"><div class="booking-row"><span class="booking-label">Note</span><span class="booking-value" style="color:var(--ink-faint);">Return flight to Melbourne to be booked. Valencia departure Monday 21 September 2026.</span></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>86 nights · 18 destinations · 4 countries · 29 June – 23 September 2026</p>
+    <p style="margin-top:0.5rem;font-size:0.85rem;">Living document · updated as bookings are confirmed</p>
+  </div>
+
+</div>
+</body>
+</html>
