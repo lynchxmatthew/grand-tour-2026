@@ -139,6 +139,14 @@
   .ml-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
   .ml-dash { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; border: 1.5px dashed rgba(201,149,107,0.8); background: transparent; }
 
+  .booking-card-multi { background: var(--booking-bg); border: 0.5px solid var(--booking-border); border-radius: 6px; margin-top: 1.5rem; overflow: hidden; }
+  .booking-card-multi-title { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--booking-label); font-weight: 500; padding: 1rem 1.5rem 0.75rem; border-bottom: 0.5px solid var(--booking-border); background: var(--booking-bg); }
+  .booking-night { border-bottom: 0.5px solid var(--booking-border); padding: 1rem 1.5rem; }
+  .booking-night:last-child { border-bottom: none; }
+  .booking-night-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 0.75rem; }
+  .booking-night-label { font-size: 12px; font-weight: 500; color: var(--ink); }
+  .booking-night-dates { font-size: 11px; color: var(--ink-faint); }
+
   /* Leaflet popup overrides for embedded map */
   .leaflet-popup-content-wrapper { background: #1a1814 !important; border: 0.5px solid rgba(255,255,255,0.15) !important; border-radius: 4px !important; box-shadow: 0 8px 24px rgba(0,0,0,0.5) !important; padding: 0 !important; }
   .leaflet-popup-content { margin: 0 !important; width: 220px !important; }
@@ -174,7 +182,7 @@
     <h1 class="cover-title">The <em>Long</em><br>Way Round</h1>
     <p class="cover-subtitle">France · Italy · Switzerland · Spain</p>
     <div class="cover-stats">
-      <div class="cover-stat"><span class="cover-stat-val">86</span><span class="cover-stat-lbl">Nights</span></div>
+      <div class="cover-stat"><span class="cover-stat-val">88</span><span class="cover-stat-lbl">Nights</span></div>
       <div class="cover-stat"><span class="cover-stat-val">18</span><span class="cover-stat-lbl">Destinations</span></div>
       <div class="cover-stat"><span class="cover-stat-val">4</span><span class="cover-stat-lbl">Countries</span></div>
       <div class="cover-stat"><span class="cover-stat-val">Jun – Sep</span><span class="cover-stat-lbl">2026</span></div>
@@ -214,16 +222,16 @@
     { num:"06", name:"Cortina d'Ampezzo", dates:"23 – 28 Jul", lat:46.5378, lng:12.1198, color:"#c85a3a", booked:true },
     { num:"07", name:"Bormio", dates:"28 Jul – 2 Aug", lat:46.4678, lng:10.3731, color:"#c85a3a", booked:true },
     { num:"08", name:"Carate Urio", dates:"2 – 8 Aug", lat:45.9467, lng:9.1361, color:"#c85a3a", booked:true },
-    { num:"09", name:"Zermatt", dates:"8 – 11 Aug", lat:46.0207, lng:7.7491, color:"#999", booked:false },
-    { num:"10", name:"Geneva", dates:"11 – 16 Aug", lat:46.2044, lng:6.1432, color:"#999", booked:false },
-    { num:"11", name:"Annecy", dates:"16 – 21 Aug", lat:45.8992, lng:6.1294, color:"#3a6fa8", booked:false },
-    { num:"12", name:"Grenoble", dates:"21 – 25 Aug", lat:45.1885, lng:5.7245, color:"#3a6fa8", booked:false },
-    { num:"13", name:"Collioure", dates:"25 – 29 Aug", lat:42.5268, lng:3.0846, color:"#3a6fa8", booked:false },
-    { num:"14", name:"Girona", dates:"29 Aug – 4 Sep", lat:41.9794, lng:2.8214, color:"#c9a227", booked:false },
-    { num:"15", name:"Barcelona", dates:"4 – 8 Sep", lat:41.3851, lng:2.1734, color:"#c9a227", booked:false },
-    { num:"16", name:"Majorca", dates:"8 – 14 Sep", lat:39.7000, lng:2.9002, color:"#c9a227", booked:false },
-    { num:"17", name:"Altea", dates:"14 – 19 Sep", lat:38.6029, lng:-0.0451, color:"#c9a227", booked:false },
-    { num:"18", name:"Valencia", dates:"19 – 23 Sep", lat:39.4699, lng:-0.3763, color:"#c9a227", booked:false },
+    { num:"09", name:"Jungfrau Region Hike", dates:"8 – 13 Aug", lat:46.6247, lng:8.0420, color:"#999", booked:true },
+    { num:"10", name:"Geneva", dates:"13 – 18 Aug", lat:46.2044, lng:6.1432, color:"#999", booked:false },
+    { num:"11", name:"Annecy", dates:"18 – 23 Aug", lat:45.8992, lng:6.1294, color:"#3a6fa8", booked:false },
+    { num:"12", name:"Grenoble", dates:"23 – 27 Aug", lat:45.1885, lng:5.7245, color:"#3a6fa8", booked:false },
+    { num:"13", name:"Collioure", dates:"27 – 31 Aug", lat:42.5268, lng:3.0846, color:"#3a6fa8", booked:false },
+    { num:"14", name:"Girona", dates:"31 Aug – 6 Sep", lat:41.9794, lng:2.8214, color:"#c9a227", booked:false },
+    { num:"15", name:"Barcelona", dates:"6 – 10 Sep", lat:41.3851, lng:2.1734, color:"#c9a227", booked:false },
+    { num:"16", name:"Majorca", dates:"10 – 16 Sep", lat:39.7000, lng:2.9002, color:"#c9a227", booked:false },
+    { num:"17", name:"Altea", dates:"16 – 21 Sep", lat:38.6029, lng:-0.0451, color:"#c9a227", booked:false },
+    { num:"18", name:"Valencia", dates:"21 – 25 Sep", lat:39.4699, lng:-0.3763, color:"#c9a227", booked:false },
   ];
 
   // Route line
@@ -325,16 +333,16 @@
         <tr class="booked"><td>06</td><td>Cortina d'Ampezzo <span class="booked-pill">Booked</span></td><td>Thu 23 Jul</td><td>Tue 28 Jul</td><td>5</td><td class="conf">HA-VH1J3B</td><td>+39 349 595 6288</td></tr>
         <tr class="booked"><td>07</td><td>Bormio <span class="booked-pill">Booked</span></td><td>Tue 28 Jul</td><td>Sun 2 Aug</td><td>5</td><td class="conf">6724395695</td><td>+39 375 674 7094</td></tr>
         <tr class="booked"><td>08</td><td>Carate Urio, Lake Como <span class="booked-pill">Booked</span></td><td>Sun 2 Aug</td><td>Sat 8 Aug</td><td>6</td><td class="conf">146141567</td><td>+39 320 223 4202</td></tr>
-        <tr class="tbd"><td>09</td><td>Zermatt <span class="tbd-pill">TBD</span></td><td>Sat 8 Aug</td><td>Tue 11 Aug</td><td>3</td><td class="conf">—</td><td>—</td></tr>
-        <tr class="tbd"><td>10</td><td>Geneva <span class="tbd-pill">TBD</span></td><td>Tue 11 Aug</td><td>Sun 16 Aug</td><td>5</td><td class="conf">—</td><td>—</td></tr>
-        <tr class="tbd"><td>11</td><td>Annecy <span class="tbd-pill">TBD</span></td><td>Sun 16 Aug</td><td>Fri 21 Aug</td><td>5</td><td class="conf">—</td><td>—</td></tr>
-        <tr class="tbd"><td>12</td><td>Grenoble <span class="tbd-pill">TBD</span></td><td>Fri 21 Aug</td><td>Tue 25 Aug</td><td>4</td><td class="conf">—</td><td>—</td></tr>
-        <tr class="tbd"><td>13</td><td>Collioure <span class="tbd-pill">TBD</span></td><td>Tue 25 Aug</td><td>Sat 29 Aug</td><td>4</td><td class="conf">—</td><td>—</td></tr>
-        <tr class="tbd"><td>14</td><td>Girona <span class="tbd-pill">TBD</span></td><td>Sat 29 Aug</td><td>Fri 4 Sep</td><td>6</td><td class="conf">—</td><td>—</td></tr>
-        <tr class="tbd"><td>15</td><td>Barcelona <span class="tbd-pill">TBD</span></td><td>Fri 4 Sep</td><td>Tue 8 Sep</td><td>4</td><td class="conf">—</td><td>—</td></tr>
-        <tr class="tbd"><td>16</td><td>Majorca <span class="tbd-pill">TBD</span></td><td>Tue 8 Sep</td><td>Mon 14 Sep</td><td>6</td><td class="conf">—</td><td>—</td></tr>
-        <tr class="tbd"><td>17</td><td>Altea <span class="tbd-pill">TBD</span></td><td>Mon 14 Sep</td><td>Sat 19 Sep</td><td>5</td><td class="conf">—</td><td>—</td></tr>
-        <tr class="tbd"><td>18</td><td>Valencia <span class="tbd-pill">TBD</span></td><td>Sat 19 Sep</td><td>Wed 23 Sep</td><td>4</td><td class="conf">—</td><td>—</td></tr>
+        <tr class="booked"><td>09</td><td>Jungfrau Region Hike <span class="booked-pill">Booked</span></td><td>Sat 8 Aug</td><td>Thu 13 Aug</td><td>5</td><td class="conf">Multiple</td><td>See below</td></tr>
+        <tr class="tbd"><td>10</td><td>Geneva <span class="tbd-pill">TBD</span></td><td>Thu 13 Aug</td><td>Tue 18 Aug</td><td>5</td><td class="conf">—</td><td>—</td></tr>
+        <tr class="tbd"><td>11</td><td>Annecy <span class="tbd-pill">TBD</span></td><td>Tue 18 Aug</td><td>Sun 23 Aug</td><td>5</td><td class="conf">—</td><td>—</td></tr>
+        <tr class="tbd"><td>12</td><td>Grenoble <span class="tbd-pill">TBD</span></td><td>Sun 23 Aug</td><td>Thu 27 Aug</td><td>4</td><td class="conf">—</td><td>—</td></tr>
+        <tr class="tbd"><td>13</td><td>Collioure <span class="tbd-pill">TBD</span></td><td>Thu 27 Aug</td><td>Mon 31 Aug</td><td>4</td><td class="conf">—</td><td>—</td></tr>
+        <tr class="tbd"><td>14</td><td>Girona <span class="tbd-pill">TBD</span></td><td>Mon 31 Aug</td><td>Sun 6 Sep</td><td>6</td><td class="conf">—</td><td>—</td></tr>
+        <tr class="tbd"><td>15</td><td>Barcelona <span class="tbd-pill">TBD</span></td><td>Sun 6 Sep</td><td>Thu 10 Sep</td><td>4</td><td class="conf">—</td><td>—</td></tr>
+        <tr class="tbd"><td>16</td><td>Majorca <span class="tbd-pill">TBD</span></td><td>Thu 10 Sep</td><td>Wed 16 Sep</td><td>6</td><td class="conf">—</td><td>—</td></tr>
+        <tr class="tbd"><td>17</td><td>Altea <span class="tbd-pill">TBD</span></td><td>Wed 16 Sep</td><td>Mon 21 Sep</td><td>5</td><td class="conf">—</td><td>—</td></tr>
+        <tr class="tbd"><td>18</td><td>Valencia <span class="tbd-pill">TBD</span></td><td>Mon 21 Sep</td><td>Fri 25 Sep</td><td>4</td><td class="conf">—</td><td>—</td></tr>
       </tbody>
     </table>
   </div>
@@ -763,7 +771,7 @@
           <div class="highlight"><div class="highlight-dot"></div><span>Lake swimming from the village — Carate Urio has direct lakefront access, calm water, and far fewer people than the more famous Como villages.</span></div>
           <div class="highlight"><div class="highlight-dot"></div><span>Villa del Balbianello day trip — one of the great gardens of Lake Como, 20 minutes south by ferry. Recognisable from Casino Royale and Star Wars. Book ahead in August.</span></div>
         </div>
-        <div class="transport-note"><span class="transport-label">Onward →</span><span>Drive to Täsch (~2.5hrs via Lugano and the Simplon Pass or Gotthard tunnel). Park at Täsch — cars are banned in Zermatt. Train into the village (~12 mins). Bike travels on the train easily.</span></div>
+        <div class="transport-note"><span class="transport-label">Onward →</span><span>Drive to Grindelwald (~2.5hrs via Lugano, Gotthard tunnel, and Interlaken). Take the First gondola up to Bergstation First to begin the hike — the car stays in Grindelwald for the duration and is collected on descent on day 5.</span></div>
       </div>
     </div>
     <div class="dest-full" style="padding-left: 200px;">
@@ -806,31 +814,170 @@
     <div class="country-line"></div>
   </div>
 
-  <!-- 09 ZERMATT -->
+  <!-- 09 JUNGFRAU REGION HIKE -->
   <div class="destination">
     <div class="dest-header">
       <div class="dest-meta">
         <div class="dest-number">09</div>
-        <div class="dest-name">Zermatt</div>
-        <div class="dest-region">Valais · Switzerland</div>
-        <div class="dest-dates">Sat 8 Aug – Tue 11 Aug</div>
-        <div class="dest-nights">3 nights</div>
-        <div class="dest-tags"><span class="tag">Matterhorn</span><span class="tag">Car-free</span><span class="tag">Hiking</span><span class="tag">Alpine railways</span></div>
+        <div class="dest-name">Jungfrau Region Hike</div>
+        <div class="dest-region">Berner Oberland · Switzerland</div>
+        <div class="dest-dates">Sat 8 Aug – Thu 13 Aug</div>
+        <div class="dest-nights">5 nights · 4 stages</div>
+        <div class="dest-tags"><span class="tag">Alpine hiking</span><span class="tag">Hut to hut</span><span class="tag">Eiger</span><span class="tag">Jungfrau</span><span class="tag">Brienzersee</span></div>
       </div>
       <div class="dest-body">
-        <p class="dest-description">Zermatt exists for one reason: the Matterhorn. The village is car-free, beautiful, and unlike anywhere else — a working mountain town at 1,600m where the 4,478m pyramid that defines the Swiss Alps sits at the end of every street. Three nights: Gornergrat on day one, Five Lakes Walk on day two, a slower final day before Geneva.</p>
+        <p class="dest-description">Five days on foot through one of the most spectacular mountain landscapes in Europe. The Jungfrau region of the Berner Oberland sits beneath the north faces of the Eiger, Mönch, and Jungfrau — three of the most iconic peaks in the Alps — and the high trails connecting the huts here are among the finest in Switzerland. This is a proper multi-day hike, moving each day with a pack, sleeping in mountain huts, eating what the hut cooks, and watching the light change over the same peaks from different angles each morning. The kids will remember this for the rest of their lives. Stages are planned to be achievable for mixed family fitness — significant elevation but nothing technical, with escape routes available on most days via gondola or trail variation.</p>
         <div class="dest-highlights">
-          <div class="highlight"><div class="highlight-dot"></div><span>Gornergrat Railway — 33 minutes to 3,089m, the Matterhorn filling the window the entire way. Book the first train for the clearest views.</span></div>
-          <div class="highlight"><div class="highlight-dot"></div><span>Five Lakes Walk — a classic half-day hike passing five mountain lakes, each reflecting the Matterhorn. Both kids can do it with the right footwear.</span></div>
-          <div class="highlight"><div class="highlight-dot"></div><span>Zermatt village at dusk — the main street clears of day-trippers and the Matterhorn turns gold.</span></div>
+          <div class="highlight"><div class="highlight-dot"></div><span>Night 1 — Bergstation First (2,167m): Arrive by gondola from Grindelwald. The First Cliff Walk and the view across to the Eiger north face from the terrace is the introduction to what the next five days will look like.</span></div>
+          <div class="highlight"><div class="highlight-dot"></div><span>Nights 2 & 3 — Alp Tschingelfeld: A remote working alp above the Brienzersee valley. Two nights at a genuine family-run alpine farm — cheese made on the premises, extraordinary silence, the lake visible far below.</span></div>
+          <div class="highlight"><div class="highlight-dot"></div><span>Night 4 — Berghütte Männdlenen (2,344m): One of the great hut positions in the Bernese Alps — directly facing the Eiger, Mönch, and Jungfrau across the valley. The sunset from the terrace is extraordinary.</span></div>
+          <div class="highlight"><div class="highlight-dot"></div><span>Night 5 — Berghotel Faulhorn (2,681m): The oldest mountain hotel in the Alps, operating since 1832. At 2,681m, the highest point of the hike. Sunrise over the Bernese Alps from this position is one of the great mountain experiences in Europe.</span></div>
+          <div class="highlight"><div class="highlight-dot"></div><span>Descent to Grindelwald on day 5 via the Bachalpsee — a high alpine lake reflecting the Wetterhorn and Schreckhorn. A perfect final morning before the drive to Geneva.</span></div>
         </div>
-        <div class="transport-note"><span class="transport-label">Onward →</span><span>Train back to Täsch, collect car, drive to Geneva (~2.5hrs via the Rhône valley). Arrive at your brother's for dinner.</span></div>
+        <div class="transport-note"><span class="transport-label">Onward →</span><span>Descend to Grindelwald then drive to Geneva (~2.5hrs via Interlaken and the A6). Arrive at your brother's for dinner on Thursday 13 August.</span></div>
       </div>
     </div>
+
     <div class="dest-full" style="padding-left: 200px;">
-      <div class="booking-card">
-        <div class="booking-card-title">Accommodation · Not yet booked</div>
-        <div class="booking-grid wide"><div class="booking-row"><span class="booking-label">Note</span><span class="booking-value" style="color:var(--ink-faint);">Cars are banned in Zermatt. Park at Täsch station and take the cogwheel train in. Book early — July/August availability is limited.</span></div></div>
+      <div class="booking-card-multi">
+        <div class="booking-card-multi-title">Accommodation · 4 Bookings · All Confirmed</div>
+
+        <!-- Night 1: Bergstation First -->
+        <div class="booking-night">
+          <div class="booking-night-header">
+            <span class="booking-night-label">Night 1 · Bergstation First</span>
+            <span class="booking-night-dates">Sat 8 Aug → Sun 9 Aug</span>
+          </div>
+          <div class="booking-grid">
+            <div class="booking-row">
+              <span class="booking-label">Address</span>
+              <span class="booking-address">Bergstation First<br>3818 Grindelwald, Switzerland</span>
+            </div>
+            <div class="booking-row">
+              <span class="booking-label">Confirmation</span>
+              <span class="booking-value mono">4A4B634A64104A6EAFEC</span>
+            </div>
+            <div class="booking-row">
+              <span class="booking-label">Check-in</span>
+              <span class="booking-value">Saturday 8 August 2026 · 3:00 pm</span>
+            </div>
+            <div class="booking-row">
+              <span class="booking-label">Check-out</span>
+              <span class="booking-value">Sunday 9 August 2026 · 10:00 am</span>
+            </div>
+            <div class="booking-row">
+              <span class="booking-label">Contact</span>
+              <span class="booking-value"><a href="tel:+41338287788">+41 33 828 7788</a></span>
+            </div>
+            <div class="booking-row">
+              <span class="booking-label">Platform</span>
+              <span class="booking-value"><a href="https://berggasthausfirst.ch/en" target="_blank" rel="noopener">Berggasthaus First</a></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Nights 2 & 3: Alp Tschingelfeld -->
+        <div class="booking-night">
+          <div class="booking-night-header">
+            <span class="booking-night-label">Nights 2 & 3 · Alp Tschingelfeld</span>
+            <span class="booking-night-dates">Sun 9 Aug → Tue 11 Aug</span>
+          </div>
+          <div class="booking-grid">
+            <div class="booking-row">
+              <span class="booking-label">Address</span>
+              <span class="booking-address">Alp Tschingelfeld, Familie Grossmann<br>Unter der Fluh, 3855 Brienz, Switzerland</span>
+            </div>
+            <div class="booking-row">
+              <span class="booking-label">Confirmation</span>
+              <span class="booking-value mono">LYNCH</span>
+            </div>
+            <div class="booking-row">
+              <span class="booking-label">Check-in</span>
+              <span class="booking-value">Sunday 9 August 2026 · 3:00 pm</span>
+            </div>
+            <div class="booking-row">
+              <span class="booking-label">Check-out</span>
+              <span class="booking-value">Tuesday 11 August 2026 · 10:00 am</span>
+            </div>
+            <div class="booking-row">
+              <span class="booking-label">Contact</span>
+              <span class="booking-value"><a href="tel:+41764939517">+41 76 493 9517</a></span>
+            </div>
+            <div class="booking-row">
+              <span class="booking-label">Platform</span>
+              <span class="booking-value"><a href="https://www.tschingelfeld.ch" target="_blank" rel="noopener">Email</a></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Night 4: Berghütte Männdlenen -->
+        <div class="booking-night">
+          <div class="booking-night-header">
+            <span class="booking-night-label">Night 4 · Berghütte Männdlenen</span>
+            <span class="booking-night-dates">Tue 11 Aug → Wed 12 Aug</span>
+          </div>
+          <div class="booking-grid">
+            <div class="booking-row">
+              <span class="booking-label">Address</span>
+              <span class="booking-address">Berghütte Männdlenen<br>3816 Grindelwald, Switzerland</span>
+            </div>
+            <div class="booking-row">
+              <span class="booking-label">Confirmation</span>
+              <span class="booking-value mono">6131009</span>
+            </div>
+            <div class="booking-row">
+              <span class="booking-label">Check-in</span>
+              <span class="booking-value">Tuesday 11 August 2026 · 3:00 pm</span>
+            </div>
+            <div class="booking-row">
+              <span class="booking-label">Check-out</span>
+              <span class="booking-value">Wednesday 12 August 2026 · 10:00 am</span>
+            </div>
+            <div class="booking-row">
+              <span class="booking-label">Contact</span>
+              <span class="booking-value"><a href="tel:+41338534464">+41 33 853 4464</a></span>
+            </div>
+            <div class="booking-row">
+              <span class="booking-label">Platform</span>
+              <span class="booking-value"><a href="https://berghaus-maenndlenen.ch/de" target="_blank" rel="noopener">Berghütte Männdlenen</a></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Night 5: Berghotel Faulhorn -->
+        <div class="booking-night">
+          <div class="booking-night-header">
+            <span class="booking-night-label">Night 5 · Berghotel Faulhorn</span>
+            <span class="booking-night-dates">Wed 12 Aug → Thu 13 Aug</span>
+          </div>
+          <div class="booking-grid">
+            <div class="booking-row">
+              <span class="booking-label">Address</span>
+              <span class="booking-address">Faulhornweg 6<br>3818 Grindelwald, Switzerland</span>
+            </div>
+            <div class="booking-row">
+              <span class="booking-label">Confirmation</span>
+              <span class="booking-value mono">LYNCH</span>
+            </div>
+            <div class="booking-row">
+              <span class="booking-label">Check-in</span>
+              <span class="booking-value">Wednesday 12 August 2026 · 3:00 pm</span>
+            </div>
+            <div class="booking-row">
+              <span class="booking-label">Check-out</span>
+              <span class="booking-value">Thursday 13 August 2026 · 10:00 am</span>
+            </div>
+            <div class="booking-row">
+              <span class="booking-label">Contact</span>
+              <span class="booking-value"><a href="tel:+41795349951">+41 79 534 9951</a></span>
+            </div>
+            <div class="booking-row">
+              <span class="booking-label">Platform</span>
+              <span class="booking-value"><a href="https://www.faulhorn.ch/de" target="_blank" rel="noopener">Berghotel Faulhorn</a></span>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
@@ -842,7 +989,7 @@
         <div class="dest-number">10</div>
         <div class="dest-name">Geneva</div>
         <div class="dest-region">Lac Léman · Switzerland</div>
-        <div class="dest-dates">Tue 11 Aug – Sun 16 Aug</div>
+        <div class="dest-dates">Thu 13 Aug – Tue 18 Aug</div>
         <div class="dest-nights">5 nights</div>
         <div class="dest-tags"><span class="tag">Family stay</span><span class="tag">Lake swimming</span><span class="tag">Chamonix</span><span class="tag">Local life</span><span class="tag">Rest</span></div>
       </div>
@@ -879,7 +1026,7 @@
         <div class="dest-number">11</div>
         <div class="dest-name">Annecy</div>
         <div class="dest-region">Haute-Savoie · France</div>
-        <div class="dest-dates">Sun 16 Aug – Fri 21 Aug</div>
+        <div class="dest-dates">Tue 18 Aug – Sun 23 Aug</div>
         <div class="dest-nights">5 nights</div>
         <div class="dest-tags"><span class="tag">Lake swimming</span><span class="tag">Market</span><span class="tag">Old town</span><span class="tag">Cycling</span><span class="tag">Cafés</span></div>
       </div>
@@ -909,7 +1056,7 @@
         <div class="dest-number">12</div>
         <div class="dest-name">Grenoble</div>
         <div class="dest-region">Isère · French Alps</div>
-        <div class="dest-dates">Fri 21 Aug – Tue 25 Aug</div>
+        <div class="dest-dates">Sun 23 Aug – Thu 27 Aug</div>
         <div class="dest-nights">4 nights</div>
         <div class="dest-tags"><span class="tag">Cycling</span><span class="tag">Alpe d'Huez</span><span class="tag">Market</span><span class="tag">Hiking</span><span class="tag">University city</span></div>
       </div>
@@ -939,7 +1086,7 @@
         <div class="dest-number">13</div>
         <div class="dest-name">Collioure</div>
         <div class="dest-region">Roussillon · Occitanie</div>
-        <div class="dest-dates">Tue 25 Aug – Sat 29 Aug</div>
+        <div class="dest-dates">Thu 27 Aug – Mon 31 Aug</div>
         <div class="dest-nights">4 nights</div>
         <div class="dest-tags"><span class="tag">Catalan culture</span><span class="tag">Market</span><span class="tag">Swimming</span><span class="tag">Art history</span><span class="tag">Wine</span></div>
       </div>
@@ -976,7 +1123,7 @@
         <div class="dest-number">14</div>
         <div class="dest-name">Girona</div>
         <div class="dest-region">Catalonia · Spain</div>
-        <div class="dest-dates">Sat 29 Aug – Fri 4 Sep</div>
+        <div class="dest-dates">Mon 31 Aug – Sun 6 Sep</div>
         <div class="dest-nights">6 nights</div>
         <div class="dest-tags"><span class="tag">Old city</span><span class="tag">Food scene</span><span class="tag">Cycling</span><span class="tag">Markets</span><span class="tag">Costa Brava</span></div>
       </div>
@@ -1006,7 +1153,7 @@
         <div class="dest-number">15</div>
         <div class="dest-name">Barcelona</div>
         <div class="dest-region">Catalonia · Spain</div>
-        <div class="dest-dates">Fri 4 Sep – Tue 8 Sep</div>
+        <div class="dest-dates">Sun 6 Sep – Thu 10 Sep</div>
         <div class="dest-nights">4 nights</div>
         <div class="dest-tags"><span class="tag">Gaudí</span><span class="tag">Food</span><span class="tag">Architecture</span><span class="tag">Neighbourhoods</span><span class="tag">Beaches</span></div>
       </div>
@@ -1036,7 +1183,7 @@
         <div class="dest-number">16</div>
         <div class="dest-name">Majorca</div>
         <div class="dest-region">Balearic Islands · Spain</div>
-        <div class="dest-dates">Tue 8 Sep – Mon 14 Sep</div>
+        <div class="dest-dates">Thu 10 Sep – Wed 16 Sep</div>
         <div class="dest-nights">6 nights</div>
         <div class="dest-tags"><span class="tag">Serra Tramuntana</span><span class="tag">Cala swimming</span><span class="tag">Cycling</span><span class="tag">Villages</span><span class="tag">Markets</span></div>
       </div>
@@ -1066,7 +1213,7 @@
         <div class="dest-number">17</div>
         <div class="dest-name">Altea</div>
         <div class="dest-region">Costa Blanca · Alicante</div>
-        <div class="dest-dates">Mon 14 Sep – Sat 19 Sep</div>
+        <div class="dest-dates">Wed 16 Sep – Mon 21 Sep</div>
         <div class="dest-nights">5 nights</div>
         <div class="dest-tags"><span class="tag">Old town</span><span class="tag">Beaches</span><span class="tag">Art colony</span><span class="tag">Restaurants</span><span class="tag">Cycling</span></div>
       </div>
@@ -1096,7 +1243,7 @@
         <div class="dest-number">18</div>
         <div class="dest-name">Valencia</div>
         <div class="dest-region">Comunitat Valenciana · Spain</div>
-        <div class="dest-dates">Sat 19 Sep – Wed 23 Sep</div>
+        <div class="dest-dates">Mon 21 Sep – Fri 25 Sep</div>
         <div class="dest-nights">4 nights</div>
         <div class="dest-tags"><span class="tag">Paella</span><span class="tag">Mercado Central</span><span class="tag">Architecture</span><span class="tag">Beaches</span><span class="tag">Ruzafa</span></div>
       </div>
@@ -1120,7 +1267,7 @@
   </div>
 
   <div class="footer">
-    <p>86 nights · 18 destinations · 4 countries · 29 June – 23 September 2026</p>
+    <p>88 nights · 18 destinations · 4 countries · 29 June – 25 September 2026</p>
     <p style="margin-top:0.5rem;font-size:0.85rem;">Living document · updated as bookings are confirmed</p>
   </div>
 
