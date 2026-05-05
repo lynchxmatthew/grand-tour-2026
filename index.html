@@ -34,6 +34,24 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <style>
   :root {
+    --ink: #e8e4de;
+    --ink-light: #9e9890;
+    --ink-faint: #5a5650;
+    --paper: #faf8f4;
+    --paper-warm: #1a1814;
+    --border: #2a2724;
+    --border-strong: #3a3632;
+    --accent: #c9956b;
+    --accent-light: #c9956b;
+    --booking-bg: #141210;
+    --booking-border: #2e3a45;
+    --booking-label: #7aabcc;
+    --body-bg: #090909;
+    --cover-bg: #090909;
+  }
+
+  /* LIGHT THEME */
+  :root.light {
     --ink: #1a1814;
     --ink-light: #6b6560;
     --ink-faint: #a8a39d;
@@ -46,12 +64,78 @@
     --booking-bg: #f0f4f8;
     --booking-border: #b8cce0;
     --booking-label: #2c5f8a;
+    --body-bg: #ffffff;
+    --cover-bg: #090909;
   }
+
+  /* THEME TOGGLE */
+  .theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 24px;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.06);
+    border: 0.5px solid rgba(255,255,255,0.12);
+    border-radius: 24px;
+    padding: 6px 12px 6px 10px;
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    user-select: none;
+  }
+  .theme-toggle:hover { background: rgba(255,255,255,0.1); }
+  :root.light .theme-toggle {
+    background: rgba(0,0,0,0.05);
+    border-color: rgba(0,0,0,0.12);
+  }
+  :root.light .theme-toggle:hover { background: rgba(0,0,0,0.09); }
+
+  .toggle-track {
+    width: 32px;
+    height: 18px;
+    border-radius: 9px;
+    background: rgba(255,255,255,0.15);
+    position: relative;
+    transition: background 0.25s ease;
+    flex-shrink: 0;
+  }
+  :root.light .toggle-track { background: #c9956b; }
+
+  .toggle-thumb {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.5);
+    transition: transform 0.25s ease, background 0.25s ease;
+  }
+  :root.light .toggle-thumb {
+    transform: translateX(14px);
+    background: #ffffff;
+  }
+
+  .toggle-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    transition: color 0.2s ease;
+    white-space: nowrap;
+  }
+  :root.light .toggle-label { color: rgba(26,24,20,0.45); }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'DM Sans', sans-serif; background: #ffffff; color: var(--ink); font-size: 15px; line-height: 1.7; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--body-bg); color: var(--ink); font-size: 15px; line-height: 1.7; transition: background 0.3s ease, color 0.3s ease; }
 
   /* COVER */
-  .cover { min-height: 100vh; background: #090909; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 4rem 2rem; position: relative; overflow: hidden; }
+  .cover { min-height: 100vh; background: var(--cover-bg); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 4rem 2rem; position: relative; overflow: hidden; }
   .cover::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 50% at 20% 80%, rgba(139,94,60,0.15) 0%, transparent 70%), radial-gradient(ellipse 50% 60% at 80% 20%, rgba(139,94,60,0.1) 0%, transparent 70%); }
   .cover-inner { position: relative; text-align: center; max-width: 640px; }
   .cover-eyebrow { font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent-light); margin-bottom: 2rem; }
@@ -64,13 +148,12 @@
   .cover-stat-lbl { display: block; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(250,248,244,0.4); margin-top: 4px; }
   .cover-route { margin-top: 2.5rem; font-size: 12px; letter-spacing: 0.08em; color: rgba(250,248,244,0.35); }
 
-
   /* CONTAINER */
   .container { max-width: 860px; margin: 0 auto; padding: 0 2rem 6rem; }
 
   /* QUICK REFERENCE TABLE */
   .quick-ref { padding: 3rem 0; border-bottom: 0.5px solid var(--border); }
-  .quick-ref-title { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 300; margin-bottom: 1.5rem; }
+  .quick-ref-title { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 300; margin-bottom: 1.5rem; color: var(--ink); }
   .ref-table { width: 100%; border-collapse: collapse; font-size: 13px; }
   .ref-table th { text-align: left; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); padding: 0 12px 8px 0; border-bottom: 0.5px solid var(--border-strong); font-weight: 400; }
   .ref-table td { padding: 8px 12px 8px 0; border-bottom: 0.5px solid var(--border); color: var(--ink-light); vertical-align: top; }
@@ -78,13 +161,13 @@
   .ref-table td.conf { font-family: monospace; font-size: 12px; color: var(--ink-faint); letter-spacing: 0.05em; }
   .ref-table tr.booked td { }
   .ref-table tr.tbd td { color: var(--ink-faint); }
-  .booked-pill { display: inline-block; font-size: 9px; letter-spacing: 0.06em; text-transform: uppercase; padding: 2px 6px; border-radius: 2px; background: #e8f5ec; color: #2d7a47; border: 0.5px solid #b8ddc4; margin-left: 6px; vertical-align: middle; }
-  .tbd-pill { display: inline-block; font-size: 9px; letter-spacing: 0.06em; text-transform: uppercase; padding: 2px 6px; border-radius: 2px; background: var(--paper-warm); color: var(--ink-faint); border: 0.5px solid var(--border); margin-left: 6px; vertical-align: middle; }
+  .booked-pill { display: inline-block; font-size: 9px; letter-spacing: 0.06em; text-transform: uppercase; padding: 2px 6px; border-radius: 2px; background: rgba(45,122,71,0.2); color: #7dd4a0; border: 0.5px solid rgba(45,122,71,0.35); margin-left: 6px; vertical-align: middle; }
+  .tbd-pill { display: inline-block; font-size: 9px; letter-spacing: 0.06em; text-transform: uppercase; padding: 2px 6px; border-radius: 2px; background: rgba(255,255,255,0.04); color: var(--ink-faint); border: 0.5px solid var(--border-strong); margin-left: 6px; vertical-align: middle; }
 
   /* COUNTRY HEADERS */
   .country-header { display: flex; align-items: center; gap: 1rem; padding: 3.5rem 0 1.5rem; }
   .country-flag { font-size: 1.8rem; line-height: 1; }
-  .country-name { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 300; letter-spacing: 0.02em; }
+  .country-name { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 300; letter-spacing: 0.02em; color: var(--ink); }
   .country-line { flex: 1; height: 0.5px; background: var(--border-strong); }
 
   /* DESTINATION */
@@ -97,7 +180,7 @@
   .dest-dates { font-size: 13px; color: var(--ink-light); margin-bottom: 0.3rem; }
   .dest-nights { font-size: 12px; color: var(--ink-faint); margin-bottom: 1.5rem; }
   .dest-tags { display: flex; flex-wrap: wrap; gap: 5px; }
-  .tag { font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; padding: 3px 8px; border-radius: 2px; background: var(--paper-warm); color: var(--ink-light); border: 0.5px solid var(--border); }
+  .tag { font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; padding: 3px 8px; border-radius: 2px; background: rgba(255,255,255,0.04); color: var(--ink-light); border: 0.5px solid var(--border-strong); }
 
   .dest-body { padding-left: 2.5rem; }
   .dest-description { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 300; line-height: 1.85; color: var(--ink); margin-bottom: 1.25rem; }
@@ -119,26 +202,27 @@
   .booking-address { font-size: 13px; color: var(--ink); line-height: 1.5; }
 
   /* TRANSPORT NOTE */
-  .transport-note { display: flex; align-items: flex-start; gap: 10px; padding: 10px 14px; background: var(--paper-warm); border-left: 2px solid var(--accent-light); border-radius: 0 2px 2px 0; font-size: 12.5px; color: var(--ink-light); line-height: 1.6; margin-top: 1.25rem; }
+  .transport-note { display: flex; align-items: flex-start; gap: 10px; padding: 10px 14px; background: rgba(201,149,107,0.07); border-left: 2px solid var(--accent-light); border-radius: 0 2px 2px 0; font-size: 12.5px; color: var(--ink-light); line-height: 1.6; margin-top: 1.25rem; }
   .transport-label { font-weight: 500; color: var(--ink); white-space: nowrap; font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; margin-top: 1px; }
 
   /* FOOTER */
   .footer { border-top: 0.5px solid var(--border); padding: 3rem 0; text-align: center; }
   .footer p { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-style: italic; color: var(--ink-faint); }
 
-  /* DEST BODY FULL WIDTH — when no split needed */
+  /* DEST BODY FULL WIDTH */
   .dest-full { margin-top: 1.5rem; }
 
   /* MAP SECTION */
   .map-section { width: 100%; height: 100vh; position: relative; border-bottom: 0.5px solid var(--border); }
   .map-section-inner { width: 100%; height: 100%; }
-  .map-label { position: absolute; top: 16px; left: 50%; transform: translateX(-50%); z-index: 1000; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(250,248,244,0.4); background: rgba(26,24,20,0.7); padding: 5px 14px; border-radius: 20px; pointer-events: none; }
-  .map-legend { position: absolute; bottom: 20px; left: 20px; z-index: 1000; background: rgba(26,24,20,0.88); border: 0.5px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 10px 14px; }
+  .map-label { position: absolute; top: 16px; left: 50%; transform: translateX(-50%); z-index: 1000; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(250,248,244,0.4); background: rgba(9,9,9,0.75); padding: 5px 14px; border-radius: 20px; pointer-events: none; }
+  .map-legend { position: absolute; bottom: 20px; left: 20px; z-index: 1000; background: rgba(9,9,9,0.88); border: 0.5px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 10px 14px; }
   .map-legend-item { display: flex; align-items: center; gap: 7px; font-size: 11px; color: rgba(250,248,244,0.65); margin-bottom: 5px; font-family: 'DM Sans', sans-serif; }
   .map-legend-item:last-child { margin-bottom: 0; }
   .ml-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
   .ml-dash { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; border: 1.5px dashed rgba(201,149,107,0.8); background: transparent; }
 
+  /* MULTI-BOOKING CARD */
   .booking-card-multi { background: var(--booking-bg); border: 0.5px solid var(--booking-border); border-radius: 6px; margin-top: 1.5rem; overflow: hidden; }
   .booking-card-multi-title { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--booking-label); font-weight: 500; padding: 1rem 1.5rem 0.75rem; border-bottom: 0.5px solid var(--booking-border); background: var(--booking-bg); }
   .booking-night { border-bottom: 0.5px solid var(--booking-border); padding: 1rem 1.5rem; }
@@ -147,10 +231,10 @@
   .booking-night-label { font-size: 12px; font-weight: 500; color: var(--ink); }
   .booking-night-dates { font-size: 11px; color: var(--ink-faint); }
 
-  /* Leaflet popup overrides for embedded map */
-  .leaflet-popup-content-wrapper { background: #1a1814 !important; border: 0.5px solid rgba(255,255,255,0.15) !important; border-radius: 4px !important; box-shadow: 0 8px 24px rgba(0,0,0,0.5) !important; padding: 0 !important; }
+  /* Leaflet popup overrides */
+  .leaflet-popup-content-wrapper { background: #0e0d0c !important; border: 0.5px solid rgba(255,255,255,0.12) !important; border-radius: 4px !important; box-shadow: 0 8px 24px rgba(0,0,0,0.7) !important; padding: 0 !important; }
   .leaflet-popup-content { margin: 0 !important; width: 220px !important; }
-  .leaflet-popup-tip { background: #1a1814 !important; }
+  .leaflet-popup-tip { background: #0e0d0c !important; }
   .leaflet-popup-close-button { color: rgba(250,248,244,0.4) !important; }
   .mp-inner { padding: 12px 14px; }
   .mp-num { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 300; color: rgba(250,248,244,0.2); line-height: 1; }
@@ -1289,5 +1373,37 @@
   </div>
 
 </div>
+
+<!-- THEME TOGGLE BUTTON -->
+<div class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="Toggle light/dark mode">
+  <div class="toggle-track"><div class="toggle-thumb"></div></div>
+  <span class="toggle-label" id="toggleLabel">Light</span>
+</div>
+
+<script>
+  function toggleTheme() {
+    const root = document.documentElement;
+    const label = document.getElementById('toggleLabel');
+    if (root.classList.contains('light')) {
+      root.classList.remove('light');
+      label.textContent = 'Light';
+      localStorage.setItem('theme', 'dark');
+    } else {
+      root.classList.add('light');
+      label.textContent = 'Dark';
+      localStorage.setItem('theme', 'light');
+    }
+  }
+
+  // On load — default is dark, restore saved preference if any
+  (function() {
+    const saved = localStorage.getItem('theme');
+    if (saved === 'light') {
+      document.documentElement.classList.add('light');
+      document.getElementById('toggleLabel').textContent = 'Dark';
+    }
+  })();
+</script>
+
 </body>
 </html>
