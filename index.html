@@ -65,7 +65,7 @@
     --booking-border: #b8cce0;
     --booking-label: #2c5f8a;
     --body-bg: #ffffff;
-    --cover-bg: #090909;
+    --cover-bg: #faf8f4;
   }
 
   /* THEME TOGGLE */
@@ -135,18 +135,18 @@
   body { font-family: 'DM Sans', sans-serif; background: var(--body-bg); color: var(--ink); font-size: 15px; line-height: 1.7; transition: background 0.3s ease, color 0.3s ease; }
 
   /* COVER */
-  .cover { min-height: 100vh; background: var(--cover-bg); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 4rem 2rem; position: relative; overflow: hidden; }
-  .cover::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 50% at 20% 80%, rgba(139,94,60,0.15) 0%, transparent 70%), radial-gradient(ellipse 50% 60% at 80% 20%, rgba(139,94,60,0.1) 0%, transparent 70%); }
+  .cover { min-height: 100vh; background: var(--cover-bg); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 4rem 2rem; position: relative; overflow: hidden; transition: background 0.3s ease; }
+  .cover::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 50% at 20% 80%, rgba(139,94,60,0.12) 0%, transparent 70%), radial-gradient(ellipse 50% 60% at 80% 20%, rgba(139,94,60,0.08) 0%, transparent 70%); transition: opacity 0.3s ease; }
   .cover-inner { position: relative; text-align: center; max-width: 640px; }
   .cover-eyebrow { font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent-light); margin-bottom: 2rem; }
-  .cover-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 8vw, 5.5rem); font-weight: 300; color: var(--paper); line-height: 1.05; margin-bottom: 1rem; }
+  .cover-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 8vw, 5.5rem); font-weight: 300; color: var(--ink); line-height: 1.05; margin-bottom: 1rem; }
   .cover-title em { font-style: italic; color: var(--accent-light); }
-  .cover-subtitle { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 300; font-style: italic; color: rgba(250,248,244,0.55); margin-bottom: 3rem; }
-  .cover-stats { display: flex; gap: 3rem; justify-content: center; border-top: 0.5px solid rgba(255,255,255,0.15); padding-top: 2rem; flex-wrap: wrap; }
+  .cover-subtitle { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 300; font-style: italic; color: var(--ink-light); margin-bottom: 3rem; }
+  .cover-stats { display: flex; gap: 3rem; justify-content: center; border-top: 0.5px solid var(--border-strong); padding-top: 2rem; flex-wrap: wrap; }
   .cover-stat { text-align: center; }
-  .cover-stat-val { display: block; font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-weight: 300; color: var(--paper); line-height: 1; }
-  .cover-stat-lbl { display: block; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(250,248,244,0.4); margin-top: 4px; }
-  .cover-route { margin-top: 2.5rem; font-size: 12px; letter-spacing: 0.08em; color: rgba(250,248,244,0.35); }
+  .cover-stat-val { display: block; font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-weight: 300; color: var(--ink); line-height: 1; }
+  .cover-stat-lbl { display: block; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-faint); margin-top: 4px; }
+  .cover-route { margin-top: 2.5rem; font-size: 12px; letter-spacing: 0.08em; color: var(--ink-faint); }
 
   /* CONTAINER */
   .container { max-width: 860px; margin: 0 auto; padding: 0 2rem 6rem; }
@@ -215,8 +215,8 @@
   /* MAP SECTION */
   .map-section { width: 100%; height: 100vh; position: relative; border-bottom: 0.5px solid var(--border); }
   .map-section-inner { width: 100%; height: 100%; }
-  .map-label { position: absolute; top: 16px; left: 50%; transform: translateX(-50%); z-index: 1000; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(250,248,244,0.4); background: rgba(9,9,9,0.75); padding: 5px 14px; border-radius: 20px; pointer-events: none; }
-  .map-legend { position: absolute; bottom: 20px; left: 20px; z-index: 1000; background: rgba(9,9,9,0.88); border: 0.5px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 10px 14px; }
+  .map-label { position: absolute; top: 16px; left: 50%; transform: translateX(-50%); z-index: 1000; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(250,248,244,0.4); background: rgba(9,9,9,0.75); padding: 5px 14px; border-radius: 20px; pointer-events: none; transition: background 0.3s ease, color 0.3s ease; }
+  .map-legend { position: absolute; bottom: 20px; left: 20px; z-index: 1000; background: rgba(9,9,9,0.88); border: 0.5px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 10px 14px; transition: background 0.3s ease, border-color 0.3s ease; }
   .map-legend-item { display: flex; align-items: center; gap: 7px; font-size: 11px; color: rgba(250,248,244,0.65); margin-bottom: 5px; font-family: 'DM Sans', sans-serif; }
   .map-legend-item:last-child { margin-bottom: 0; }
   .ml-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
@@ -279,7 +279,7 @@
 <div class="map-section">
   <div class="map-label">29 June – 23 September 2026</div>
   <div id="embedded-map" class="map-section-inner"></div>
-  <div class="map-legend">
+  <div class="map-legend" id="mapLegend">
     <div class="map-legend-item"><div class="ml-dot" style="background:#3a6fa8;"></div>France</div>
     <div class="map-legend-item"><div class="ml-dot" style="background:#c85a3a;"></div>Italy</div>
     <div class="map-legend-item"><div class="ml-dot" style="background:#999;"></div>Switzerland</div>
@@ -292,10 +292,14 @@
 
 <script>
 (function() {
+  const DARK_TILES  = 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png';
+  const LIGHT_TILES = 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png';
+  const ATTRIB = '&copy; OpenStreetMap &copy; CARTO';
+
   const map = L.map('embedded-map', { center:[44.5,8.0], zoom:5, zoomControl:true, scrollWheelZoom:false });
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-    attribution:'&copy; OpenStreetMap &copy; CARTO', subdomains:'abcd', maxZoom:19
-  }).addTo(map);
+
+  // Start with dark tiles (default theme)
+  let tileLayer = L.tileLayer(DARK_TILES, { attribution:ATTRIB, subdomains:'abcd', maxZoom:19 }).addTo(map);
 
   const dests = [
     { num:"01", name:"Villefranche-sur-Mer", dates:"29 Jun – 5 Jul", lat:43.7042, lng:7.3089, color:"#3a6fa8", booked:true },
@@ -318,7 +322,7 @@
     { num:"18", name:"Valencia", dates:"23 – 27 Sep", lat:39.4699, lng:-0.3763, color:"#c9a227", booked:false },
   ];
 
-  // Route line
+  // Route lines
   L.polyline(dests.map(d=>[d.lat,d.lng]), { color:'rgba(201,149,107,0.2)', weight:1.5, dashArray:'3,8' }).addTo(map);
   [
     { coords:dests.slice(0,2).map(d=>[d.lat,d.lng]), color:'#3a6fa8' },
@@ -326,27 +330,80 @@
     { coords:dests.slice(7,10).map(d=>[d.lat,d.lng]), color:'#888' },
     { coords:dests.slice(9,13).map(d=>[d.lat,d.lng]), color:'#3a6fa8' },
     { coords:dests.slice(12).map(d=>[d.lat,d.lng]), color:'#c9a227' },
-  ].forEach(({coords,color}) => L.polyline(coords,{color,weight:2,opacity:0.55}).addTo(map));
+  ].forEach(({coords,color}) => L.polyline(coords,{color,weight:2,opacity:0.6}).addTo(map));
 
-  // Markers
+  // Build marker HTML — text colour adapts to theme
+  function markerHtml(d, isLight) {
+    const textColor = isLight ? '#fff' : '#fff';
+    const tdbTextColor = isLight ? d.color : 'rgba(255,255,255,0.65)';
+    if (d.booked) {
+      return `<div style="position:relative;width:32px;height:38px;">
+        <div style="width:32px;height:32px;background:${d.color};border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:sans-serif;font-size:9px;font-weight:600;color:${textColor};border:2px solid rgba(255,255,255,0.45);box-shadow:0 0 0 2px ${d.color}55,0 2px 8px rgba(0,0,0,${isLight?'0.25':'0.5'});">${d.num}</div>
+        <div style="position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-top:6px solid ${d.color};"></div>
+      </div>`;
+    } else {
+      const bg = isLight ? d.color + '22' : d.color + '44';
+      const border = isLight ? '1.5px dashed ' + d.color : '1.5px dashed ' + d.color;
+      return `<div style="width:26px;height:26px;background:${bg};border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:sans-serif;font-size:9px;font-weight:600;color:${tdbTextColor};border:${border};box-shadow:0 1px 6px rgba(0,0,0,${isLight?'0.15':'0.4'});">${d.num}</div>`;
+    }
+  }
+
+  // Store markers so we can rebuild on theme change
+  const markers = [];
   dests.forEach(d => {
-    const html = d.booked
-      ? `<div style="position:relative;width:32px;height:38px;">
-           <div style="width:32px;height:32px;background:${d.color};border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:sans-serif;font-size:9px;font-weight:600;color:#fff;border:2px solid rgba(255,255,255,0.45);box-shadow:0 0 0 2px ${d.color}55,0 2px 8px rgba(0,0,0,0.5);">${d.num}</div>
-           <div style="position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-top:6px solid ${d.color};"></div>
-         </div>`
-      : `<div style="width:26px;height:26px;background:${d.color}44;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:sans-serif;font-size:9px;font-weight:500;color:rgba(255,255,255,0.65);border:1.5px dashed ${d.color};box-shadow:0 1px 6px rgba(0,0,0,0.4);">${d.num}</div>`;
-    const sz = d.booked ? [32,38] : [26,26];
-    const an = d.booked ? [16,38] : [13,13];
-    const icon = L.divIcon({ html, className:'', iconSize:sz, iconAnchor:an, popupAnchor:[0, d.booked?-40:-14] });
-    const badge = d.booked
-      ? `<span class="mp-badge">&#10003; Booked</span>`
-      : `<span class="mp-tbd">TBD</span>`;
+    const isLight = document.documentElement.classList.contains('light');
+    const icon = L.divIcon({ html:markerHtml(d,isLight), className:'', iconSize:d.booked?[32,38]:[26,26], iconAnchor:d.booked?[16,38]:[13,13], popupAnchor:[0,d.booked?-40:-14] });
+    const badge = d.booked ? `<span class="mp-badge">&#10003; Booked</span>` : `<span class="mp-tbd">TBD</span>`;
     const popup = `<div class="mp-inner"><div class="mp-num">${d.num}</div><div class="mp-name">${d.name}</div><div class="mp-dates">${d.dates}</div>${badge}</div>`;
-    L.marker([d.lat,d.lng],{icon}).addTo(map).bindPopup(popup,{maxWidth:230,closeButton:false});
+    const m = L.marker([d.lat,d.lng],{icon}).addTo(map).bindPopup(popup,{maxWidth:230,closeButton:false});
+    markers.push({marker:m, dest:d});
   });
 
   map.fitBounds(L.latLngBounds(dests.map(d=>[d.lat,d.lng])),{padding:[40,40]});
+
+  // Legend theming
+  function updateMapTheme(isLight) {
+    // Swap tile layer
+    map.removeLayer(tileLayer);
+    tileLayer = L.tileLayer(isLight ? LIGHT_TILES : DARK_TILES, { attribution:ATTRIB, subdomains:'abcd', maxZoom:19 });
+    tileLayer.addTo(map);
+    tileLayer.bringToBack();
+
+    // Update legend styles
+    const legend = document.getElementById('mapLegend');
+    legend.style.background = isLight ? 'rgba(255,255,255,0.92)' : 'rgba(9,9,9,0.88)';
+    legend.style.borderColor = isLight ? 'rgba(0,0,0,0.12)' : 'rgba(255,255,255,0.1)';
+    legend.querySelectorAll('.map-legend-item').forEach(el => {
+      el.style.color = isLight ? 'rgba(26,24,20,0.75)' : 'rgba(250,248,244,0.65)';
+    });
+
+    // Update map label
+    const label = document.querySelector('.map-label');
+    label.style.background = isLight ? 'rgba(255,255,255,0.75)' : 'rgba(9,9,9,0.75)';
+    label.style.color = isLight ? 'rgba(26,24,20,0.55)' : 'rgba(250,248,244,0.4)';
+
+    // Rebuild markers with correct text colours
+    markers.forEach(({marker, dest}) => {
+      const newIcon = L.divIcon({ html:markerHtml(dest,isLight), className:'', iconSize:dest.booked?[32,38]:[26,26], iconAnchor:dest.booked?[16,38]:[13,13], popupAnchor:[0,dest.booked?-40:-14] });
+      marker.setIcon(newIcon);
+    });
+
+    // Update popup styles
+    const popupBg = isLight ? '#ffffff' : '#0e0d0c';
+    const popupBorder = isLight ? 'rgba(0,0,0,0.12)' : 'rgba(255,255,255,0.12)';
+    document.querySelectorAll('.leaflet-popup-content-wrapper').forEach(el => {
+      el.style.background = popupBg;
+      el.style.borderColor = popupBorder;
+    });
+  }
+
+  // Expose globally so the toggle button can call it
+  window.updateMapTheme = updateMapTheme;
+
+  // Apply on load if light preference saved
+  if (document.documentElement.classList.contains('light')) {
+    updateMapTheme(true);
+  }
 })();
 </script>
 
@@ -1384,15 +1441,17 @@
   function toggleTheme() {
     const root = document.documentElement;
     const label = document.getElementById('toggleLabel');
-    if (root.classList.contains('light')) {
-      root.classList.remove('light');
-      label.textContent = 'Light';
-      localStorage.setItem('theme', 'dark');
-    } else {
+    const isNowLight = !root.classList.contains('light');
+    if (isNowLight) {
       root.classList.add('light');
       label.textContent = 'Dark';
       localStorage.setItem('theme', 'light');
+    } else {
+      root.classList.remove('light');
+      label.textContent = 'Light';
+      localStorage.setItem('theme', 'dark');
     }
+    if (window.updateMapTheme) updateMapTheme(isNowLight);
   }
 
   // On load — default is dark, restore saved preference if any
