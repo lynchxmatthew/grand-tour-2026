@@ -314,8 +314,8 @@
     { num:"10", name:"Geneva", dates:"14 – 20 Aug", lat:46.2044, lng:6.1432, color:"#999", booked:true },
     { num:"11", name:"Annecy", dates:"20 – 26 Aug", lat:45.8992, lng:6.1294, color:"#3a6fa8", booked:true },
     { num:"12", name:"Grenoble", dates:"26 Aug – 31 Aug", lat:45.1885, lng:5.7245, color:"#3a6fa8", booked:true },
-    { num:"13", name:"Collioure", dates:"31 Aug – 4 Sep", lat:42.5268, lng:3.0846, color:"#3a6fa8", booked:false },
-    { num:"14", name:"Girona", dates:"4 – 10 Sep", lat:41.9794, lng:2.8214, color:"#c9a227", booked:false },
+    { num:"13", name:"Sales de Llierca", dates:"31 Aug – 4 Sep", lat:42.2167, lng:2.6167, color:"#c9a227", booked:true },
+    { num:"14", name:"Girona", dates:"4 – 10 Sep", lat:41.9794, lng:2.8214, color:"#c9a227", booked:true },
     { num:"15", name:"Barcelona", dates:"10 – 14 Sep", lat:41.3851, lng:2.1734, color:"#c9a227", booked:false },
     { num:"16", name:"Majorca", dates:"14 – 20 Sep", lat:39.7000, lng:2.9002, color:"#c9a227", booked:false },
     { num:"17", name:"Altea", dates:"20 – 25 Sep", lat:38.6029, lng:-0.0451, color:"#c9a227", booked:false },
@@ -328,8 +328,8 @@
     { coords:dests.slice(0,2).map(d=>[d.lat,d.lng]), color:'#3a6fa8' },
     { coords:dests.slice(1,8).map(d=>[d.lat,d.lng]), color:'#c85a3a' },
     { coords:dests.slice(7,10).map(d=>[d.lat,d.lng]), color:'#888' },
-    { coords:dests.slice(9,13).map(d=>[d.lat,d.lng]), color:'#3a6fa8' },
-    { coords:dests.slice(12).map(d=>[d.lat,d.lng]), color:'#c9a227' },
+    { coords:dests.slice(9,12).map(d=>[d.lat,d.lng]), color:'#3a6fa8' },
+    { coords:dests.slice(11).map(d=>[d.lat,d.lng]), color:'#c9a227' },
   ].forEach(({coords,color}) => L.polyline(coords,{color,weight:2,opacity:0.6}).addTo(map));
 
   // Build marker HTML — text colour adapts to theme
@@ -478,8 +478,8 @@
         <tr class="booked"><td>10</td><td>Geneva <span class="booked-pill">Booked</span></td><td>Fri 14 Aug</td><td>Thu 20 Aug</td><td>6</td><td class="conf">—</td><td>+41 76 708 4738</td></tr>
         <tr class="booked"><td>11</td><td>Annecy <span class="booked-pill">Booked</span></td><td>Thu 20 Aug</td><td>Wed 26 Aug</td><td>6</td><td class="conf">5261442708</td><td>+33 4 26 78 69 84</td></tr>
         <tr class="booked"><td>12</td><td>Grenoble <span class="booked-pill">Booked</span></td><td>Wed 26 Aug</td><td>Mon 31 Aug</td><td>5</td><td class="conf">6931626283</td><td>+33 6 26 76 73 14</td></tr>
-        <tr class="tbd"><td>13</td><td>Collioure <span class="tbd-pill">TBD</span></td><td>Mon 31 Aug</td><td>Fri 4 Sep</td><td>4</td><td class="conf">—</td><td>—</td></tr>
-        <tr class="tbd"><td>14</td><td>Girona <span class="tbd-pill">TBD</span></td><td>Fri 4 Sep</td><td>Thu 10 Sep</td><td>6</td><td class="conf">—</td><td>—</td></tr>
+        <tr class="booked"><td>13</td><td>Sales de Llierca <span class="booked-pill">Booked</span></td><td>Mon 31 Aug</td><td>Fri 4 Sep</td><td>4</td><td class="conf">HM5MJ9EPDP</td><td>+353 86 048 2479</td></tr>
+        <tr class="booked"><td>14</td><td>Girona <span class="booked-pill">Booked</span></td><td>Fri 4 Sep</td><td>Thu 10 Sep</td><td>6</td><td class="conf">ID1847134716</td><td>+34 872 220 440</td></tr>
         <tr class="tbd"><td>15</td><td>Barcelona <span class="tbd-pill">TBD</span></td><td>Thu 10 Sep</td><td>Mon 14 Sep</td><td>4</td><td class="conf">—</td><td>—</td></tr>
         <tr class="tbd"><td>16</td><td>Majorca <span class="tbd-pill">TBD</span></td><td>Mon 14 Sep</td><td>Sun 20 Sep</td><td>6</td><td class="conf">—</td><td>—</td></tr>
         <tr class="tbd"><td>17</td><td>Altea <span class="tbd-pill">TBD</span></td><td>Sun 20 Sep</td><td>Fri 25 Sep</td><td>5</td><td class="conf">—</td><td>—</td></tr>
@@ -1251,7 +1251,7 @@
           <div class="highlight"><div class="highlight-dot"></div><span>Bastille télécabine — oldest urban cable car in the world, rising from a city street to panoramic views of three mountain ranges.</span></div>
           <div class="highlight"><div class="highlight-dot"></div><span>Vercors plateau — spectacular limestone landscape 30 minutes west. The Gorges de la Bourne trail is excellent for families.</span></div>
         </div>
-        <div class="transport-note"><span class="transport-label">Onward →</span><span>Drive south (~4.5hrs) via Montélimar for lunch, then through the Drôme Provençale before dropping down to Collioure. Allow a full day for this drive.</span></div>
+        <div class="transport-note"><span class="transport-label">Onward →</span><span>Drive south-east into Spain (~4.5hrs via A7 and AP-7). Cross the border at La Jonquera and continue south into the Garrotxa region. Sales de Llierca is a small village in the Alta Garrotxa foothills — allow a full day for this drive and arrive in time for dinner.</span></div>
       </div>
     </div>
     <div class="dest-full" style="padding-left: 200px;">
@@ -1287,41 +1287,68 @@
     </div>
   </div>
 
-  <!-- 13 COLLIOURE -->
-  <div class="destination">
-    <div class="dest-header">
-      <div class="dest-meta">
-        <div class="dest-number">13</div>
-        <div class="dest-name">Collioure</div>
-        <div class="dest-region">Roussillon · Occitanie</div>
-        <div class="dest-dates">Mon 31 Aug – Fri 4 Sep</div>
-        <div class="dest-nights">4 nights</div>
-        <div class="dest-tags"><span class="tag">Catalan culture</span><span class="tag">Market</span><span class="tag">Swimming</span><span class="tag">Art history</span><span class="tag">Wine</span></div>
-      </div>
-      <div class="dest-body">
-        <p class="dest-description">Collioure is where France becomes Catalonia — culturally, linguistically, and gastronomically. A fishing village where Matisse and Derain invented Fauvism in 1905. World-famous anchovies, excellent Collioure AOC wine, swimming off the castle rocks, and the Albères mountains behind for serious cycling into Spain. Arriving on a Monday, the Sunday market on Place du 18-Juin falls on day six — a beautiful final morning before crossing into Spain.</p>
-        <div class="dest-highlights">
-          <div class="highlight"><div class="highlight-dot"></div><span>Anchovy tasting at Roque or Desclaux — family-run salting houses open to visitors. Buy a jar to carry into Spain.</span></div>
-          <div class="highlight"><div class="highlight-dot"></div><span>Matisse and Derain walking trail — the town has marked the exact spots where each painting was made.</span></div>
-          <div class="highlight"><div class="highlight-dot"></div><span>Sunday market on Place du 18-Juin — local producers, Catalan food, the best weekly market in the Roussillon.</span></div>
-          <div class="highlight"><div class="highlight-dot"></div><span>Cycling over the Albères into Spain — beautiful, quiet roads crossing the border almost imperceptibly.</span></div>
-        </div>
-        <div class="transport-note"><span class="transport-label">Onward →</span><span>Drive into Spain via Le Perthus (~1hr to Girona). Consider a Cadaqués detour — 45 minutes off the direct route and one of the most beautiful villages on the Spanish coast.</span></div>
-      </div>
-    </div>
-    <div class="dest-full" style="padding-left: 200px;">
-      <div class="booking-card">
-        <div class="booking-card-title">Accommodation · Not yet booked</div>
-        <div class="booking-grid wide"><div class="booking-row"><span class="booking-label">Status</span><span class="booking-value" style="color:var(--ink-faint);">To be confirmed</span></div></div>
-      </div>
-    </div>
-  </div>
 
   <!-- SPAIN -->
   <div class="country-header">
     <div class="country-flag">🇪🇸</div>
     <div class="country-name">Spain</div>
     <div class="country-line"></div>
+  </div>
+
+  <!-- 13 SALES DE LLIERCA -->
+  <div class="destination">
+    <div class="dest-header">
+      <div class="dest-meta">
+        <div class="dest-number">13</div>
+        <div class="dest-name">Sales de Llierca</div>
+        <div class="dest-region">Alta Garrotxa · Catalonia</div>
+        <div class="dest-dates">Mon 31 Aug – Fri 4 Sep</div>
+        <div class="dest-nights">4 nights</div>
+        <div class="dest-tags"><span class="tag">Rural Catalonia</span><span class="tag">Pyrenean foothills</span><span class="tag">Hiking</span><span class="tag">Village life</span><span class="tag">Garrotxa</span></div>
+      </div>
+      <div class="dest-body">
+        <p class="dest-description">Sales de Llierca is a tiny village in the Alta Garrotxa, tucked into the Pyrenean foothills of northern Catalonia about 40km north of Girona. This is deep rural Catalonia — beech forests, dramatic limestone gorges, ancient hermitages, and a pace of life that has barely changed in centuries. After a month of cities, lakes, and Alpine drama, four nights here is a genuine reset: proper countryside, extraordinary hiking in the Garrotxa volcanic zone and the Albera mountains, local farmhouse cooking, and the kind of silence that only comes when you're genuinely off the map. The village sits in the valley of the Fluvià river, and Can Cruanyes is a restored farmhouse that places the family right inside this landscape.</p>
+        <div class="dest-highlights">
+          <div class="highlight"><div class="highlight-dot"></div><span>Garrotxa volcanic zone — the most impressive volcanic landscape in the Iberian Peninsula, 30 minutes south. Beech forests growing from ancient craters, extraordinary hiking for all levels.</span></div>
+          <div class="highlight"><div class="highlight-dot"></div><span>Sant Aniol d'Aguja gorge — one of the great canyon hikes in Catalonia, starting near Sales de Llierca. A full-day adventure through limestone narrows and deep pools.</span></div>
+          <div class="highlight"><div class="highlight-dot"></div><span>Besalú day trip — a perfectly preserved medieval town 15 minutes south with a famous Romanesque bridge. One of the finest small towns in Catalonia and almost entirely overlooked by tourists.</span></div>
+          <div class="highlight"><div class="highlight-dot"></div><span>Cycling the Alta Garrotxa — the roads through this region are quiet, beautifully surfaced, and pass through landscapes that feel nothing like the rest of Spain.</span></div>
+          <div class="highlight"><div class="highlight-dot"></div><span>Local farmhouse eating — this corner of Catalonia has a serious food culture built around local produce. Ask the hosts for their restaurant recommendations; ignore TripAdvisor entirely.</span></div>
+        </div>
+        <div class="transport-note"><span class="transport-label">Onward →</span><span>Drive south to Girona (~45 mins via C-66). Straightforward and beautiful — the road descends from the foothills through olive groves and vineyards into the Empordà plain.</span></div>
+      </div>
+    </div>
+    <div class="dest-full" style="padding-left: 200px;">
+      <div class="booking-card">
+        <div class="booking-card-title">Accommodation · Booked</div>
+        <div class="booking-grid">
+          <div class="booking-row">
+            <span class="booking-label">Address</span>
+            <span class="booking-address">Can Cruanyes<br>17853 Sales de Llierca<br>Girona, Spain</span>
+          </div>
+          <div class="booking-row">
+            <span class="booking-label">Confirmation</span>
+            <span class="booking-value mono">HM5MJ9EPDP</span>
+          </div>
+          <div class="booking-row">
+            <span class="booking-label">Check-in</span>
+            <span class="booking-value">Monday 31 August 2026 · 5:00 pm</span>
+          </div>
+          <div class="booking-row">
+            <span class="booking-label">Check-out</span>
+            <span class="booking-value">Friday 4 September 2026 · 10:00 am</span>
+          </div>
+          <div class="booking-row">
+            <span class="booking-label">Contact</span>
+            <span class="booking-value"><a href="tel:+353860482479">+353 86 048 2479</a></span>
+          </div>
+          <div class="booking-row">
+            <span class="booking-label">Platform</span>
+            <span class="booking-value"><a href="https://www.airbnb.com/rooms/1162063681398022636" target="_blank" rel="noopener">Airbnb</a></span>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- 14 GIRONA -->
@@ -1348,8 +1375,33 @@
     </div>
     <div class="dest-full" style="padding-left: 200px;">
       <div class="booking-card">
-        <div class="booking-card-title">Accommodation · Not yet booked</div>
-        <div class="booking-grid wide"><div class="booking-row"><span class="booking-label">Status</span><span class="booking-value" style="color:var(--ink-faint);">To be confirmed</span></div></div>
+        <div class="booking-card-title">Accommodation · Booked</div>
+        <div class="booking-grid">
+          <div class="booking-row">
+            <span class="booking-label">Address</span>
+            <span class="booking-address">Mismaeficacia<br>Plaça de Catalunya 14<br>17004 Girona, Spain</span>
+          </div>
+          <div class="booking-row">
+            <span class="booking-label">Confirmation</span>
+            <span class="booking-value mono">ID1847134716</span>
+          </div>
+          <div class="booking-row">
+            <span class="booking-label">Check-in</span>
+            <span class="booking-value">Friday 4 September 2026 · 4:00 pm</span>
+          </div>
+          <div class="booking-row">
+            <span class="booking-label">Check-out</span>
+            <span class="booking-value">Thursday 10 September 2026 · 11:00 am</span>
+          </div>
+          <div class="booking-row">
+            <span class="booking-label">Contact</span>
+            <span class="booking-value"><a href="tel:+34872220440">+34 872 220 440</a></span>
+          </div>
+          <div class="booking-row">
+            <span class="booking-label">Platform</span>
+            <span class="booking-value"><a href="https://www.vrbo.com/12123924ha?dateless=true" target="_blank" rel="noopener">VRBO</a></span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
