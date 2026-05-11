@@ -266,7 +266,7 @@
     <h1 class="cover-title">The <em>Long</em><br>Way Round</h1>
     <p class="cover-subtitle">France · Italy · Switzerland · Spain</p>
     <div class="cover-stats">
-      <div class="cover-stat"><span class="cover-stat-val">89</span><span class="cover-stat-lbl">Nights</span></div>
+      <div class="cover-stat"><span class="cover-stat-val">93</span><span class="cover-stat-lbl">Nights</span></div>
       <div class="cover-stat"><span class="cover-stat-val">18</span><span class="cover-stat-lbl">Destinations</span></div>
       <div class="cover-stat"><span class="cover-stat-val">4</span><span class="cover-stat-lbl">Countries</span></div>
       <div class="cover-stat"><span class="cover-stat-val">Jun – Sep</span><span class="cover-stat-lbl">2026</span></div>
@@ -316,10 +316,10 @@
     { num:"12", name:"Grenoble", dates:"26 Aug – 31 Aug", lat:45.1885, lng:5.7245, color:"#3a6fa8", booked:true },
     { num:"13", name:"Sales de Llierca", dates:"31 Aug – 4 Sep", lat:42.2167, lng:2.6167, color:"#c9a227", booked:true },
     { num:"14", name:"Girona", dates:"4 – 10 Sep", lat:41.9794, lng:2.8214, color:"#c9a227", booked:true },
-    { num:"15", name:"Barcelona", dates:"10 – 14 Sep", lat:41.3851, lng:2.1734, color:"#c9a227", booked:false },
-    { num:"16", name:"Cala Sant Vicenç, Mallorca", dates:"10 – 17 Sep", lat:39.9119, lng:3.0642, color:"#c9a227", booked:true },
-    { num:"17", name:"Altea", dates:"17 – 22 Sep", lat:38.6029, lng:-0.0451, color:"#c9a227", booked:false },
-    { num:"18", name:"Valencia", dates:"22 – 26 Sep", lat:39.4699, lng:-0.3763, color:"#c9a227", booked:false },
+    { num:"15", name:"Cala Sant Vicenç, Mallorca", dates:"10 – 17 Sep", lat:39.9119, lng:3.0642, color:"#c9a227", booked:true },
+    { num:"16", name:"Altea", dates:"17 – 23 Sep", lat:38.6029, lng:-0.0451, color:"#c9a227", booked:false },
+    { num:"17", name:"Barcelona", dates:"23 – 26 Sep", lat:41.3851, lng:2.1734, color:"#c9a227", booked:false },
+    { num:"18", name:"Valencia", dates:"26 – 30 Sep", lat:39.4699, lng:-0.3763, color:"#c9a227", booked:false },
   ];
 
   // Route lines
@@ -480,10 +480,11 @@
         <tr class="booked"><td>12</td><td>Grenoble <span class="booked-pill">Booked</span></td><td>Wed 26 Aug</td><td>Mon 31 Aug</td><td>5</td><td class="conf">6931626283</td><td>+33 6 26 76 73 14</td></tr>
         <tr class="booked"><td>13</td><td>Sales de Llierca <span class="booked-pill">Booked</span></td><td>Mon 31 Aug</td><td>Fri 4 Sep</td><td>4</td><td class="conf">HM5MJ9EPDP</td><td>+353 86 048 2479</td></tr>
         <tr class="booked"><td>14</td><td>Girona <span class="booked-pill">Booked</span></td><td>Fri 4 Sep</td><td>Thu 10 Sep</td><td>6</td><td class="conf">ID1847134716</td><td>+34 872 220 440</td></tr>
-        <tr class="tbd"><td>15</td><td>Barcelona <span class="tbd-pill">TBD</span></td><td>Thu 10 Sep</td><td>Mon 14 Sep</td><td>4</td><td class="conf">—</td><td>—</td></tr>
-        <tr class="booked"><td>16</td><td>Cala Sant Vicenç, Mallorca <span class="booked-pill">Booked</span></td><td>Thu 10 Sep</td><td>Thu 17 Sep</td><td>7</td><td class="conf">HA-CH8F4V</td><td>+34 650 789 403</td></tr>
-        <tr class="tbd"><td>17</td><td>Altea <span class="tbd-pill">TBD</span></td><td>Thu 17 Sep</td><td>Tue 22 Sep</td><td>5</td><td class="conf">—</td><td>—</td></tr>
-        <tr class="tbd"><td>18</td><td>Valencia <span class="tbd-pill">TBD</span></td><td>Tue 22 Sep</td><td>Sat 26 Sep</td><td>4</td><td class="conf">—</td><td>—</td></tr>
+        
+        <tr class="booked"><td>15</td><td>Cala Sant Vicenç, Mallorca <span class="booked-pill">Booked</span></td><td>Thu 10 Sep</td><td>Thu 17 Sep</td><td>7</td><td class="conf">HA-CH8F4V</td><td>+34 650 789 403</td></tr>
+        <tr class="tbd"><td>16</td><td>Altea <span class="tbd-pill">TBD</span></td><td>Thu 17 Sep</td><td>Wed 23 Sep</td><td>6</td><td class="conf">—</td><td>—</td></tr>
+        <tr class="tbd"><td>17</td><td>Barcelona <span class="tbd-pill">TBD</span></td><td>Wed 23 Sep</td><td>Sat 26 Sep</td><td>3</td><td class="conf">—</td><td>—</td></tr>
+        <tr class="tbd"><td>18</td><td>Valencia <span class="tbd-pill">TBD</span></td><td>Sat 26 Sep</td><td>Wed 30 Sep</td><td>4</td><td class="conf">—</td><td>—</td></tr>
       </tbody>
     </table>
   </div>
@@ -1406,41 +1407,11 @@
     </div>
   </div>
 
-  <!-- 15 BARCELONA -->
+  <!-- 15 CALA SANT VICENÇ -->
   <div class="destination">
     <div class="dest-header">
       <div class="dest-meta">
         <div class="dest-number">15</div>
-        <div class="dest-name">Barcelona</div>
-        <div class="dest-region">Catalonia · Spain</div>
-        <div class="dest-dates">Thu 10 Sep – Mon 14 Sep</div>
-        <div class="dest-nights">4 nights</div>
-        <div class="dest-tags"><span class="tag">Gaudí</span><span class="tag">Food</span><span class="tag">Architecture</span><span class="tag">Neighbourhoods</span><span class="tag">Beaches</span></div>
-      </div>
-      <div class="dest-body">
-        <p class="dest-description">Four nights is the correct dose of Barcelona — enough to feel the city properly without the urban density exhausting the kids. Arriving in mid-September, the summer crowds have cleared and the city is genuinely more itself. The Sagrada Família is genuinely unlike anything else in the world. But the best of Barcelona is found at neighbourhood level: dinner in Gràcia, morning coffee in El Born, an afternoon on Barceloneta.</p>
-        <div class="dest-highlights">
-          <div class="highlight"><div class="highlight-dot"></div><span>Sagrada Família — book tower access well in advance. The interior in morning light is one of the great architectural experiences in Europe.</span></div>
-          <div class="highlight"><div class="highlight-dot"></div><span>Boqueria at 8am — before the crowds, when it's still a working market. Buy breakfast, eat standing at a counter stool.</span></div>
-          <div class="highlight"><div class="highlight-dot"></div><span>Gràcia for dinner — the most local-feeling of Barcelona's central neighbourhoods. The plaças fill with residents every evening from 8pm.</span></div>
-          <div class="highlight"><div class="highlight-dot"></div><span>Park Güell at opening — arrive when the gates open to get the mosaics and city view before the day-trippers arrive.</span></div>
-        </div>
-        <div class="transport-note"><span class="transport-label">Onward →</span><span>Flight Barcelona → Palma de Mallorca (~50 mins). Very cheap booked ahead. Collect hire car in Palma and head north toward Sóller or Pollença.</span></div>
-      </div>
-    </div>
-    <div class="dest-full" style="padding-left: 200px;">
-      <div class="booking-card">
-        <div class="booking-card-title">Accommodation · Not yet booked</div>
-        <div class="booking-grid wide"><div class="booking-row"><span class="booking-label">Status</span><span class="booking-value" style="color:var(--ink-faint);">To be confirmed</span></div></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 16 MAJORCA -->
-  <div class="destination">
-    <div class="dest-header">
-      <div class="dest-meta">
-        <div class="dest-number">16</div>
         <div class="dest-name">Cala Sant Vicenç</div>
         <div class="dest-region">Mallorca · Balearic Islands</div>
         <div class="dest-dates">Thu 10 Sep – Thu 17 Sep</div>
@@ -1491,15 +1462,15 @@
     </div>
   </div>
 
-  <!-- 17 ALTEA -->
+  <!-- 16 ALTEA -->
   <div class="destination">
     <div class="dest-header">
       <div class="dest-meta">
-        <div class="dest-number">17</div>
+        <div class="dest-number">16</div>
         <div class="dest-name">Altea</div>
         <div class="dest-region">Costa Blanca · Alicante</div>
-        <div class="dest-dates">Thu 17 Sep – Tue 22 Sep</div>
-        <div class="dest-nights">5 nights</div>
+        <div class="dest-dates">Thu 17 Sep – Wed 23 Sep</div>
+        <div class="dest-nights">6 nights</div>
         <div class="dest-tags"><span class="tag">Old town</span><span class="tag">Beaches</span><span class="tag">Art colony</span><span class="tag">Restaurants</span><span class="tag">Cycling</span></div>
       </div>
       <div class="dest-body">
@@ -1510,7 +1481,37 @@
           <div class="highlight"><div class="highlight-dot"></div><span>Jávea day trip — 30 minutes north. The best cala swimming on the Costa Blanca at Granadella beach. Arrive early, stay all day.</span></div>
           <div class="highlight"><div class="highlight-dot"></div><span>Local rice dishes — arròs amb fesols i naps is the regional speciality. Order it at lunch.</span></div>
         </div>
-        <div class="transport-note"><span class="transport-label">Onward →</span><span>Drive or train to Valencia (~1.5hrs). The coast road north through Benidorm is worth one look, then on into the city.</span></div>
+        <div class="transport-note"><span class="transport-label">Onward →</span><span>Drive north to Barcelona (~4hrs via A-7). Stop in Tarragona for lunch — Roman amphitheatre above the sea, excellent local seafood, completely missed by most tourists rushing between Barcelona and Valencia.</span></div>
+      </div>
+    </div>
+    <div class="dest-full" style="padding-left: 200px;">
+      <div class="booking-card">
+        <div class="booking-card-title">Accommodation · Not yet booked</div>
+        <div class="booking-grid wide"><div class="booking-row"><span class="booking-label">Status</span><span class="booking-value" style="color:var(--ink-faint);">To be confirmed</span></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 17 BARCELONA -->
+  <div class="destination">
+    <div class="dest-header">
+      <div class="dest-meta">
+        <div class="dest-number">17</div>
+        <div class="dest-name">Barcelona</div>
+        <div class="dest-region">Catalonia · Spain</div>
+        <div class="dest-dates">Wed 23 Sep – Sat 26 Sep</div>
+        <div class="dest-nights">4 nights</div>
+        <div class="dest-tags"><span class="tag">Gaudí</span><span class="tag">Food</span><span class="tag">Architecture</span><span class="tag">Neighbourhoods</span><span class="tag">Beaches</span></div>
+      </div>
+      <div class="dest-body">
+        <p class="dest-description">Four nights is the correct dose of Barcelona — enough to feel the city properly without the urban density exhausting the kids. Arriving in late September, the summer is definitively over and the city is fully itself — locals back, tourists gone, the neighbourhoods humming with real life. The Sagrada Família is genuinely unlike anything else in the world. But the best of Barcelona is found at neighbourhood level: dinner in Gràcia, morning coffee in El Born, an afternoon on Barceloneta.</p>
+        <div class="dest-highlights">
+          <div class="highlight"><div class="highlight-dot"></div><span>Sagrada Família — book tower access well in advance. The interior in morning light is one of the great architectural experiences in Europe.</span></div>
+          <div class="highlight"><div class="highlight-dot"></div><span>Boqueria at 8am — before the crowds, when it's still a working market. Buy breakfast, eat standing at a counter stool.</span></div>
+          <div class="highlight"><div class="highlight-dot"></div><span>Gràcia for dinner — the most local-feeling of Barcelona's central neighbourhoods. The plaças fill with residents every evening from 8pm.</span></div>
+          <div class="highlight"><div class="highlight-dot"></div><span>Park Güell at opening — arrive when the gates open to get the mosaics and city view before the day-trippers arrive.</span></div>
+        </div>
+        <div class="transport-note"><span class="transport-label">Onward →</span><span>Drive or train to Valencia (~3.5hrs). The final leg of the trip — the AP-7 south through Tarragona and the Valencian coast. Arrive in time for dinner in Ruzafa.</span></div>
       </div>
     </div>
     <div class="dest-full" style="padding-left: 200px;">
@@ -1528,7 +1529,7 @@
         <div class="dest-number">18</div>
         <div class="dest-name">Valencia</div>
         <div class="dest-region">Comunitat Valenciana · Spain</div>
-        <div class="dest-dates">Tue 22 Sep – Sat 26 Sep</div>
+        <div class="dest-dates">Sat 26 Sep – Wed 30 Sep</div>
         <div class="dest-nights">4 nights</div>
         <div class="dest-tags"><span class="tag">Paella</span><span class="tag">Mercado Central</span><span class="tag">Architecture</span><span class="tag">Beaches</span><span class="tag">Ruzafa</span></div>
       </div>
@@ -1552,7 +1553,7 @@
   </div>
 
   <div class="footer">
-    <p>89 nights · 18 destinations · 4 countries · 29 June – 26 September 2026</p>
+    <p>93 nights · 18 destinations · 4 countries · 29 June – 30 September 2026</p>
     <p style="margin-top:0.5rem;font-size:0.85rem;">Living document · updated as bookings are confirmed</p>
   </div>
 
