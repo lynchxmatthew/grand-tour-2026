@@ -13,7 +13,7 @@
 <!-- Open Graph — controls how the link looks when shared on iMessage, WhatsApp, etc. -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="The Long Way Round — A Family Grand Tour 2026">
-<meta property="og:description" content="96 nights. 18 destinations. 4 countries. France · Italy · Switzerland · Spain.">
+<meta property="og:description" content="94 nights. 18 destinations. 4 countries. France · Italy · Switzerland · Spain.">
 <meta property="og:image" content="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1200&q=80">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -21,7 +21,7 @@
 <!-- Twitter card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="The Long Way Round — Grand Tour 2026">
-<meta name="twitter:description" content="96 nights. 18 destinations. 4 countries. France · Italy · Switzerland · Spain.">
+<meta name="twitter:description" content="94 nights. 18 destinations. 4 countries. France · Italy · Switzerland · Spain.">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1200&q=80">
 
 <!-- Fonts -->
@@ -266,10 +266,10 @@
     <h1 class="cover-title">The <em>Long</em><br>Way Round</h1>
     <p class="cover-subtitle">France · Italy · Switzerland · Spain</p>
     <div class="cover-stats">
-      <div class="cover-stat"><span class="cover-stat-val">96</span><span class="cover-stat-lbl">Nights</span></div>
+      <div class="cover-stat"><span class="cover-stat-val">94</span><span class="cover-stat-lbl">Nights</span></div>
       <div class="cover-stat"><span class="cover-stat-val">18</span><span class="cover-stat-lbl">Destinations</span></div>
       <div class="cover-stat"><span class="cover-stat-val">4</span><span class="cover-stat-lbl">Countries</span></div>
-      <div class="cover-stat"><span class="cover-stat-val">Jun – Sep</span><span class="cover-stat-lbl">2026</span></div>
+      <div class="cover-stat"><span class="cover-stat-val">Jun – Oct</span><span class="cover-stat-lbl">2026</span></div>
     </div>
     <div class="cover-route">New York → Melbourne · via the Riviera, the Dolomites, the Alps &amp; the Mediterranean</div>
   </div>
@@ -277,7 +277,7 @@
 
 <!-- EMBEDDED MAP -->
 <div class="map-section">
-  <div class="map-label">29 June – 23 September 2026</div>
+  <div class="map-label">29 June – 1 October 2026</div>
   <div id="embedded-map" class="map-section-inner"></div>
   <div class="map-legend" id="mapLegend">
     <div class="map-legend-item"><div class="ml-dot" style="background:#3a6fa8;"></div>France</div>
@@ -318,9 +318,17 @@
     { num:"14", name:"Girona", dates:"4 – 10 Sep", lat:41.9794, lng:2.8214, color:"#c9a227", booked:true },
     { num:"15", name:"Cala Sant Vicenç, Mallorca", dates:"10 – 17 Sep", lat:39.9119, lng:3.0642, color:"#c9a227", booked:true },
     { num:"16", name:"Cala Millor, Mallorca", dates:"17 – 23 Sep", lat:39.5894, lng:3.3903, color:"#c9a227", booked:true },
-    { num:"17", name:"Altea", dates:"23 – 29 Sep", lat:38.6029, lng:-0.0451, color:"#c9a227", booked:false },
-    { num:"18", name:"Valencia", dates:"29 Sep – 3 Oct", lat:39.4699, lng:-0.3763, color:"#c9a227", booked:false },
+    { num:"17", name:"Valencia", dates:"23 – 27 Sep", lat:39.4647, lng:-0.3772, color:"#c9a227", booked:true },
+    { num:"18", name:"Altea", dates:"27 Sep – 1 Oct", lat:38.6029, lng:-0.0451, color:"#c9a227", booked:false },
   ];
+
+  // Madrid departure marker
+  const madridIcon = L.divIcon({
+    html:`<div style="background:rgba(201,149,107,0.12);border:1px dashed rgba(201,149,107,0.5);border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:500;font-family:sans-serif;color:rgba(201,149,107,0.7);">MAD</div>`,
+    className:'', iconSize:[26,26], iconAnchor:[13,13]
+  });
+  L.marker([40.4168,-3.7038],{icon:madridIcon}).addTo(map)
+    .bindPopup('<div class="mp-inner"><div class="mp-name">Madrid</div><div class="mp-dates">Thu 1 Oct 2026</div><span class="mp-tbd">Departure</span><div style="font-size:11px;color:rgba(250,248,244,0.45);margin-top:6px;">MAD → DOH → MEL · QR · 9F6RK3</div></div>',{maxWidth:230,closeButton:false});
 
   // Route lines
   L.polyline(dests.map(d=>[d.lat,d.lng]), { color:'rgba(201,149,107,0.2)', weight:1.5, dashArray:'3,8' }).addTo(map);
@@ -359,7 +367,10 @@
     markers.push({marker:m, dest:d});
   });
 
-  map.fitBounds(L.latLngBounds(dests.map(d=>[d.lat,d.lng])),{padding:[40,40]});
+  // Dashed line Altea → Madrid
+  L.polyline([[38.6029,-0.0451],[40.4168,-3.7038]],{color:'rgba(201,149,107,0.35)',weight:1.5,dashArray:'4,8'}).addTo(map);
+
+  map.fitBounds(L.latLngBounds([...dests.map(d=>[d.lat,d.lng]),[[40.4168,-3.7038]]]),{padding:[40,40]});
 
   // Legend theming
   function updateMapTheme(isLight) {
@@ -436,7 +447,7 @@
         </tr>
         <tr class="booked">
           <td>01</td>
-          <td>Villefranche-sur-Mer <span class="booked-pill">Booked</span></td>
+          <td><a href="#dest-01" style="color:inherit;text-decoration:none;">Villefranche-sur-Mer</a> <span class="booked-pill">Booked</span></td>
           <td>Mon 29 Jun</td>
           <td>Sun 5 Jul</td>
           <td>6</td>
@@ -445,7 +456,7 @@
         </tr>
         <tr class="booked">
           <td>02</td>
-          <td>Menton <span class="booked-pill">Booked</span></td>
+          <td><a href="#dest-02" style="color:inherit;text-decoration:none;">Menton</a> <span class="booked-pill">Booked</span></td>
           <td>Sun 5 Jul</td>
           <td>Wed 8 Jul</td>
           <td>3</td>
@@ -454,7 +465,7 @@
         </tr>
         <tr class="booked">
           <td>03</td>
-          <td>Nervi, Genoa <span class="booked-pill">Booked</span></td>
+          <td><a href="#dest-03" style="color:inherit;text-decoration:none;">Nervi, Genoa</a> <span class="booked-pill">Booked</span></td>
           <td>Wed 8 Jul</td>
           <td>Mon 13 Jul</td>
           <td>5</td>
@@ -463,28 +474,29 @@
         </tr>
         <tr class="booked">
           <td>04</td>
-          <td>Santa Margherita Ligure <span class="booked-pill">Booked</span></td>
+          <td><a href="#dest-04" style="color:inherit;text-decoration:none;">Santa Margherita Ligure</a> <span class="booked-pill">Booked</span></td>
           <td>Mon 13 Jul</td>
           <td>Sat 18 Jul</td>
           <td>5</td>
           <td class="conf">5404905388</td>
           <td>+39 347 716 5338</td>
         </tr>
-        <tr class="booked"><td>05</td><td>Lago d'Iseo <span class="booked-pill">Booked</span></td><td>Sat 18 Jul</td><td>Thu 23 Jul</td><td>5</td><td class="conf">HA-2G5TZ7</td><td>+39 391 491 4984</td></tr>
-        <tr class="booked"><td>06</td><td>Cortina d'Ampezzo <span class="booked-pill">Booked</span></td><td>Thu 23 Jul</td><td>Tue 28 Jul</td><td>5</td><td class="conf">HA-VH1J3B</td><td>+39 349 595 6288</td></tr>
-        <tr class="booked"><td>07</td><td>Bormio <span class="booked-pill">Booked</span></td><td>Tue 28 Jul</td><td>Sun 2 Aug</td><td>5</td><td class="conf">6724395695</td><td>+39 375 674 7094</td></tr>
-        <tr class="booked"><td>08</td><td>Lago di Como <span class="booked-pill">Booked</span></td><td>Sun 2 Aug</td><td>Sat 8 Aug</td><td>6</td><td class="conf">146141567</td><td>+39 320 223 4202</td></tr>
-        <tr class="booked"><td>09</td><td>Jungfrau Region Hike <span class="booked-pill">Booked</span></td><td>Sat 8 Aug</td><td>Thu 13 Aug</td><td>5</td><td class="conf">Multiple</td><td>See below</td></tr>
-        <tr class="booked"><td>10</td><td>Geneva <span class="booked-pill">Booked</span></td><td>Fri 14 Aug</td><td>Thu 20 Aug</td><td>6</td><td class="conf">—</td><td>+41 76 708 4738</td></tr>
-        <tr class="booked"><td>11</td><td>Annecy <span class="booked-pill">Booked</span></td><td>Thu 20 Aug</td><td>Wed 26 Aug</td><td>6</td><td class="conf">5261442708</td><td>+33 4 26 78 69 84</td></tr>
-        <tr class="booked"><td>12</td><td>Grenoble <span class="booked-pill">Booked</span></td><td>Wed 26 Aug</td><td>Mon 31 Aug</td><td>5</td><td class="conf">6931626283</td><td>+33 6 26 76 73 14</td></tr>
-        <tr class="booked"><td>13</td><td>Sales de Llierca <span class="booked-pill">Booked</span></td><td>Mon 31 Aug</td><td>Fri 4 Sep</td><td>4</td><td class="conf">HM5MJ9EPDP</td><td>+353 86 048 2479</td></tr>
-        <tr class="booked"><td>14</td><td>Girona <span class="booked-pill">Booked</span></td><td>Fri 4 Sep</td><td>Thu 10 Sep</td><td>6</td><td class="conf">ID1847134716</td><td>+34 872 220 440</td></tr>
+        <tr class="booked"><td>05</td><td><a href="#dest-05" style="color:inherit;text-decoration:none;">Lago d'Iseo</a> <span class="booked-pill">Booked</span></td><td>Sat 18 Jul</td><td>Thu 23 Jul</td><td>5</td><td class="conf">HA-2G5TZ7</td><td>+39 391 491 4984</td></tr>
+        <tr class="booked"><td>06</td><td><a href="#dest-06" style="color:inherit;text-decoration:none;">Cortina d'Ampezzo</a> <span class="booked-pill">Booked</span></td><td>Thu 23 Jul</td><td>Tue 28 Jul</td><td>5</td><td class="conf">HA-VH1J3B</td><td>+39 349 595 6288</td></tr>
+        <tr class="booked"><td>07</td><td><a href="#dest-07" style="color:inherit;text-decoration:none;">Bormio</a> <span class="booked-pill">Booked</span></td><td>Tue 28 Jul</td><td>Sun 2 Aug</td><td>5</td><td class="conf">6724395695</td><td>+39 375 674 7094</td></tr>
+        <tr class="booked"><td>08</td><td><a href="#dest-08" style="color:inherit;text-decoration:none;">Lago di Como</a> <span class="booked-pill">Booked</span></td><td>Sun 2 Aug</td><td>Sat 8 Aug</td><td>6</td><td class="conf">146141567</td><td>+39 320 223 4202</td></tr>
+        <tr class="booked"><td>09</td><td><a href="#dest-09" style="color:inherit;text-decoration:none;">Jungfrau Region Hike</a> <span class="booked-pill">Booked</span></td><td>Sat 8 Aug</td><td>Thu 13 Aug</td><td>5</td><td class="conf">Multiple</td><td>See below</td></tr>
+        <tr class="booked"><td>10</td><td><a href="#dest-10" style="color:inherit;text-decoration:none;">Geneva</a> <span class="booked-pill">Booked</span></td><td>Fri 14 Aug</td><td>Thu 20 Aug</td><td>6</td><td class="conf">—</td><td>+41 76 708 4738</td></tr>
+        <tr class="booked"><td>11</td><td><a href="#dest-11" style="color:inherit;text-decoration:none;">Annecy</a> <span class="booked-pill">Booked</span></td><td>Thu 20 Aug</td><td>Wed 26 Aug</td><td>6</td><td class="conf">5261442708</td><td>+33 4 26 78 69 84</td></tr>
+        <tr class="booked"><td>12</td><td><a href="#dest-12" style="color:inherit;text-decoration:none;">Grenoble</a> <span class="booked-pill">Booked</span></td><td>Wed 26 Aug</td><td>Mon 31 Aug</td><td>5</td><td class="conf">6931626283</td><td>+33 6 26 76 73 14</td></tr>
+        <tr class="booked"><td>13</td><td><a href="#dest-13" style="color:inherit;text-decoration:none;">Sales de Llierca</a> <span class="booked-pill">Booked</span></td><td>Mon 31 Aug</td><td>Fri 4 Sep</td><td>4</td><td class="conf">HM5MJ9EPDP</td><td>+353 86 048 2479</td></tr>
+        <tr class="booked"><td>14</td><td><a href="#dest-14" style="color:inherit;text-decoration:none;">Girona</a> <span class="booked-pill">Booked</span></td><td>Fri 4 Sep</td><td>Thu 10 Sep</td><td>6</td><td class="conf">ID1847134716</td><td>+34 872 220 440</td></tr>
         
-        <tr class="booked"><td>15</td><td>Cala Sant Vicenç, Mallorca <span class="booked-pill">Booked</span></td><td>Thu 10 Sep</td><td>Thu 17 Sep</td><td>7</td><td class="conf">HA-CH8F4V</td><td>+34 650 789 403</td></tr>
-        <tr class="booked"><td>16</td><td>Cala Millor, Mallorca <span class="booked-pill">Booked</span></td><td>Thu 17 Sep</td><td>Wed 23 Sep</td><td>6</td><td class="conf">P2243744</td><td>+34 971 585 805</td></tr>
-        <tr class="tbd"><td>17</td><td>Altea <span class="tbd-pill">TBD</span></td><td>Wed 23 Sep</td><td>Tue 29 Sep</td><td>6</td><td class="conf">—</td><td>—</td></tr>
-        <tr class="tbd"><td>18</td><td>Valencia <span class="tbd-pill">TBD</span></td><td>Tue 29 Sep</td><td>Sat 3 Oct</td><td>4</td><td class="conf">—</td><td>—</td></tr>
+        <tr class="booked"><td>15</td><td><a href="#dest-15" style="color:inherit;text-decoration:none;">Cala Sant Vicenç, Mallorca</a> <span class="booked-pill">Booked</span></td><td>Thu 10 Sep</td><td>Thu 17 Sep</td><td>7</td><td class="conf">HA-CH8F4V</td><td>+34 650 789 403</td></tr>
+        <tr class="booked"><td>16</td><td><a href="#dest-16" style="color:inherit;text-decoration:none;">Cala Millor, Mallorca</a> <span class="booked-pill">Booked</span></td><td>Thu 17 Sep</td><td>Wed 23 Sep</td><td>6</td><td class="conf">P2243744</td><td>+34 971 585 805</td></tr>
+        <tr class="booked"><td>17</td><td><a href="#dest-17" style="color:inherit;text-decoration:none;">Valencia</a> <span class="booked-pill">Booked</span></td><td>Wed 23 Sep</td><td>Sun 27 Sep</td><td>4</td><td class="conf">HMCRE9Z4ZF</td><td>+34 613 35 61 85</td></tr>
+        <tr class="tbd"><td>18</td><td><a href="#dest-18" style="color:inherit;text-decoration:none;">Altea</a> <span class="tbd-pill">TBD</span></td><td>Sun 27 Sep</td><td>Thu 1 Oct</td><td>4</td><td class="conf">—</td><td>—</td></tr>
+        <tr class="booked"><td>—</td><td>Flight Madrid → Doha → Melbourne <span class="booked-pill">Booked</span></td><td>Thu 1 Oct</td><td>Fri 2 Oct</td><td>—</td><td class="conf">9F6RK3</td><td>—</td></tr>
       </tbody>
     </table>
   </div>
@@ -497,7 +509,7 @@
   </div>
 
   <!-- 01 VILLEFRANCHE -->
-  <div class="destination">
+  <div class="destination" id="dest-01">
     <div class="dest-header">
       <div class="dest-meta">
         <div class="dest-number">01</div>
@@ -554,7 +566,7 @@
   </div>
 
   <!-- 02 MENTON -->
-  <div class="destination">
+  <div class="destination" id="dest-02">
     <div class="dest-header">
       <div class="dest-meta">
         <div class="dest-number">02</div>
@@ -617,7 +629,7 @@
   </div>
 
   <!-- 03 NERVI -->
-  <div class="destination">
+  <div class="destination" id="dest-03">
     <div class="dest-header">
       <div class="dest-meta">
         <div class="dest-number">03</div>
@@ -674,7 +686,7 @@
   </div>
 
   <!-- 04 SANTA MARGHERITA -->
-  <div class="destination">
+  <div class="destination" id="dest-04">
     <div class="dest-header">
       <div class="dest-meta">
         <div class="dest-number">04</div>
@@ -730,7 +742,7 @@
   </div>
 
   <!-- 05 LAGO D'ISEO -->
-  <div class="destination">
+  <div class="destination" id="dest-05">
     <div class="dest-header">
       <div class="dest-meta">
         <div class="dest-number">05</div>
@@ -786,7 +798,7 @@
   </div>
 
   <!-- 06 CORTINA -->
-  <div class="destination">
+  <div class="destination" id="dest-06">
     <div class="dest-header">
       <div class="dest-meta">
         <div class="dest-number">06</div>
@@ -894,7 +906,7 @@
   </div>
 
   <!-- 08 CARATE URIO -->
-  <div class="destination">
+  <div class="destination" id="dest-08">
     <div class="dest-header">
       <div class="dest-meta">
         <div class="dest-number">08</div>
@@ -957,7 +969,7 @@
   </div>
 
   <!-- 09 JUNGFRAU REGION HIKE -->
-  <div class="destination">
+  <div class="destination" id="dest-09">
     <div class="dest-header">
       <div class="dest-meta">
         <div class="dest-number">09</div>
@@ -1125,7 +1137,7 @@
   </div>
 
   <!-- 10 GENEVA -->
-  <div class="destination">
+  <div class="destination" id="dest-10">
     <div class="dest-header">
       <div class="dest-meta">
         <div class="dest-number">10</div>
@@ -1179,7 +1191,7 @@
   </div>
 
   <!-- 11 ANNECY -->
-  <div class="destination">
+  <div class="destination" id="dest-11">
     <div class="dest-header">
       <div class="dest-meta">
         <div class="dest-number">11</div>
@@ -1234,7 +1246,7 @@
   </div>
 
   <!-- 12 GRENOBLE -->
-  <div class="destination">
+  <div class="destination" id="dest-12">
     <div class="dest-header">
       <div class="dest-meta">
         <div class="dest-number">12</div>
@@ -1297,7 +1309,7 @@
   </div>
 
   <!-- 13 SALES DE LLIERCA -->
-  <div class="destination">
+  <div class="destination" id="dest-13">
     <div class="dest-header">
       <div class="dest-meta">
         <div class="dest-number">13</div>
@@ -1353,7 +1365,7 @@
   </div>
 
   <!-- 14 GIRONA -->
-  <div class="destination">
+  <div class="destination" id="dest-14">
     <div class="dest-header">
       <div class="dest-meta">
         <div class="dest-number">14</div>
@@ -1408,7 +1420,7 @@
   </div>
 
   <!-- 15 CALA SANT VICENÇ -->
-  <div class="destination">
+  <div class="destination" id="dest-15">
     <div class="dest-header">
       <div class="dest-meta">
         <div class="dest-number">15</div>
@@ -1463,7 +1475,7 @@
   </div>
 
     <!-- 16 CALA MILLOR -->
-  <div class="destination">
+  <div class="destination" id="dest-16">
     <div class="dest-header">
       <div class="dest-meta">
         <div class="dest-number">16</div>
@@ -1482,7 +1494,7 @@
           <div class="highlight"><div class="highlight-dot"></div><span>Calas de Llevant — the wild, largely car-free cala country north of Cala Millor toward Artà. Some of the most unspoiled swimming on the island, reached by short hikes through pine and maquis.</span></div>
           <div class="highlight"><div class="highlight-dot"></div><span>Cycling the east coast — the roads between Artà, Capdepera, and the northeast calas are among the quietest and most beautiful on the island. A perfect morning ride before the beach.</span></div>
         </div>
-        <div class="transport-note"><span class="transport-label">Onward →</span><span>Ferry Palma → Dénia (~3.5hrs via Baleària Lines). Drive from Cala Millor to Palma (~1hr). Stop in Dénia for lunch — excellent arròs a banda — before driving south to Altea (~45 mins).</span></div>
+        <div class="transport-note"><span class="transport-label">Onward →</span><span>Ferry Palma → Dénia (~3.5hrs via Baleària Lines). Drive from Cala Millor to Palma (~1hr). Stop in Dénia for lunch — excellent arròs a banda — before driving north to Valencia (~1.5hrs).</span></div>
       </div>
     </div>
     <div class="dest-full" style="padding-left: 200px;">
@@ -1518,14 +1530,69 @@
     </div>
   </div>
 
-  <!-- 17 ALTEA -->
-  <div class="destination">
+  <!-- 17 VALENCIA -->
+  <div class="destination" id="dest-17">
     <div class="dest-header">
       <div class="dest-meta">
         <div class="dest-number">17</div>
+        <div class="dest-name">Valencia</div>
+        <div class="dest-region">Comunitat Valenciana · Spain</div>
+        <div class="dest-dates">Wed 23 Sep – Sun 27 Sep</div>
+        <div class="dest-nights">4 nights</div>
+        <div class="dest-tags"><span class="tag">Paella</span><span class="tag">Mercado Central</span><span class="tag">Architecture</span><span class="tag">Beaches</span><span class="tag">Ruzafa</span></div>
+      </div>
+      <div class="dest-body">
+        <p class="dest-description">Valencia arrives mid-trip in the best possible way — not as a finale but as a pause before the final coastal days in Altea. A beautiful, walkable city still largely experienced on its own terms, with the heat softened in late September, the city in full local swing, and the light extraordinary. This is where paella was invented, and the Valencian version — cooked over orange wood, eaten at lunch — bears no resemblance to anything encountered elsewhere. Four days here before the quiet of the Costa Blanca and then the drive north to Madrid.</p>
+        <div class="dest-highlights">
+          <div class="highlight"><div class="highlight-dot"></div><span>Mercado Central — the finest covered market in Spain. Go every morning. The seafood counter is extraordinary.</span></div>
+          <div class="highlight"><div class="highlight-dot"></div><span>Paella at La Pepica or Casa Roberto — cooked correctly, eaten near the beach at lunch. A ritual worth observing.</span></div>
+          <div class="highlight"><div class="highlight-dot"></div><span>City of Arts and Sciences — Calatrava's complex is genuinely spectacular. The Oceanogràfic is a full half-day for the kids.</span></div>
+          <div class="highlight"><div class="highlight-dot"></div><span>Ruzafa neighbourhood — the most interesting part of Valencia for cafés, restaurants, shops, and evening street life.</span></div>
+        </div>
+        <div class="transport-note"><span class="transport-label">Onward →</span><span>Drive south to Altea (~1.5hrs via the AP-7 coast road). A short, easy transfer — arrive in time for a slow lunch in the old town before the final days of the trip begin.</span></div>
+      </div>
+    </div>
+    <div class="dest-full" style="padding-left: 200px;">
+      <div class="booking-card">
+        <div class="booking-card-title">Accommodation · Booked</div>
+        <div class="booking-grid">
+          <div class="booking-row">
+            <span class="booking-label">Address</span>
+            <span class="booking-address">Passeig de Russafa 8<br>46002 Valencia, Spain</span>
+          </div>
+          <div class="booking-row">
+            <span class="booking-label">Confirmation</span>
+            <span class="booking-value mono">HMCRE9Z4ZF</span>
+          </div>
+          <div class="booking-row">
+            <span class="booking-label">Check-in</span>
+            <span class="booking-value">Wednesday 23 September 2026 · 3:00 pm</span>
+          </div>
+          <div class="booking-row">
+            <span class="booking-label">Check-out</span>
+            <span class="booking-value">Sunday 27 September 2026 · 10:00 am</span>
+          </div>
+          <div class="booking-row">
+            <span class="booking-label">Contact</span>
+            <span class="booking-value"><a href="tel:+34613356185">+34 613 35 61 85</a></span>
+          </div>
+          <div class="booking-row">
+            <span class="booking-label">Platform</span>
+            <span class="booking-value"><a href="https://www.airbnb.com/rooms/1263721788104112082" target="_blank" rel="noopener">Airbnb</a></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 18 ALTEA -->
+  <div class="destination" id="dest-18">
+    <div class="dest-header">
+      <div class="dest-meta">
+        <div class="dest-number">18</div>
         <div class="dest-name">Altea</div>
         <div class="dest-region">Costa Blanca · Alicante</div>
-        <div class="dest-dates">Wed 23 Sep – Tue 29 Sep</div>
+        <div class="dest-dates">Sun 27 Sep – Thu 1 Oct</div>
         <div class="dest-nights">6 nights</div>
         <div class="dest-tags"><span class="tag">Old town</span><span class="tag">Beaches</span><span class="tag">Art colony</span><span class="tag">Restaurants</span><span class="tag">Cycling</span></div>
       </div>
@@ -1548,38 +1615,70 @@
     </div>
   </div>
 
-  <!-- 18 VALENCIA -->
-  <div class="destination">
+
+  <!-- OUTBOUND FLIGHTS -->
+  <div class="destination" style="border-bottom: none;">
     <div class="dest-header">
       <div class="dest-meta">
-        <div class="dest-number">18</div>
-        <div class="dest-name">Valencia</div>
-        <div class="dest-region">Comunitat Valenciana · Spain</div>
-        <div class="dest-dates">Tue 29 Sep – Sat 3 Oct</div>
-        <div class="dest-nights">4 nights</div>
-        <div class="dest-tags"><span class="tag">Paella</span><span class="tag">Mercado Central</span><span class="tag">Architecture</span><span class="tag">Beaches</span><span class="tag">Ruzafa</span></div>
+        <div class="dest-number" style="font-size:2rem;">✈</div>
+        <div class="dest-name">Return Flights</div>
+        <div class="dest-region">Madrid → Doha → Melbourne</div>
+        <div class="dest-dates">Thu 1 Oct – Fri 2 Oct</div>
+        <div class="dest-nights">Homeward bound</div>
       </div>
       <div class="dest-body">
-        <p class="dest-description">Valencia is the perfect final chapter — a beautiful, walkable city still largely experienced on its own terms. In late September the heat has softened, the city is in full local swing, and the light is extraordinary. This is where paella was invented, and the Valencian version — cooked over orange wood, eaten at lunch — is an entirely different dish from anything encountered elsewhere. And then, after thirteen weeks, a flight home.</p>
-        <div class="dest-highlights">
-          <div class="highlight"><div class="highlight-dot"></div><span>Mercado Central — the finest covered market in Spain. Go every morning. The seafood counter is extraordinary.</span></div>
-          <div class="highlight"><div class="highlight-dot"></div><span>Paella at La Pepica or Casa Roberto — cooked correctly, eaten near the beach at lunch. A ritual worth observing.</span></div>
-          <div class="highlight"><div class="highlight-dot"></div><span>City of Arts and Sciences — Calatrava's complex is genuinely spectacular. The Oceanogràfic is a full half-day for the kids.</span></div>
-          <div class="highlight"><div class="highlight-dot"></div><span>Ruzafa neighbourhood — the most interesting part of Valencia for cafés, restaurants, shops, and evening street life.</span></div>
-        </div>
-        <div class="transport-note"><span class="transport-label">Onward →</span><span>Flight Valencia → Melbourne. Home from one of the best possible places to end thirteen weeks in Europe.</span></div>
+        <p class="dest-description">Drive from Altea to Madrid (~3.5hrs), then fly Qatar Airways via Doha to Melbourne. The long way home after fourteen weeks across Europe.</p>
       </div>
     </div>
     <div class="dest-full" style="padding-left: 200px;">
-      <div class="booking-card">
-        <div class="booking-card-title">Accommodation · Not yet booked</div>
-        <div class="booking-grid wide"><div class="booking-row"><span class="booking-label">Note</span><span class="booking-value" style="color:var(--ink-faint);">Return flight to Melbourne to be booked. Valencia departure Monday 21 September 2026.</span></div></div>
+      <div class="booking-card-multi">
+        <div class="booking-card-multi-title">Flights · Confirmed · Confirmation: 9F6RK3</div>
+        <div class="booking-night">
+          <div class="booking-night-header">
+            <span class="booking-night-label">Flight 1 · Madrid → Doha</span>
+            <span class="booking-night-dates">Thu 1 Oct → Fri 2 Oct 2026</span>
+          </div>
+          <div class="booking-grid">
+            <div class="booking-row">
+              <span class="booking-label">Route</span>
+              <span class="booking-value">MAD → DOH</span>
+            </div>
+            <div class="booking-row">
+              <span class="booking-label">Confirmation</span>
+              <span class="booking-value mono">9F6RK3</span>
+            </div>
+            <div class="booking-row">
+              <span class="booking-label">Airline</span>
+              <span class="booking-value">Qatar Airways</span>
+            </div>
+          </div>
+        </div>
+        <div class="booking-night">
+          <div class="booking-night-header">
+            <span class="booking-night-label">Flight 2 · Doha → Melbourne</span>
+            <span class="booking-night-dates">Fri 2 Oct 2026</span>
+          </div>
+          <div class="booking-grid">
+            <div class="booking-row">
+              <span class="booking-label">Route</span>
+              <span class="booking-value">DOH → MEL</span>
+            </div>
+            <div class="booking-row">
+              <span class="booking-label">Confirmation</span>
+              <span class="booking-value mono">9F6RK3</span>
+            </div>
+            <div class="booking-row">
+              <span class="booking-label">Airline</span>
+              <span class="booking-value">Qatar Airways</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
   <div class="footer">
-    <p>96 nights · 18 destinations · 4 countries · 29 June – 3 October 2026</p>
+    <p>94 nights · 18 destinations · 4 countries · 29 June – 1 October 2026</p>
     <p style="margin-top:0.5rem;font-size:0.85rem;">Living document · updated as bookings are confirmed</p>
   </div>
 
