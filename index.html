@@ -210,7 +210,7 @@
   .footer p { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-style: italic; color: var(--ink-faint); }
 
   /* DEST BODY FULL WIDTH */
-  .dest-full { margin-top: 1.5rem; }
+  .dest-full { margin-top: 1.5rem; padding-left: 200px; }
 
   /* MAP SECTION */
   .map-section { width: 100%; height: 100vh; position: relative; border-bottom: 0.5px solid var(--border); }
@@ -296,7 +296,7 @@
   const LIGHT_TILES = 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png';
   const ATTRIB = '&copy; OpenStreetMap &copy; CARTO';
 
-  const map = L.map('embedded-map', { center:[44.5,8.0], zoom:5, zoomControl:true, scrollWheelZoom:false });
+  const map = L.map('embedded-map', { center:[44.5,8.0], zoom:5, zoomControl:true, scrollWheelZoom:false, tap:false });
 
   // Start with dark tiles (default theme)
   let tileLayer = L.tileLayer(DARK_TILES, { attribution:ATTRIB, subdomains:'abcd', maxZoom:19 }).addTo(map);
@@ -319,7 +319,7 @@
     { num:"15", name:"Cala Sant Vicenç, Mallorca", dates:"10 – 17 Sep", lat:39.9119, lng:3.0642, color:"#c9a227", booked:true },
     { num:"16", name:"Cala Millor, Mallorca", dates:"17 – 23 Sep", lat:39.5894, lng:3.3903, color:"#c9a227", booked:true },
     { num:"17", name:"Valencia", dates:"23 – 27 Sep", lat:39.4647, lng:-0.3772, color:"#c9a227", booked:true },
-    { num:"18", name:"Altea", dates:"27 Sep – 1 Oct", lat:38.6029, lng:-0.0451, color:"#c9a227", booked:false },
+    { num:"18", name:"Altea", dates:"27 Sep – 1 Oct", lat:38.6029, lng:-0.0451, color:"#c9a227", booked:true },
   ];
 
   // Madrid departure marker
@@ -495,7 +495,7 @@
         <tr class="booked"><td>15</td><td><a href="#dest-15" style="color:inherit;text-decoration:none;">Cala Sant Vicenç, Mallorca</a> <span class="booked-pill">Booked</span></td><td>Thu 10 Sep</td><td>Thu 17 Sep</td><td>7</td><td class="conf">HA-CH8F4V</td><td>+34 650 789 403</td></tr>
         <tr class="booked"><td>16</td><td><a href="#dest-16" style="color:inherit;text-decoration:none;">Cala Millor, Mallorca</a> <span class="booked-pill">Booked</span></td><td>Thu 17 Sep</td><td>Wed 23 Sep</td><td>6</td><td class="conf">P2243744</td><td>+34 971 585 805</td></tr>
         <tr class="booked"><td>17</td><td><a href="#dest-17" style="color:inherit;text-decoration:none;">Valencia</a> <span class="booked-pill">Booked</span></td><td>Wed 23 Sep</td><td>Sun 27 Sep</td><td>4</td><td class="conf">HMCRE9Z4ZF</td><td>+34 613 35 61 85</td></tr>
-        <tr class="tbd"><td>18</td><td><a href="#dest-18" style="color:inherit;text-decoration:none;">Altea</a> <span class="tbd-pill">TBD</span></td><td>Sun 27 Sep</td><td>Thu 1 Oct</td><td>4</td><td class="conf">—</td><td>—</td></tr>
+        <tr class="booked"><td>18</td><td><a href="#dest-18" style="color:inherit;text-decoration:none;">Altea</a> <span class="booked-pill">Booked</span></td><td>Sun 27 Sep</td><td>Thu 1 Oct</td><td>4</td><td class="conf">5384834667</td><td>+34 644 45 60 00</td></tr>
         <tr class="booked"><td>—</td><td>Flight Madrid → Doha → Melbourne <span class="booked-pill">Booked</span></td><td>Thu 1 Oct</td><td>Fri 2 Oct</td><td>—</td><td class="conf">9F6RK3</td><td>—</td></tr>
       </tbody>
     </table>
@@ -532,7 +532,7 @@
       </div>
     </div>
 
-    <div class="dest-full" style="padding-left: 200px;">
+    <div class="dest-full">
       <div class="booking-card">
         <div class="booking-card-title">Accommodation · Booked</div>
         <div class="booking-grid">
@@ -588,7 +588,7 @@
       </div>
     </div>
 
-    <div class="dest-full" style="padding-left: 200px;">
+    <div class="dest-full">
       <div class="booking-card">
         <div class="booking-card-title">Accommodation · Booked</div>
         <div class="booking-grid">
@@ -652,7 +652,7 @@
       </div>
     </div>
 
-    <div class="dest-full" style="padding-left: 200px;">
+    <div class="dest-full">
       <div class="booking-card">
         <div class="booking-card-title">Accommodation · Booked</div>
         <div class="booking-grid">
@@ -708,7 +708,7 @@
       </div>
     </div>
 
-    <div class="dest-full" style="padding-left: 200px;">
+    <div class="dest-full">
       <div class="booking-card">
         <div class="booking-card-title">Accommodation · Booked</div>
         <div class="booking-grid">
@@ -764,7 +764,7 @@
         <div class="transport-note"><span class="transport-label">Onward →</span><span>Drive to Cortina d'Ampezzo (~3hrs via Brescia and the A4 east). A straightforward motorway run — consider a brief stop in Verona for lunch before turning north into the Dolomites.</span></div>
       </div>
     </div>
-    <div class="dest-full" style="padding-left: 200px;">
+    <div class="dest-full">
       <div class="booking-card">
         <div class="booking-card-title">Accommodation · Booked</div>
         <div class="booking-grid">
@@ -819,7 +819,7 @@
         <div class="transport-note"><span class="transport-label">Onward →</span><span>Drive to Bormio via the Stelvio Pass — allow a full day. 2,757m, 48 hairpins. Stop at the summit. The descent into the Valtellina is spectacular.</span></div>
       </div>
     </div>
-    <div class="dest-full" style="padding-left: 200px;">
+    <div class="dest-full">
       <div class="booking-card">
         <div class="booking-card-title">Accommodation · Booked</div>
         <div class="booking-grid">
@@ -851,7 +851,7 @@
       </div>
     </div>
   </div>
-  <div class="destination">
+  <div class="destination" id="dest-07">
     <div class="dest-header">
       <div class="dest-meta">
         <div class="dest-number">07</div>
@@ -869,10 +869,10 @@
           <div class="highlight"><div class="highlight-dot"></div><span>Parco Nazionale dello Stelvio — excellent trails, wildflowers in late July, marmots everywhere.</span></div>
           <div class="highlight"><div class="highlight-dot"></div><span>Pizzoccheri della Valtellina — buckwheat pasta with cabbage, potato, and Casera cheese. Order it at least once.</span></div>
         </div>
-        <div class="transport-note"><span class="transport-label">Onward →</span><span>Drive to Carate Urio on Lago di Como via the Valtellina valley and Como lakeside road (~2hrs). Stop in Lugano for lunch — Swiss-Italian city on the lake, excellent espresso.</span></div>
+        <div class="transport-note"><span class="transport-label">Onward →</span><span>Drive to Lago di Como via the Valtellina valley and the western shore lakeside road (~2hrs). Stop in Lugano for lunch — a beautiful Swiss-Italian city on the lake, excellent espresso.</span></div>
       </div>
     </div>
-    <div class="dest-full" style="padding-left: 200px;">
+    <div class="dest-full">
       <div class="booking-card">
         <div class="booking-card-title">Accommodation · Booked</div>
         <div class="booking-grid">
@@ -928,7 +928,7 @@
         <div class="transport-note"><span class="transport-label">Onward →</span><span>Drive to Grindelwald (~2.5hrs via Lugano, Gotthard tunnel, and Interlaken). Take the First gondola up to Bergstation First to begin the hike — the car stays in Grindelwald for the duration and is collected on descent on day 5.</span></div>
       </div>
     </div>
-    <div class="dest-full" style="padding-left: 200px;">
+    <div class="dest-full">
       <div class="booking-card">
         <div class="booking-card-title">Accommodation · Booked</div>
         <div class="booking-grid">
@@ -988,11 +988,11 @@
           <div class="highlight"><div class="highlight-dot"></div><span>Night 5 — Berghotel Faulhorn (2,681m): The oldest mountain hotel in the Alps, operating since 1832. At 2,681m, the highest point of the hike. Sunrise over the Bernese Alps from this position is one of the great mountain experiences in Europe.</span></div>
           <div class="highlight"><div class="highlight-dot"></div><span>Descent to Grindelwald on day 5 via the Bachalpsee — a high alpine lake reflecting the Wetterhorn and Schreckhorn. A perfect final morning before the drive to Geneva.</span></div>
         </div>
-        <div class="transport-note"><span class="transport-label">Onward →</span><span>Descend to Grindelwald then drive to Geneva (~2.5hrs via Interlaken and the A6). Arrive at your brother's for dinner on Friday 14 August.</span></div>
+        <div class="transport-note"><span class="transport-label">Onward →</span><span>Descend to Grindelwald, then spend a night in Interlaken before driving to Geneva the following morning (~2hrs via the A6). Arrive at your brother's for lunch on Friday 14 August.</span></div>
       </div>
     </div>
 
-    <div class="dest-full" style="padding-left: 200px;">
+    <div class="dest-full">
       <div class="booking-card-multi">
         <div class="booking-card-multi-title">Accommodation · 4 Bookings · All Confirmed</div>
 
@@ -1158,7 +1158,7 @@
         <div class="transport-note"><span class="transport-label">Onward →</span><span>Drive to Annecy (~45 mins). One of the easiest transfers on the trip. Arrive in time for a swim before dinner.</span></div>
       </div>
     </div>
-    <div class="dest-full" style="padding-left: 200px;">
+    <div class="dest-full">
       <div class="booking-card">
         <div class="booking-card-title">Accommodation · Confirmed · Private Stay</div>
         <div class="booking-grid">
@@ -1212,7 +1212,7 @@
         <div class="transport-note"><span class="transport-label">Onward →</span><span>Drive to Grenoble (~1.5hrs) via Chambéry — worth a 45-minute coffee stop before dropping into the city.</span></div>
       </div>
     </div>
-    <div class="dest-full" style="padding-left: 200px;">
+    <div class="dest-full">
       <div class="booking-card">
         <div class="booking-card-title">Accommodation · Booked</div>
         <div class="booking-grid">
@@ -1267,7 +1267,7 @@
         <div class="transport-note"><span class="transport-label">Onward →</span><span>Drive south-east into Spain (~4.5hrs via A7 and AP-7). Cross the border at La Jonquera and continue south into the Garrotxa region. Sales de Llierca is a small village in the Alta Garrotxa foothills — allow a full day for this drive and arrive in time for dinner.</span></div>
       </div>
     </div>
-    <div class="dest-full" style="padding-left: 200px;">
+    <div class="dest-full">
       <div class="booking-card">
         <div class="booking-card-title">Accommodation · Booked</div>
         <div class="booking-grid">
@@ -1331,7 +1331,7 @@
         <div class="transport-note"><span class="transport-label">Onward →</span><span>Drive south to Girona (~45 mins via C-66). Straightforward and beautiful — the road descends from the foothills through olive groves and vineyards into the Empordà plain.</span></div>
       </div>
     </div>
-    <div class="dest-full" style="padding-left: 200px;">
+    <div class="dest-full">
       <div class="booking-card">
         <div class="booking-card-title">Accommodation · Booked</div>
         <div class="booking-grid">
@@ -1383,10 +1383,10 @@
           <div class="highlight"><div class="highlight-dot"></div><span>Costa Brava day trip — Begur and the calas around Tamariu and Aiguablava. Some of the finest cove swimming in the Mediterranean.</span></div>
           <div class="highlight"><div class="highlight-dot"></div><span>La Garrotxa — ancient volcanoes and Romanesque villages 45 minutes inland. Extraordinary beech forest hiking.</span></div>
         </div>
-        <div class="transport-note"><span class="transport-label">Onward →</span><span>Drive south to Altea via the A-7 coastal motorway (~4.5hrs). Break the journey with lunch in Tarragona — a Roman amphitheatre built directly above the sea, excellent seafood, and almost entirely overlooked by tourists.</span></div>
+        <div class="transport-note"><span class="transport-label">Onward →</span><span>Drive to Barcelona (~1.5hrs via AP-7) and take the overnight Baleària or Trasmediterránea ferry to Palma (~8hrs, or 4hrs on the fast ferry). Collect hire car in Palma and drive north to Cala Sant Vicenç (~1hr via the Ma-13). Book the ferry well ahead — September sailings fill quickly.</span></div>
       </div>
     </div>
-    <div class="dest-full" style="padding-left: 200px;">
+    <div class="dest-full">
       <div class="booking-card">
         <div class="booking-card-title">Accommodation · Booked</div>
         <div class="booking-grid">
@@ -1441,7 +1441,7 @@
         <div class="transport-note"><span class="transport-label">Onward →</span><span>Drive from Cala Sant Vicenç to Cala Millor (~1.5hrs via the scenic east coast road through Alcúdia, Artà, and Son Servera). A beautiful cross-island drive — arrive in time for an afternoon swim.</span></div>
       </div>
     </div>
-    <div class="dest-full" style="padding-left: 200px;">
+    <div class="dest-full">
       <div class="booking-card">
         <div class="booking-card-title">Accommodation · Booked</div>
         <div class="booking-grid">
@@ -1497,7 +1497,7 @@
         <div class="transport-note"><span class="transport-label">Onward →</span><span>Ferry Palma → Dénia (~3.5hrs via Baleària Lines). Drive from Cala Millor to Palma (~1hr). Stop in Dénia for lunch — excellent arròs a banda — before driving north to Valencia (~1.5hrs).</span></div>
       </div>
     </div>
-    <div class="dest-full" style="padding-left: 200px;">
+    <div class="dest-full">
       <div class="booking-card">
         <div class="booking-card-title">Accommodation · Booked</div>
         <div class="booking-grid">
@@ -1552,7 +1552,7 @@
         <div class="transport-note"><span class="transport-label">Onward →</span><span>Drive south to Altea (~1.5hrs via the AP-7 coast road). A short, easy transfer — arrive in time for a slow lunch in the old town before the final days of the trip begin.</span></div>
       </div>
     </div>
-    <div class="dest-full" style="padding-left: 200px;">
+    <div class="dest-full">
       <div class="booking-card">
         <div class="booking-card-title">Accommodation · Booked</div>
         <div class="booking-grid">
@@ -1604,10 +1604,10 @@
           <div class="highlight"><div class="highlight-dot"></div><span>Jávea day trip — 30 minutes north. The best cala swimming on the Costa Blanca at Granadella beach. Arrive early, stay all day.</span></div>
           <div class="highlight"><div class="highlight-dot"></div><span>Local rice dishes — arròs amb fesols i naps is the regional speciality. Order it at lunch.</span></div>
         </div>
-        <div class="transport-note"><span class="transport-label">Onward →</span><span>Drive north to Valencia (~4hrs via AP-7). Stop in Tarragona for lunch — a Roman amphitheatre built directly above the sea, excellent seafood, and almost entirely overlooked by tourists. Then continue north into Valencia in the early evening.</span></div>
+        <div class="transport-note"><span class="transport-label">Onward →</span><span>Drive to Madrid (~3.5hrs via A-31 and A-3 inland motorways). A straightforward final drive through the Valencian interior — arrive with time for a last dinner in the city before the early morning flight.</span></div>
       </div>
     </div>
-    <div class="dest-full" style="padding-left: 200px;">
+    <div class="dest-full">
       <div class="booking-card">
         <div class="booking-card-title">Accommodation · Not yet booked</div>
         <div class="booking-grid wide"><div class="booking-row"><span class="booking-label">Status</span><span class="booking-value" style="color:var(--ink-faint);">To be confirmed</span></div></div>
@@ -1630,7 +1630,7 @@
         <p class="dest-description">Drive from Altea to Madrid (~3.5hrs), then fly Qatar Airways via Doha to Melbourne. The long way home after fourteen weeks across Europe.</p>
       </div>
     </div>
-    <div class="dest-full" style="padding-left: 200px;">
+    <div class="dest-full">
       <div class="booking-card-multi">
         <div class="booking-card-multi-title">Flights · Confirmed · Confirmation: 9F6RK3</div>
         <div class="booking-night">
